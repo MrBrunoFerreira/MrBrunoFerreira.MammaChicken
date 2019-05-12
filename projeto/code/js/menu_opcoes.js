@@ -1,6 +1,7 @@
 "use strict";
 
 var pagina_ant;
+var volumeBar;
 
 var obj={
             brilho:1
@@ -42,7 +43,11 @@ class menu_opcoes extends Phaser.Scene{
         let btn_voltar=this.add.image(90,ch-60,"btn_voltar").setScale(0.3).setInteractive({cursor:"pointer"});
         //botao sair
         let btn_sair=this.add.image(cw-90,ch-60,"btn_sair").setScale(0.3).setInteractive({cursor:"pointer"});
-        
+        //botao minus volume
+        let btn_vMinus=this.add.image(cw/2 + 65,ch/2 + 15,"btn_minus").setScale(0.2).setInteractive({cursor:"pointer"});
+        //botao plus volume
+        let btn_vPlus=this.add.image(cw/2 + 190,ch/2 + 15,"btn_plus").setScale(0.2).setInteractive({cursor:"pointer"});
+
         //brilho
         //pequena função de loop
         let  myVar=setInterval(litte, 10);
@@ -102,6 +107,36 @@ class menu_opcoes extends Phaser.Scene{
         btn_sair.on("pointerout",function(event){
             this.setScale(0.3);
         });
+        //btn_vMinus
+        btn_vMinus.on("pointerover",function(event){
+            this.setScale(0.22);
+        });
+        btn_vMinus.on("pointerdown",function(event){
+            btnSound.play();
+            //console.log("Volume:"+this.sound.volume);
+            if(this.sound.volume>0){
+                this.sound.volume = this.sound.volume - 0.1;
+            }
+        },this);
+        btn_vMinus.on("pointerout",function(event){
+            this.setScale(0.2);
+        });
+        //btn_vPlus
+        btn_vPlus.on("pointerover",function(event){
+            this.setScale(0.22);
+        });
+        btn_vPlus.on("pointerdown",function(event){
+            btnSound.play();
+            //console.log("Volume:"+this.sound.volume);
+            if(this.sound.volume<1){
+                this.sound.volume = this.sound.volume + 0.1;
+            }  
+        },this);
+        btn_vPlus.on("pointerout",function(event){
+            this.setScale(0.2);
+        });
+
+
 
 
         //gui Opcoes ->dat.gui
@@ -114,10 +149,30 @@ class menu_opcoes extends Phaser.Scene{
 
         //gui Opcoes->phaser-ui-tools
         
+        //gui
+        //volume box
+        let volumeBox=this.add.graphics();
+        volumeBox.fillStyle(0x222222,1);
+        volumeBox.fillRect(ch/2 + 185,cw/2 - 100, 85, 35);
+
+        //volume bar
+        volumeBar=this.add.graphics();
+
+        
+
 
     }
 
     update(){
+        //variavies
+        let ch=this.game.renderer.height;
+        let cw=this.game.renderer.width;
+
+        //console.log("Volume="+this.sound.volume);
+
+        volumeBar.fillStyle(0xe6e6e6,0.5);
+        volumeBar.fillRect(ch/2+187,cw/2 -98 ,this.sound.volume*81,32);
+
 
     }
 
