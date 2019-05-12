@@ -13,14 +13,16 @@ var ponto1
 var ponto2;
 var ponto3;
 var ponto4;
-var ponto5;
 
 //textos
 var textInicial;
 var text1;
 var text2;
 var text3;
-var text4;
+var text4; //pressiona f
+var text5;
+var text6;
+var text7;
 
 
 
@@ -50,6 +52,8 @@ class level1 extends Phaser.Scene{
         this.load.image("Obstaculos","assets/Backgrounds/image5.png");
         this.load.image("placa","assets/Backgrounds/teste1.png");
         this.load.image("owl","assets/Backgrounds/owl6.png");
+        this.load.image("horse","assets/Backgrounds/horse-white.png");
+
         //como as animacoes dos characters estao em png tenho de dar load de cada uma
         this.load.image('run0', 'Chicken Run Platformer Game Assets 17/Character Sprites/Run_000.png');
         this.load.image('run1', 'Chicken Run Platformer Game Assets 17/Character Sprites/Run_001.png');
@@ -137,8 +141,10 @@ class level1 extends Phaser.Scene{
         let tileset5 = map.addTilesetImage("Obstaculos");
         let tileset6 = map.addTilesetImage("placa");
         let tileset7 = map.addTilesetImage("owl");
+        let tileset8 = map.addTilesetImage("horse");
+
         let layer1 = map.createStaticLayer('Background', tileset1,0,0);
-        let layer2 = map.createStaticLayer('Arvores', [tileset3,tileset4,tileset5,tileset6,tileset7],0,0);
+        let layer2 = map.createStaticLayer('Arvores', [tileset3,tileset4,tileset5,tileset6,tileset7,tileset8],0,0);
         let layer3 = map.createStaticLayer('Ground', tileset2,0,0);
 
         //let layer4 = map.getObjectLayer('Objects');
@@ -155,7 +161,6 @@ class level1 extends Phaser.Scene{
         ponto2=map.findObject("Objects", obj => obj.name === "Ponto2");
         ponto3=map.findObject("Objects", obj => obj.name === "Ponto3");
         ponto4=map.findObject("Objects", obj => obj.name === "Ponto4");
-        ponto5=map.findObject("Objects", obj => obj.name === "Ponto5");
         
 
         //spawn player
@@ -228,6 +233,7 @@ class level1 extends Phaser.Scene{
         });
       });
     
+
         //criar textos
         //textInicial
         textInicial = this.add.text(ponto3.x, 30, 'Use as setas para correr e saltar', {
@@ -258,9 +264,7 @@ class level1 extends Phaser.Scene{
             "mas, esta é a história de Vito, o Super Pintainho.",
             "Tudo começou quando Vito era muito pequeno, muito inocente,", 
             "nos tempos em que ele ainda acreditava no Galo Natal....",
-            "porém, o maior pesadelo da sua vida ocorreu!...",
-            "A sua mãe desapareceu, Gira, a mãe Galinha.", 
-            //Vito, destroçado, sozinho no seu galinheiro só pensava em como voltar a estar com a sua mãe!"
+            "porém, o maior pesadelo da sua vida ocorreu!"
         ];
         text2 = this.add.text(ponto2.x-200, 30, content2, {
             fontSize: '18px',
@@ -289,7 +293,7 @@ class level1 extends Phaser.Scene{
             "Pressione F para interagir",
             "com a Coruja Mu"
         ];
-        text4 = this.add.text(ponto5.x-100, 30, content4, {
+        text4 = this.add.text(ponto4.x-100, 30, content4, {
             fontSize: '18px',
             padding: { x: 10, y: 5 },
             backgroundColor: '#000000',
@@ -297,8 +301,46 @@ class level1 extends Phaser.Scene{
         });
         text4.setScrollFactor(1);
         text4.setVisible(false);
-
-        
+        //text5 ->Fala vito
+        let content5 = [
+            "Vito: A minha mãe o quê??...",
+        ];
+        text5 = this.add.text(ponto4.x-100, 30, content5, {
+            fontSize: '18px',
+            padding: { x: 10, y: 5 },
+            backgroundColor: '#000000',
+            fill: '#ffffff'
+        });
+        text5.setScrollFactor(1);
+        text5.setVisible(false);
+        //text6 
+        let content6 = [
+            "Coruja Mu: Sim Vito, ela foi raptada",
+            "Não há nada que possamos fazer :(",
+            "A não ser..."
+        ];
+        text6 = this.add.text(ponto4.x-100, 30, content6, {
+            fontSize: '18px',
+            padding: { x: 10, y: 5 },
+            backgroundColor: '#000000',
+            fill: '#ffffff'
+        });
+        text6.setScrollFactor(1);
+        text6.setVisible(false);
+        //text7 
+        let content7 = [
+            "Coruja Mu:Vito! Vai falar com o Joni!",
+            "Já!! Vai a correr!",
+            "Ele está no campo a pastar."
+        ];
+        text7 = this.add.text(ponto4.x-100, 30, content7, {
+            fontSize: '18px',
+            padding: { x: 10, y: 5 },
+            backgroundColor: '#000000',
+            fill: '#ffffff'
+        });
+        text7.setScrollFactor(1);
+        text7.setVisible(false); 
 
     }
     
@@ -356,11 +398,15 @@ class level1 extends Phaser.Scene{
     // Apply the controls to the CAMERA each update tick of the game
     //controls.update(delta);
 
+    //variaveis
     let speed = 200;
     let prevVelocity = player.body.velocity.clone();
 
-    // Stop any previous movement from the last frame
-    player.body.setVelocity(0);
+    player.body.setVelocity(0); 
+
+    //KeyCodes
+    //var keyObjF = this.input.keyboard.addKey('F');  
+    
 
     // Horizontal movement
     if (cursors.left.isDown) {
@@ -383,7 +429,8 @@ class level1 extends Phaser.Scene{
         player.body.setVelocityY(-speed);
     } else if (cursors.down.isDown) {
         player.body.setVelocityY(speed);
-    } 
+    }
+    
 
     // Normalize and scale the velocity so that player can't move faster along a diagonal
     player.body.velocity.normalize().scale(speed);
@@ -406,14 +453,29 @@ class level1 extends Phaser.Scene{
         textInicial.setVisible(true);  
     }else if(player.x-32<=ponto4.x+ponto4.width && player.x+32>=ponto4.x){
         player.body.debugBodyColor = 0xffff00;
+        text4.setVisible(true);
+        this.input.keyboard.once("keydown_F", event => {
+            //text4.setVisible(true);
+            text4.destroy();
+            text3.setVisible(true);
+            this.input.keyboard.once("keydown_F", event => {
+                text3.destroy();
+                text5.setVisible(true);
+                this.input.keyboard.once("keydown_F", event => {
+                    text5.destroy();
+                    text6.setVisible(true);
+                    this.input.keyboard.once("keydown_F", event => {
+                        text6.destroy();
+                        text7.setVisible(true);
+                        this.input.keyboard.once("keydown_F", event => {
+                            text7.destroy();
+                        });
+                    });
+                });
+                
+            });
+        });
 
-        //fala entre coruja e Vito
-        text3.setVisible(true);  
-    }else if(player.x-32<=ponto5.x+ponto4.width && player.x+32>=ponto5.x){
-        player.body.debugBodyColor = 0xffff00;
-
-        //fala entre coruja e Vito
-        text4.setVisible(true);  
     }
     else {
         player.body.debugBodyColor = 0xff00ff;
