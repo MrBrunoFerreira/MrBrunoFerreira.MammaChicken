@@ -82,8 +82,6 @@ class level1 extends Phaser.Scene{
         this.load.image('run16', 'Chicken Run Platformer Game Assets 17/Character Sprites/Run_016.png');
         this.load.image('run17', 'Chicken Run Platformer Game Assets 17/Character Sprites/Run_017.png');
 
-
-
         //para o loading demorar mais
         //retirar no futuro
         for(let i=0; i<100; i++){
@@ -210,6 +208,7 @@ class level1 extends Phaser.Scene{
             ],
             frameRate: 24     
         });
+
         this.anims.create({
             key: 'left',
             frames:[
