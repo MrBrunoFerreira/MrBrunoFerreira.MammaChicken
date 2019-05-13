@@ -8,11 +8,11 @@ var controls;
 
 //objects
 var spawnPoint;
-var deathPoint;
 var ponto1
 var ponto2;
 var ponto3;
 var ponto4;
+var ponto5;
 
 //textos
 var textInicial;
@@ -23,7 +23,15 @@ var text4; //pressiona f
 var text5;
 var text6;
 var text7;
-
+var text8;
+var text9;
+var text10;
+var text11;
+var text12;
+var text13;
+var text14;
+var text15;
+var text16;
 
 
 class level1 extends Phaser.Scene{
@@ -53,6 +61,7 @@ class level1 extends Phaser.Scene{
         this.load.image("placa","assets/Backgrounds/teste1.png");
         this.load.image("owl","assets/Backgrounds/owl6.png");
         this.load.image("horse","assets/Backgrounds/horse-white.png");
+        this.load.image("horseBrown","assets/Backgrounds/horse_brown.png");
 
         //como as animacoes dos characters estao em png tenho de dar load de cada uma
         this.load.image('run0', 'Chicken Run Platformer Game Assets 17/Character Sprites/Run_000.png');
@@ -142,9 +151,10 @@ class level1 extends Phaser.Scene{
         let tileset6 = map.addTilesetImage("placa");
         let tileset7 = map.addTilesetImage("owl");
         let tileset8 = map.addTilesetImage("horse");
+        let tileset9 = map.addTilesetImage("horseBrown");
 
         let layer1 = map.createStaticLayer('Background', tileset1,0,0);
-        let layer2 = map.createStaticLayer('Arvores', [tileset3,tileset4,tileset5,tileset6,tileset7,tileset8],0,0);
+        let layer2 = map.createStaticLayer('Arvores', [tileset3,tileset4,tileset5,tileset6,tileset7,tileset8,tileset9],0,0);
         let layer3 = map.createStaticLayer('Ground', tileset2,0,0);
 
         //let layer4 = map.getObjectLayer('Objects');
@@ -153,14 +163,14 @@ class level1 extends Phaser.Scene{
         //layer1.setCollisionFromCollisionGroup();
         //layer.setCollisionByProperty({ collides: true });
         // collision shapes. In the tmx file, there's an object layer with a point named "Spawn Point"
-        spawnPoint = map.findObject("Objects", obj => obj.name === "Start");
-        deathPoint = map.findObject("Objects", obj => obj.name === "Death");
+        spawnPoint = map.findObject("Objects", obj => obj.name === "Start");        
 
         //objeto layer
-        ponto1=map.findObject("Objects", obj => obj.name === "Ponto1");
-        ponto2=map.findObject("Objects", obj => obj.name === "Ponto2");
-        ponto3=map.findObject("Objects", obj => obj.name === "Ponto3");
-        ponto4=map.findObject("Objects", obj => obj.name === "Ponto4");
+        ponto1 = map.findObject("Objects", obj => obj.name === "Ponto1");
+        ponto2 = map.findObject("Objects", obj => obj.name === "Ponto2");
+        ponto3 = map.findObject("Objects", obj => obj.name === "Ponto3");
+        ponto4 = map.findObject("Objects", obj => obj.name === "Ponto4");
+        ponto5 = map.findObject("Objects", obj => obj.name === "Ponto5");
         
 
         //spawn player
@@ -340,8 +350,122 @@ class level1 extends Phaser.Scene{
             fill: '#ffffff'
         });
         text7.setScrollFactor(1);
-        text7.setVisible(false); 
-
+        text7.setVisible(false);
+        //text8 
+        let content8 = [
+            "Cavalo Joni:Oi Vito, tudo bem?"
+        ];
+        text8 = this.add.text(ponto5.x-100, 30, content8, {
+            fontSize: '18px',
+            padding: { x: 10, y: 5 },
+            backgroundColor: '#000000',
+            fill: '#ffffff'
+        });
+        text8.setScrollFactor(1);
+        text8.setVisible(false); 
+        //text9 
+        let content9 = [
+            "Vito:Não Joni! Não estou nada bem!..."
+        ];
+        text9 = this.add.text(ponto5.x-100, 30, content9, {
+            fontSize: '18px',
+            padding: { x: 10, y: 5 },
+            backgroundColor: '#000000',
+            fill: '#ffffff'
+        });
+        text9.setScrollFactor(1);
+        text9.setVisible(false);
+        //text10 
+        let content10 = [
+            "Vito:O Mu disse que a minha mãe foi raptada",
+            "e que só tu me poderias ajudar!",
+            "Por favor!!Ajuda-me!..."
+        ];
+        text10 = this.add.text(ponto5.x-100, 30, content10, {
+            fontSize: '18px',
+            padding: { x: 10, y: 5 },
+            backgroundColor: '#000000',
+            fill: '#ffffff'
+        });
+        text10.setScrollFactor(1);
+        text10.setVisible(false);
+        //text11 
+        let content11 = [
+            "Cavalo Joni:Vito, tu sabes que eu já fui",
+            "um cavalo de guerra não sabes?..."
+        ];
+        text11 = this.add.text(ponto5.x-100, 30, content11, {
+            fontSize: '18px',
+            padding: { x: 10, y: 5 },
+            backgroundColor: '#000000',
+            fill: '#ffffff'
+        });
+        text11.setScrollFactor(1);
+        text11.setVisible(false);
+        //text12
+        let content12 = [
+            "Cavalo Joni:Para esta tua missão vou-te",
+            "dar algo sagrado..."
+        ];
+        text12 = this.add.text(ponto5.x-100, 30, content12, {
+            fontSize: '18px',
+            padding: { x: 10, y: 5 },
+            backgroundColor: '#000000',
+            fill: '#ffffff'
+        });
+        text12.setScrollFactor(1);
+        text12.setVisible(false);
+        //text13
+        let content13 = [
+            "Cavalo Joni: A minha P90!"
+        ];
+        text13 = this.add.text(ponto5.x-100, 30, content13, {
+            fontSize: '18px',
+            padding: { x: 10, y: 5 },
+            backgroundColor: '#000000',
+            fill: '#ffffff'
+        });
+        text13.setScrollFactor(1);
+        text13.setVisible(false);
+        //text14
+        let content14 = [
+            "Vito: Adoro!",
+            "E quem se colocar no meu caminho não",
+            "tem a minima chance!"
+        ];
+        text14 = this.add.text(ponto5.x-100, 30, content14, {
+            fontSize: '18px',
+            padding: { x: 10, y: 5 },
+            backgroundColor: '#000000',
+            fill: '#ffffff'
+        });
+        text14.setScrollFactor(1);
+        text14.setVisible(false);
+        //text15
+        let content15 = [
+            "Vito: Obrigado Joni"
+        ];
+        text15 = this.add.text(ponto5.x-100, 30, content15, {
+            fontSize: '18px',
+            padding: { x: 10, y: 5 },
+            backgroundColor: '#000000',
+            fill: '#ffffff'
+        });
+        text15.setScrollFactor(1);
+        text15.setVisible(false);
+        //text16 ->interactividade
+        let content16 = [
+            "Pressione F para interagir",
+            "com o Cavalo Joni"
+        ];
+        text16 = this.add.text(ponto5.x-100, 30, content16, {
+            fontSize: '18px',
+            padding: { x: 10, y: 5 },
+            backgroundColor: '#000000',
+            fill: '#ffffff'
+        });
+        text16.setScrollFactor(1);
+        text16.setVisible(false);            
     }
     
     createSpeechBubble (x, y, width, height, quote){
@@ -436,12 +560,51 @@ class level1 extends Phaser.Scene{
     player.body.velocity.normalize().scale(speed);
 
     //debug object colision
-    if(player.x-32<=deathPoint.x+deathPoint.width && player.x+32>=deathPoint.x /*&& player.y>=deathPoint.y && player.y<deathPoint.y+deathPoint.height*/){
+    if(player.x-32<=ponto5.x+ponto5.width && player.x+32>=ponto5.x){
         player.body.debugBodyColor = 0xffff00;
-        console.log("MortePoint");
-    }else if(player.x-32<=ponto1.x+ponto1.width && player.x+32>=ponto1.x /*&& player.y>=ponto1.y && player.y<=ponto1.y+ponto1.height*/){
-        player.body.debugBodyColor = 0xffff00;
+        text16.setVisible(true);
+        this.input.keyboard.once("keydown_F", event => {
+            text16.destroy();
+            text8.setVisible(true);
+            this.input.keyboard.once("keydown_F", event => {
+                text8.destroy();
+                text9.setVisible(true);
+                this.input.keyboard.once("keydown_F", event => {
+                    text9.destroy();
+                    text10.setVisible(true);
+                    this.input.keyboard.once("keydown_F", event => {
+                        text10.destroy();
+                        text11.setVisible(true);
+                        this.input.keyboard.once("keydown_F", event => {
+                            text11.destroy();
+                            text12.setVisible(true);
+                            this.input.keyboard.once("keydown_F", event => {
+                                text12.destroy();
+                                text13.setVisible(true);
+                                this.input.keyboard.once("keydown_F", event => {
+                                    text13.destroy();
+                                    text14.setVisible(true);
+                                    this.input.keyboard.once("keydown_F", event => {
+                                        text14.destroy();
+                                        text15.setVisible(true);
+                                        this.input.keyboard.once("keydown_F", event => {
+                                            text15.destroy();
+                                        });
+                                    });
+                                });
+                            });
+                        });
+                    });
+                });
+
+            });
+            
+        });
+
+
         
+    }else if(player.x-32<=ponto1.x+ponto1.width && player.x+32>=ponto1.x /*&& player.y>=ponto1.y && player.y<=ponto1.y+ponto1.height*/){
+        player.body.debugBodyColor = 0xffff00;    
         //bubble_speak
         //this.createSpeechBubble(20, 20, 320, 160, '“Twin ceramic rotor drives on each wheel! And these look like computer controlled anti-lock brakes! Wow, 200 horses at 12,000 rpm!”');  
         text1.setVisible(true);       
@@ -483,7 +646,8 @@ class level1 extends Phaser.Scene{
         text2.setVisible(false);
         text3.setVisible(false);
         text4.setVisible(false);
-        textInicial.setVisible(false); 
+        textInicial.setVisible(false);
+        text16.setVisible(false); 
     }
 
     }
