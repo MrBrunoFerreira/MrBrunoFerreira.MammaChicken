@@ -9,7 +9,7 @@ var controls;
 
 //objects
 var spawnPoint;
-var ponto1
+var ponto1;
 var ponto2;
 var ponto3;
 var ponto4;
@@ -570,7 +570,37 @@ class level1 extends Phaser.Scene{
     let speed = 300;
     let prevVelocity = player.body.velocity.clone();
 
-    player.body.setVelocity(0); 
+        if (cursors.left.isDown) // if the left arrow key is down
+        {
+            console.log("1");
+            player.body.setVelocityX(-200); // move left
+        }
+        else if (cursors.right.isDown) // if the right arrow key is down
+        {
+
+            console.log("2");
+            player.body.setVelocityX(200); // move right
+        }
+        if ((cursors.space.isDown || cursors.up.isDown) && player.body.onFloor())
+        {
+            console.log("saltei");
+            player.body.setVelocityY(-300); // jump up
+        }
+
+
+        if (cursors.left.isDown)
+        {
+            player.body.setVelocityX(-200); // move left
+            player.anims.play('left', true); // play walk animation
+        }
+        else if (cursors.right.isDown)
+        {
+            player.body.setVelocityX(200); // move right
+            player.anims.play('right', true); // play walk animatio
+        } else {
+            player.body.setVelocityX(0);
+            //player.anims.play('idle', true);
+        }
 
     //console.log("player.x:"+player.x);
     //console.log("player.y:"+player.y);
@@ -581,9 +611,9 @@ class level1 extends Phaser.Scene{
 
 
     //KeyCodes
-    //var keyObjF = this.input.keyboard.addKey('F');  
-    
+    //var keyObjF = this.input.keyboard.addKey('F'); 
 
+        /*
     // Horizontal movement
     if (cursors.left.isDown) {
         player.body.setVelocityX(-speed);
@@ -594,22 +624,22 @@ class level1 extends Phaser.Scene{
     }
 
     //para saltar
-    /*if (cursors.up.isDown && player.body.onFloor())
+    if (cursors.up.isDown && player.body.onFloor())
     {   
         //console.log("salto");
         player.setVelocityY(-3000000);
-    }*/
+    }
 
     //para debug ->passear no mapa
     if (cursors.up.isDown) {
         player.body.setVelocityY(-speed);
     } else if (cursors.down.isDown) {
         player.body.setVelocityY(speed);
-    }
-    
+    }*/
+
 
     // Normalize and scale the velocity so that player can't move faster along a diagonal
-    player.body.velocity.normalize().scale(speed);
+    //player.body.velocity.normalize().scale(speed);
 
     //debug object colision
     if(player.x-32<=ponto5.x+ponto5.width && player.x+32>=ponto5.x){
