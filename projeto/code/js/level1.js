@@ -244,6 +244,7 @@ class level1 extends Phaser.Scene{
         //colisoes entre objetos
         this.physics.add.collider(player, layer3);
         player.setBounce(0);
+
         // Phaser supports multiple cameras, but you can access the default camera like this:
         camera = this.cameras.main;
         camera.startFollow(player);
@@ -645,18 +646,18 @@ class level1 extends Phaser.Scene{
     let speed = 300;
     let prevVelocity = player.body.velocity.clone();
 
-        if (cursors.left.isDown) // if the left arrow key is down
+        /*if (cursors.left.isDown) // if the left arrow key is down
         {
             player.body.setVelocityX(-200); // move left
         }
         else if (cursors.right.isDown) // if the right arrow key is down
         {
             player.body.setVelocityX(200); // move right
-        }
+        }*/
         if ((cursors.space.isDown || cursors.up.isDown) && player.body.onFloor())
         {
 
-            player.body.setVelocityY(-300); // jump up
+            player.body.setVelocityY(-400); // jump up
             player.anims.play('rjump', true);
         }
         if (cursors.left.isDown)
@@ -671,8 +672,8 @@ class level1 extends Phaser.Scene{
         } else {
 
             player.body.setVelocityX(0);
-            player.anims.play('lidle', true)
-            //player.anims.play('idle', true);
+            //player.anims.play('lidle', true)
+            player.anims.play('ridle', true);
         }
 
     //console.log("player.x:"+player.x);
@@ -793,6 +794,7 @@ class level1 extends Phaser.Scene{
             });
         });
     }
+    //controlo dos textos
     else {
         player.body.debugBodyColor = 0xff00ff;
         text1.setVisible(false);
