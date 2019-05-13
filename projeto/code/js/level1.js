@@ -523,7 +523,7 @@ class level1 extends Phaser.Scene{
     //controls.update(delta);
 
     //variaveis
-    let speed = 200;
+    let speed = 300;
     let prevVelocity = player.body.velocity.clone();
 
     player.body.setVelocity(0); 
