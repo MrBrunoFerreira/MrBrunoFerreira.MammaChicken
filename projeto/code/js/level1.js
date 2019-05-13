@@ -36,7 +36,6 @@ var text16;
 
 //botoes globais
 let btn_play;
-let btn_pause;
 
 class level1 extends Phaser.Scene{
     constructor(){
@@ -185,34 +184,18 @@ class level1 extends Phaser.Scene{
         //botoes
         //botao play
         btn_play=this.add.image(cw - 40, 40,"btn_play").setScale(0.2).setInteractive({cursor:"pointer"}).setVisible(true);
-        //botao pause
-        btn_pause=this.add.image(cw - 40,40,"btn_pause").setScale(0.2).setInteractive({cursor:"pointer"}).setVisible(false);
         //btn_play
         btn_play.on("pointerover",function(event){
             this.setScale(0.22);
         });
         btn_play.on("pointerdown",function(event){
+            player.body.setVelocity(0);  
             btnSound.play();
-        
-            //this.scene.pause();            
-            btn_play.setVisible(false);
-            btn_pause.setVisible(true);
+            this.scene.pause();
+            this.scene.launch("menu_pause");
+
         },this);
         btn_play.on("pointerout",function(event){
-            this.setScale(0.2);
-        });
-        //btn_pause
-        btn_pause.on("pointerover",function(event){
-            this.setScale(0.22);
-        });
-        btn_pause.on("pointerdown",function(event){
-            btnSound.play();
-            
-            //this.scene.resume();
-            btn_pause.setVisible(false);
-            btn_play.setVisible(true);
-        },this);
-        btn_pause.on("pointerout",function(event){
             this.setScale(0.2);
         });
 
@@ -232,7 +215,6 @@ class level1 extends Phaser.Scene{
         // Phaser supports multiple cameras, but you can access the default camera like this:
         camera = this.cameras.main;
         camera.startFollow(player);
-
 
 
         // Set up the arrows 
@@ -274,21 +256,20 @@ class level1 extends Phaser.Scene{
 
         // Debug graphics
         this.input.keyboard.once("keydown_D", event => {
-        // Turn on physics debugging to show player's hitbox
-        this.physics.world.createDebugGraphic();
-        // Create worldLayer collision graphic above the player, but below the help text
-        const graphics = this.add
-          .graphics()
-          .setAlpha(0.75)
-          .setDepth(20);
-        layer1.renderDebug(graphics, {
-          tileColor: null, // Color of non-colliding tiles
-          collidingTileColor: new Phaser.Display.Color(243, 134, 48, 255), // Color of colliding tiles
-          faceColor: new Phaser.Display.Color(40, 39, 37, 255) // Color of colliding face edges
+            // Turn on physics debugging to show player's hitbox
+            this.physics.world.createDebugGraphic();
+            // Create worldLayer collision graphic above the player, but below the help text
+            const graphics = this.add
+              .graphics()
+              .setAlpha(0.75)
+              .setDepth(20);
+            layer1.renderDebug(graphics, {
+                tileColor: null, // Color of non-colliding tiles
+                collidingTileColor: new Phaser.Display.Color(243, 134, 48, 255), // Color of colliding tiles
+                faceColor: new Phaser.Display.Color(40, 39, 37, 255) // Color of colliding face edges
+            });
         });
-      });
     
-
         //criar textos
         //textInicial
         textInicial = this.add.text(ponto3.x, 30, 'Use as setas para correr e saltar', {
@@ -572,22 +553,16 @@ class level1 extends Phaser.Scene{
 
         if (cursors.left.isDown) // if the left arrow key is down
         {
-            console.log("1");
             player.body.setVelocityX(-200); // move left
         }
         else if (cursors.right.isDown) // if the right arrow key is down
         {
-
-            console.log("2");
             player.body.setVelocityX(200); // move right
         }
         if ((cursors.space.isDown || cursors.up.isDown) && player.body.onFloor())
         {
-            console.log("saltei");
             player.body.setVelocityY(-300); // jump up
         }
-
-
         if (cursors.left.isDown)
         {
             player.body.setVelocityX(-200); // move left
@@ -606,7 +581,6 @@ class level1 extends Phaser.Scene{
     //console.log("player.y:"+player.y);
     if(player.x >= ponto1.x){
         btn_play.x = player.x + 350;
-        btn_pause.x = player.x + 350;
     }
 
 
@@ -641,7 +615,7 @@ class level1 extends Phaser.Scene{
     // Normalize and scale the velocity so that player can't move faster along a diagonal
     //player.body.velocity.normalize().scale(speed);
 
-    //debug object colision
+    //interactividade Cavalo
     if(player.x-32<=ponto5.x+ponto5.width && player.x+32>=ponto5.x){
         player.body.debugBodyColor = 0xffff00;
         text16.setVisible(true);
@@ -682,9 +656,6 @@ class level1 extends Phaser.Scene{
             });
             
         });
-
-
-        
     }else if(player.x-32<=ponto1.x+ponto1.width && player.x+32>=ponto1.x /*&& player.y>=ponto1.y && player.y<=ponto1.y+ponto1.height*/){
         player.body.debugBodyColor = 0xffff00;    
         //bubble_speak
@@ -700,7 +671,6 @@ class level1 extends Phaser.Scene{
         player.body.debugBodyColor = 0xffff00;
         text4.setVisible(true);
         this.input.keyboard.once("keydown_F", event => {
-            //text4.setVisible(true);
             text4.destroy();
             text3.setVisible(true);
             this.input.keyboard.once("keydown_F", event => {
@@ -720,7 +690,6 @@ class level1 extends Phaser.Scene{
                 
             });
         });
-
     }
     else {
         player.body.debugBodyColor = 0xff00ff;

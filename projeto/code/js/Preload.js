@@ -41,6 +41,8 @@ class Preload extends Phaser.Scene{
         this.load.image("bck_historia","assets/Menus/menu_historia.png");
         //load background menu opcoes
         this.load.image("bck_opcoes","assets/Menus/bck_opcoes.png");
+        //load background menu pausa
+        this.load.image("bck_pause","assets/Menus/menu_pausa.png");
 
         //LOAD BOTOES
         //load btn jogar
