@@ -37,6 +37,8 @@ var text16;
 //botoes globais
 let btn_play;
 
+var gun;
+
 
 class level1 extends Phaser.Scene{
     constructor(){
@@ -56,7 +58,7 @@ class level1 extends Phaser.Scene{
         let cw=this.game.renderer.width;
 
         //dar load do mapa 
-        this.load.tilemapTiledJSON("map", "maps/level1.json");
+        this.load.tilemapTiledJSON("map1", "maps/level1.json");
         this.load.image("chao","Chicken Run Platformer Game Assets 17/BG & Platform/image-09.png");
         this.load.image("Sky","Chicken Run Platformer Game Assets 17/BG & Platform/image-02.png");
         this.load.image("Arvore1","assets/Backgrounds/image2.png");
@@ -67,6 +69,9 @@ class level1 extends Phaser.Scene{
         this.load.image("horse","assets/Backgrounds/horse-white.png");
         this.load.image("horseBrown","assets/Backgrounds/horse_brown.png");
 
+        //load imgaens
+        //load gun
+        this.load.image('gun', 'Chicken Run Platformer Game Assets 17/Spriter/Character/gun.png');
 
         //como as animacoes dos characters estao em png tenho de dar load de cada uma
         //load run direita
@@ -102,18 +107,18 @@ class level1 extends Phaser.Scene{
         this.load.image('idle10', 'Chicken Run Platformer Game Assets 17/Character Sprites/Idle_010.png');
         this.load.image('idle11', 'Chicken Run Platformer Game Assets 17/Character Sprites/Idle_011.png');
         //load idle esquerda
-        this.load.image('idle20', 'Chicken Run Platformer Game Assets 17/Character Sprites/Idle_000.png');
-        this.load.image('idle21', 'Chicken Run Platformer Game Assets 17/Character Sprites/Idle_001.png');
-        this.load.image('idle22', 'Chicken Run Platformer Game Assets 17/Character Sprites/Idle_002.png');
-        this.load.image('idle23', 'Chicken Run Platformer Game Assets 17/Character Sprites/Idle_003.png');
-        this.load.image('idle24', 'Chicken Run Platformer Game Assets 17/Character Sprites/Idle_004.png');
-        this.load.image('idle25', 'Chicken Run Platformer Game Assets 17/Character Sprites/Idle_005.png');
-        this.load.image('idle26', 'Chicken Run Platformer Game Assets 17/Character Sprites/Idle_006.png');
-        this.load.image('idle27', 'Chicken Run Platformer Game Assets 17/Character Sprites/Idle_007.png');
-        this.load.image('idle28', 'Chicken Run Platformer Game Assets 17/Character Sprites/Idle_008.png');
-        this.load.image('idle29', 'Chicken Run Platformer Game Assets 17/Character Sprites/Idle_009.png');
-        this.load.image('idle30', 'Chicken Run Platformer Game Assets 17/Character Sprites/Idle_010.png');
-        this.load.image('idle31', 'Chicken Run Platformer Game Assets 17/Character Sprites/Idle_011.png');
+        this.load.image('idle20', 'Chicken Run Platformer Game Assets 17/Character Sprites/Idle_020.png');
+        this.load.image('idle21', 'Chicken Run Platformer Game Assets 17/Character Sprites/Idle_021.png');
+        this.load.image('idle22', 'Chicken Run Platformer Game Assets 17/Character Sprites/Idle_022.png');
+        this.load.image('idle23', 'Chicken Run Platformer Game Assets 17/Character Sprites/Idle_023.png');
+        this.load.image('idle24', 'Chicken Run Platformer Game Assets 17/Character Sprites/Idle_024.png');
+        this.load.image('idle25', 'Chicken Run Platformer Game Assets 17/Character Sprites/Idle_025.png');
+        this.load.image('idle26', 'Chicken Run Platformer Game Assets 17/Character Sprites/Idle_026.png');
+        this.load.image('idle27', 'Chicken Run Platformer Game Assets 17/Character Sprites/Idle_027.png');
+        this.load.image('idle28', 'Chicken Run Platformer Game Assets 17/Character Sprites/Idle_028.png');
+        this.load.image('idle29', 'Chicken Run Platformer Game Assets 17/Character Sprites/Idle_029.png');
+        this.load.image('idle30', 'Chicken Run Platformer Game Assets 17/Character Sprites/Idle_030.png');
+        this.load.image('idle31', 'Chicken Run Platformer Game Assets 17/Character Sprites/Idle_031.png');
         //load jump direita
         this.load.image('jump0', 'Chicken Run Platformer Game Assets 17/Character Sprites/Jump_000.png');
         this.load.image('jump1', 'Chicken Run Platformer Game Assets 17/Character Sprites/Jump_001.png');
@@ -124,7 +129,7 @@ class level1 extends Phaser.Scene{
         //para o loading demorar mais
         //retirar no futuro
         for(let i=0; i<100; i++){
-            this.load.image("map"+i,"maps/level1.json");
+            this.load.image("map1"+i,"maps/level1.json");
         }
         //LOADING
         //loading box
@@ -169,10 +174,6 @@ class level1 extends Phaser.Scene{
         //variaveis
         let ch=this.game.renderer.height;
         let cw=this.game.renderer.width;
-    
-
-        //brilho
-        //bck_historia.setAlpha(brilho);
         
         //efeitos
         //clicar btn
@@ -182,7 +183,7 @@ class level1 extends Phaser.Scene{
         
 
         //creat mapa/tilesets
-        let map = this.make.tilemap({ key: "map" });      
+        let map = this.make.tilemap({ key: "map1" });      
         let tileset1 = map.addTilesetImage("Sky");
         let tileset2 = map.addTilesetImage("chao");
         let tileset3 = map.addTilesetImage("Arvore1");
@@ -195,23 +196,20 @@ class level1 extends Phaser.Scene{
         let layer1 = map.createStaticLayer('Background', tileset1,0,0);
         let layer2 = map.createStaticLayer('Arvores', [tileset3,tileset4,tileset5,tileset6,tileset7,tileset8,tileset9],0,0);
         let layer3 = map.createStaticLayer('Ground', tileset2,0,0);
-
-
-        //let layer4 = map.getObjectLayer('Objects');
-        
+        //load colisoes
         layer3.setCollisionByProperty({ collides: true });
-        //layer1.setCollisionFromCollisionGroup();
-        //layer.setCollisionByProperty({ collides: true });
-        // collision shapes. In the tmx file, there's an object layer with a point named "Spawn Point"
-        spawnPoint = map.findObject("Objects", obj => obj.name === "Start");        
-
+        
         //objeto layer
+        spawnPoint = map.findObject("Objects", obj => obj.name === "Start");        
         ponto1 = map.findObject("Objects", obj => obj.name === "Ponto1");
         ponto2 = map.findObject("Objects", obj => obj.name === "Ponto2");
         ponto3 = map.findObject("Objects", obj => obj.name === "Ponto3");
         ponto4 = map.findObject("Objects", obj => obj.name === "Ponto4");
         ponto5 = map.findObject("Objects", obj => obj.name === "Ponto5");
         
+
+        //gun
+        gun=this.add.image(ponto5.x,150,"gun").setScale(0.5).setVisible(false);
 
         //botoes
         //botao play
@@ -233,7 +231,7 @@ class level1 extends Phaser.Scene{
 
 
         //spawn player
-        player=this.physics.add.sprite(spawnPoint.x,spawnPoint.y-100,"player").setScale(0.25);
+        player=this.physics.add.sprite(spawnPoint.x,spawnPoint.y-100,"idle0").setScale(0.25);
         //bounding box of player
         player.setSize(300, 340).setOffset(100,135);
         
@@ -736,7 +734,9 @@ class level1 extends Phaser.Scene{
                             this.input.keyboard.once("keydown_F", event => {
                                 text12.destroy();
                                 text13.setVisible(true);
+                                gun.setVisible(true);
                                 this.input.keyboard.once("keydown_F", event => {
+                                    gun.destroy();
                                     text13.destroy();
                                     text14.setVisible(true);
                                     this.input.keyboard.once("keydown_F", event => {
@@ -744,6 +744,8 @@ class level1 extends Phaser.Scene{
                                         text15.setVisible(true);
                                         this.input.keyboard.once("keydown_F", event => {
                                             text15.destroy();
+                                            this.scene.stop("level1");
+                                            this.scene.start("menu_historia",brilho);
                                         });
                                     });
                                 });
