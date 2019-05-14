@@ -1,5 +1,6 @@
 "use strict";
 
+var player;
 var volumeBar;
 var volumeBox;
 
@@ -22,12 +23,18 @@ class level2 extends Phaser.Scene{
         //dar load do mapa 
         this.load.tilemapTiledJSON("map2", "maps/level2.json");
         this.load.image("sky","Chicken Run Platformer Game Assets 17/BG & Platform/image-02.png");
+        this.load.image("arvore1","assets/Backgrounds/image1.png");
+        this.load.image("arvore2","assets/Backgrounds/image2.png");
+        this.load.image("placa","assets/Backgrounds/teste1.png");
         this.load.image("plantaforma1","Chicken Run Platformer Game Assets 17/BG & Platform/image-06.png");
         this.load.image("plantaforma2","Chicken Run Platformer Game Assets 17/BG & Platform/image-07.png");
         this.load.image("plantaforma3","Chicken Run Platformer Game Assets 17/BG & Platform/image-08.png");
         this.load.image("plantaforma4","Chicken Run Platformer Game Assets 17/BG & Platform/image-09.png");
-        this.load.image("arvore1","assets/Backgrounds/image1.png");
-        this.load.image("arvore2","assets/Backgrounds/image2.png");
+        this.load.image("Obstaculos","Chicken Run Platformer Game Assets 17/Obstacles/obstacles-02.png");
+        this.load.image("Obstaculos1","Chicken Run Platformer Game Assets 17/Obstacles/obstacles-03.png");
+        this.load.image("Obstaculos2","Chicken Run Platformer Game Assets 17/Obstacles/obstacles-04.png");
+        this.load.image("Obstaculos3","Chicken Run Platformer Game Assets 17/Obstacles/obstacles-05.png");
+
 
         //como as animacoes dos characters estao em png tenho de dar load de cada uma
         //load run direita
@@ -87,7 +94,7 @@ class level2 extends Phaser.Scene{
         //para o loading demorar mais
         //retirar no futuro
         for(let i=0; i<100; i++){
-            this.load.image("map"+i,"maps/level1.json");
+            this.load.image("map"+i,"maps/level2.json");
         }
         //LOADING
         //loading box
@@ -143,29 +150,80 @@ class level2 extends Phaser.Scene{
         let tileset5 = map.addTilesetImage("plantaforma4");
         let tileset6 = map.addTilesetImage("arvore1");
         let tileset7 = map.addTilesetImage("arvore2");
+        let tileset8 = map.addTilesetImage("Obstaculos");
+        let tileset9 = map.addTilesetImage("Obstaculos1");
+        let tileset10 = map.addTilesetImage("Obstaculos2");
+        let tileset11 = map.addTilesetImage("Obstaculos3");
+        let tileset12 = map.addTilesetImage("placa");
 
-        
 
         let layer1 = map.createStaticLayer('Background', tileset1,0,0);
         let layer2 = map.createStaticLayer('Ground', [tileset2 ,tileset3 ,tileset4 ,tileset5],0,0);
-        let layer3 = map.createStaticLayer('Arvores', [tileset6 ,tileset7],0,0);
-        
-        //load colisoes
-        //layer2.setCollisionByProperty({ collides: true });
 
+        let layer3 = map.createStaticLayer('Arvores', [tileset6 ,tileset7,tileset12],0,0);
+        let layer4 = map.createStaticLayer('Armadilhas', [tileset8,tileset9,tileset10,tileset11],0,0);
+        layer2.setDepth(10);
+
+        //load colisoes
+        layer2.setCollisionByProperty({ collides: true });
+        layer4.setCollisionByProperty({ collides: true });
+
+        //objeto layer
+        spawnPoint = map.findObject("Objects", obj => obj.name === "Start"); 
 
         //spawn player
-        //player=this.physics.add.sprite(spawnPoint.x,spawnPoint.y-100,"idle0").setScale(0.25);
+        player=this.physics.add.sprite(spawnPoint.x,spawnPoint.y-100,"idle0").setScale(0.25);
         //bounding box of player
-        //player.setSize(300, 340).setOffset(100,135);
+        player.setSize(300, 340).setOffset(100,135);
+        player.setBounce(0);
 
+        //colisoes entre objetos
+        this.physics.add.collider(player, layer4);
+        this.physics.add.collider(player, layer2);
 
+        
+
+        // Phaser supports multiple cameras, but you can access the default camera like this:
+        camera = this.cameras.main;
+        camera.startFollow(player);
+        // Set up the arrows 
+        cursors = this.input.keyboard.createCursorKeys();
+
+        // Constrain the camera so that it isn't allowed to move outside the width/height of tilemap
+        camera.setBounds(0, 0, map.widthInPixels, map.heightInPixels);
 
     }
 
     update(){
        
-        
+
+        //variaveis
+    let speed = 300;
+    let prevVelocity = player.body.velocity.clone();
+
+    if ((cursors.space.isDown || cursors.up.isDown) && player.body.onFloor())
+        {
+
+            player.body.setVelocityY(-400); // jump up
+            //player.anims.play('rjump', true);
+        }
+
+    if (cursors.left.isDown)
+        {
+            player.body.setVelocityX(-speed); // move left
+            //player.anims.play('left', true); // play walk animation
+        }
+    else if (cursors.right.isDown)
+        {
+            player.body.setVelocityX(speed); // move right
+            //player.anims.play('right', true); // play walk animatio
+        } else {
+
+            player.body.setVelocityX(0);
+
+            //player.anims.play('lidle', true)
+            //player.anims.play('idle', true);
+        }
     }
 
 }

@@ -126,6 +126,7 @@ class level1 extends Phaser.Scene{
         this.load.image('jump3', 'Chicken Run Platformer Game Assets 17/Character Sprites/Jump_003.png');
         this.load.image('jump4', 'Chicken Run Platformer Game Assets 17/Character Sprites/Jump_004.png');
 
+
         //para o loading demorar mais
         //retirar no futuro
         for(let i=0; i<100; i++){
@@ -242,6 +243,7 @@ class level1 extends Phaser.Scene{
         //colisoes entre objetos
         this.physics.add.collider(player, layer3);
         player.setBounce(0);
+
         // Phaser supports multiple cameras, but you can access the default camera like this:
         camera = this.cameras.main;
         camera.startFollow(player);
@@ -645,34 +647,29 @@ class level1 extends Phaser.Scene{
     let prevVelocity = player.body.velocity.clone();
 
 
+        
+        if ((cursors.space.isDown || cursors.up.isDown) && player.body.onFloor())
+        {
 
-    if (cursors.left.isDown){
-        player.body.setVelocityX(-200); // move left
-    }
-    else
-        if (cursors.right.isDown){
-            player.body.setVelocityX(200); // move right
+            player.body.setVelocityY(-400); // jump up
+            player.anims.play('rjump', true);
         }
-    if ((cursors.space.isDown || cursors.up.isDown) && player.body.onFloor()) {
-            player.body.setVelocityY(-300); // jump up
-            player.anims.play('up', true);
-        }
-
-
 
     if (cursors.left.isDown) {
 
         player.body.setVelocityX(-200); // move left
         player.anims.play('left', true); // play walk animation
     }
-    else
-        if (cursors.right.isDown){
+    else if (cursors.right.isDown){
             player.body.setVelocityX(200); // move right
             player.anims.play('right', true); // play walk animatio
+
+        } else {
+
+            player.body.setVelocityX(0);
+            //player.anims.play('lidle', true)
+            player.anims.play('ridle', true);
         }
-    else {
-        player.body.setVelocityX(0);
-    }
 
     //console.log("player.x:"+player.x);
     //console.log("player.y:"+player.y);
@@ -792,6 +789,7 @@ class level1 extends Phaser.Scene{
             });
         });
     }
+    //controlo dos textos
     else {
         player.body.debugBodyColor = 0xff00ff;
         text1.setVisible(false);
