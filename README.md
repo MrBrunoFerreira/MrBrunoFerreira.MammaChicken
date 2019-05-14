@@ -1,8 +1,5 @@
 # Mamma-Chicken
+
 Projeto de Multimedia
 
-Primeira alteração local
-
-Teste PullRequest
-
-teste pullrequest Branch BrunoWork
+Para correr o jogo localmente é necessario ter um server local.
