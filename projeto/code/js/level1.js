@@ -92,6 +92,7 @@ class level1 extends Phaser.Scene{
         this.load.image('run15', 'Chicken Run Platformer Game Assets 17/Character Sprites/Run_015.png');
         this.load.image('run16', 'Chicken Run Platformer Game Assets 17/Character Sprites/Run_016.png');
         this.load.image('run17', 'Chicken Run Platformer Game Assets 17/Character Sprites/Run_017.png');
+
         //load idle direita
         this.load.image('idle0', 'Chicken Run Platformer Game Assets 17/Character Sprites/Idle_000.png');
         this.load.image('idle1', 'Chicken Run Platformer Game Assets 17/Character Sprites/Idle_001.png');
@@ -125,8 +126,6 @@ class level1 extends Phaser.Scene{
         this.load.image('jump3', 'Chicken Run Platformer Game Assets 17/Character Sprites/Jump_003.png');
         this.load.image('jump4', 'Chicken Run Platformer Game Assets 17/Character Sprites/Jump_004.png');
 
-
-        
 
         //para o loading demorar mais
         //retirar no futuro
@@ -271,6 +270,7 @@ class level1 extends Phaser.Scene{
             ],
             frameRate: 24     
         });
+
         this.anims.create({
             key: 'left',
             frames:[
@@ -287,7 +287,7 @@ class level1 extends Phaser.Scene{
         });
 
         this.anims.create({
-            key: 'ridle',
+            key: 'downr',
             frames:[
                 { key: 'idle0' },
                 { key: 'idle1' },
@@ -302,11 +302,11 @@ class level1 extends Phaser.Scene{
                 { key: 'idle10' },
                 { key: 'idle11' }   
             ],
-            frameRate: 11     
+            frameRate: 24
         });
 
         this.anims.create({
-            key: 'lidle',
+            key: 'downl',
             frames:[
                 { key: 'idle20' },
                 { key: 'idle21' },
@@ -321,11 +321,11 @@ class level1 extends Phaser.Scene{
                 { key: 'idle30' },
                 { key: 'idle31' }   
             ],
-            frameRate: 11     
+            frameRate: 24
         });
 
         this.anims.create({
-            key: 'rjump',
+            key: 'up',
             frames:[
                 { key: 'jump0' },
                 { key: 'jump1' },
@@ -333,7 +333,7 @@ class level1 extends Phaser.Scene{
                 { key: 'jump3' },
                 { key: 'jump4' }
             ],
-            frameRate: 4     
+            frameRate: 24
         });
 
 
@@ -646,29 +646,24 @@ class level1 extends Phaser.Scene{
     let speed = 300;
     let prevVelocity = player.body.velocity.clone();
 
-        /*if (cursors.left.isDown) // if the left arrow key is down
-        {
-            player.body.setVelocityX(-200); // move left
-        }
-        else if (cursors.right.isDown) // if the right arrow key is down
-        {
-            player.body.setVelocityX(200); // move right
-        }*/
+
+        
         if ((cursors.space.isDown || cursors.up.isDown) && player.body.onFloor())
         {
 
             player.body.setVelocityY(-400); // jump up
             player.anims.play('rjump', true);
         }
-        if (cursors.left.isDown)
-        {
-            player.body.setVelocityX(-200); // move left
-            player.anims.play('left', true); // play walk animation
-        }
-        else if (cursors.right.isDown)
-        {
+
+    if (cursors.left.isDown) {
+
+        player.body.setVelocityX(-200); // move left
+        player.anims.play('left', true); // play walk animation
+    }
+    else if (cursors.right.isDown){
             player.body.setVelocityX(200); // move right
             player.anims.play('right', true); // play walk animatio
+
         } else {
 
             player.body.setVelocityX(0);
