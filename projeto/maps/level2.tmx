@@ -920,6 +920,6 @@
  <objectgroup name="Objects">
   <object id="1" name="Start" x="128" y="326" width="64" height="84"/>
   <object id="3" name="Ponto1" x="4034.88" y="418.333" width="62" height="92"/>
-  <object id="6" name="Ponto0" x="2404" y="450" width="194" height="126"/>
+  <object id="6" name="Ponto0" x="1012.29" y="395.27" width="315.188" height="145.547"/>
  </objectgroup>
 </map>

@@ -797,7 +797,7 @@ class level1 extends Phaser.Scene{
         }
         //controlo dos textos
         else {
-            player.body.debugBodyColor = 0xff00ff;
+            player.body.debugBodyColor = 0xff00ff; 
             text1.setVisible(false);
             text2.setVisible(false);
             text3.setVisible(false);

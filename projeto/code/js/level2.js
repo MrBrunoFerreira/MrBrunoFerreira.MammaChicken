@@ -4,6 +4,13 @@ var player;
 var volumeBar;
 var volumeBox;
 
+//pontos
+var ponto0;
+var ponto1;
+
+//textos
+var text1;
+
 class level2 extends Phaser.Scene{
     constructor(){
         super({
@@ -156,7 +163,9 @@ class level2 extends Phaser.Scene{
         layer4.setCollisionByProperty({ collides: true });
 
         //objeto layer
-        spawnPoint = map.findObject("Objects", obj => obj.name === "Start"); 
+        spawnPoint = map.findObject("Objects", obj => obj.name === "Start");
+        ponto0 = map.findObject("Objects", obj => obj.name === "Ponto0");
+        ponto1 = map.findObject("Objects", obj => obj.name === "Ponto1");
 
         //spawn player
         player=this.physics.add.sprite(spawnPoint.x,spawnPoint.y-100,"idle0").setScale(0.25);
@@ -242,6 +251,21 @@ class level2 extends Phaser.Scene{
             frameRate: 5
         });
 
+        //create text
+        //text1
+        let content1 = [
+            "Desvie-se das armadilhas"
+        ];
+        text1 = this.add.text(ponto0.x, 100, content1, {
+            fontSize: '18px',
+            padding: { x: 10, y: 5 },
+            backgroundColor: '#000000',
+            fill: '#ffffff'
+        });
+        text1.setScrollFactor(1);
+        text1.setVisible(false);
+
+
     }
 
     update(){
@@ -268,6 +292,22 @@ class level2 extends Phaser.Scene{
             player.body.setVelocityX(0);
             player.anims.play('downr', true);
         }
+
+        //interactividade nos pontos
+        //Ponto0
+        if(player.x-32<=ponto0.x+ponto0.width && player.x+32>=ponto0.x){
+            player.body.debugBodyColor = 0xffff00; //cor para debug
+            text1.setVisible(true);
+
+        }
+        else{
+            player.body.debugBodyColor = 0xff00ff; //cor para debug
+            text1.setVisible(false);
+        }
+
+        //colisoes
+
+
 
     }
 

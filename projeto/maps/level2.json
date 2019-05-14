@@ -75,15 +75,15 @@
                  "y":418.333
                 }, 
                 {
-                 "height":126,
+                 "height":145.546520719312,
                  "id":6,
                  "name":"Ponto0",
                  "rotation":0,
                  "type":"",
                  "visible":true,
-                 "width":194,
-                 "x":2404,
-                 "y":450
+                 "width":315.188428459734,
+                 "x":1012.28772478499,
+                 "y":395.269741985927
                 }],
          "opacity":1,
          "type":"objectgroup",
