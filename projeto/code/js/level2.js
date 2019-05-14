@@ -38,23 +38,23 @@ class level2 extends Phaser.Scene{
 
         //como as animacoes dos characters estao em png tenho de dar load de cada uma
         //load run direita
-        this.load.image('run0', 'Chicken Run Platformer Game Assets 17/Character Sprites/Run_000.png');
-        this.load.image('run1', 'Chicken Run Platformer Game Assets 17/Character Sprites/Run_001.png');
-        this.load.image('run2', 'Chicken Run Platformer Game Assets 17/Character Sprites/Run_002.png');
-        this.load.image('run3', 'Chicken Run Platformer Game Assets 17/Character Sprites/Run_003.png');
-        this.load.image('run4', 'Chicken Run Platformer Game Assets 17/Character Sprites/Run_004.png');
-        this.load.image('run5', 'Chicken Run Platformer Game Assets 17/Character Sprites/Run_005.png');
-        this.load.image('run6', 'Chicken Run Platformer Game Assets 17/Character Sprites/Run_006.png');
-        this.load.image('run7', 'Chicken Run Platformer Game Assets 17/Character Sprites/Run_007.png');
+        this.load.image('run0', 'Chicken Run Platformer Game Assets 17/Character Sprites/Run with Gun_000.png');
+        this.load.image('run1', 'Chicken Run Platformer Game Assets 17/Character Sprites/Run with Gun_001.png');
+        this.load.image('run2', 'Chicken Run Platformer Game Assets 17/Character Sprites/Run with Gun_002.png');
+        this.load.image('run3', 'Chicken Run Platformer Game Assets 17/Character Sprites/Run with Gun_003.png');
+        this.load.image('run4', 'Chicken Run Platformer Game Assets 17/Character Sprites/Run with Gun_004.png');
+        this.load.image('run5', 'Chicken Run Platformer Game Assets 17/Character Sprites/Run with Gun_005.png');
+        this.load.image('run6', 'Chicken Run Platformer Game Assets 17/Character Sprites/Run with Gun_006.png');
+        this.load.image('run7', 'Chicken Run Platformer Game Assets 17/Character Sprites/Run with Gun_007.png');
         //load run esquerda
-        this.load.image('run10', 'Chicken Run Platformer Game Assets 17/Character Sprites/Run_010.png');
-        this.load.image('run11', 'Chicken Run Platformer Game Assets 17/Character Sprites/Run_011.png');
-        this.load.image('run12', 'Chicken Run Platformer Game Assets 17/Character Sprites/Run_012.png');
-        this.load.image('run13', 'Chicken Run Platformer Game Assets 17/Character Sprites/Run_013.png');
-        this.load.image('run14', 'Chicken Run Platformer Game Assets 17/Character Sprites/Run_014.png');
-        this.load.image('run15', 'Chicken Run Platformer Game Assets 17/Character Sprites/Run_015.png');
-        this.load.image('run16', 'Chicken Run Platformer Game Assets 17/Character Sprites/Run_016.png');
-        this.load.image('run17', 'Chicken Run Platformer Game Assets 17/Character Sprites/Run_017.png');
+        this.load.image('run10', 'Chicken Run Platformer Game Assets 17/Character Sprites/Run with Gun_010.png');
+        this.load.image('run11', 'Chicken Run Platformer Game Assets 17/Character Sprites/Run with Gun_011.png');
+        this.load.image('run12', 'Chicken Run Platformer Game Assets 17/Character Sprites/Run with Gun_012.png');
+        this.load.image('run13', 'Chicken Run Platformer Game Assets 17/Character Sprites/Run with Gun_013.png');
+        this.load.image('run14', 'Chicken Run Platformer Game Assets 17/Character Sprites/Run with Gun_014.png');
+        this.load.image('run15', 'Chicken Run Platformer Game Assets 17/Character Sprites/Run with Gun_015.png');
+        this.load.image('run16', 'Chicken Run Platformer Game Assets 17/Character Sprites/Run with Gun_016.png');
+        this.load.image('run17', 'Chicken Run Platformer Game Assets 17/Character Sprites/Run with Gun_017.png');
         //load idle direita
         this.load.image('idle0', 'Chicken Run Platformer Game Assets 17/Character Sprites/Idle_000.png');
         this.load.image('idle1', 'Chicken Run Platformer Game Assets 17/Character Sprites/Idle_001.png');
@@ -68,19 +68,6 @@ class level2 extends Phaser.Scene{
         this.load.image('idle9', 'Chicken Run Platformer Game Assets 17/Character Sprites/Idle_009.png');
         this.load.image('idle10', 'Chicken Run Platformer Game Assets 17/Character Sprites/Idle_010.png');
         this.load.image('idle11', 'Chicken Run Platformer Game Assets 17/Character Sprites/Idle_011.png');
-        //load idle esquerda
-        this.load.image('idle20', 'Chicken Run Platformer Game Assets 17/Character Sprites/Idle_000.png');
-        this.load.image('idle21', 'Chicken Run Platformer Game Assets 17/Character Sprites/Idle_001.png');
-        this.load.image('idle22', 'Chicken Run Platformer Game Assets 17/Character Sprites/Idle_002.png');
-        this.load.image('idle23', 'Chicken Run Platformer Game Assets 17/Character Sprites/Idle_003.png');
-        this.load.image('idle24', 'Chicken Run Platformer Game Assets 17/Character Sprites/Idle_004.png');
-        this.load.image('idle25', 'Chicken Run Platformer Game Assets 17/Character Sprites/Idle_005.png');
-        this.load.image('idle26', 'Chicken Run Platformer Game Assets 17/Character Sprites/Idle_006.png');
-        this.load.image('idle27', 'Chicken Run Platformer Game Assets 17/Character Sprites/Idle_007.png');
-        this.load.image('idle28', 'Chicken Run Platformer Game Assets 17/Character Sprites/Idle_008.png');
-        this.load.image('idle29', 'Chicken Run Platformer Game Assets 17/Character Sprites/Idle_009.png');
-        this.load.image('idle30', 'Chicken Run Platformer Game Assets 17/Character Sprites/Idle_010.png');
-        this.load.image('idle31', 'Chicken Run Platformer Game Assets 17/Character Sprites/Idle_011.png');
         //load jump direita
         this.load.image('jump0', 'Chicken Run Platformer Game Assets 17/Character Sprites/Jump_000.png');
         this.load.image('jump1', 'Chicken Run Platformer Game Assets 17/Character Sprites/Jump_001.png');
@@ -192,38 +179,96 @@ class level2 extends Phaser.Scene{
         // Constrain the camera so that it isn't allowed to move outside the width/height of tilemap
         camera.setBounds(0, 0, map.widthInPixels, map.heightInPixels);
 
+
+        //animações
+        this.anims.create({
+            key: 'right',
+            frames:[
+                { key: 'run0' },
+                { key: 'run1' },
+                { key: 'run2' },
+                { key: 'run3' },
+                { key: 'run4' },
+                { key: 'run5' },
+                { key: 'run6' },
+                { key: 'run7'}
+            ],
+            frameRate: 24     
+        });
+
+        this.anims.create({
+            key: 'left',
+            frames:[
+                { key: 'run10' },
+                { key: 'run11' },
+                { key: 'run12' },
+                { key: 'run13' },
+                { key: 'run14' },
+                { key: 'run15' },
+                { key: 'run16' },
+                { key: 'run17'}
+            ],
+            frameRate: 24     
+        });
+
+        this.anims.create({
+            key: 'downr',
+            frames:[
+                { key: 'idle0' },
+                { key: 'idle1' },
+                { key: 'idle2' },
+                { key: 'idle3' },
+                { key: 'idle4' },
+                { key: 'idle5' },
+                { key: 'idle6' },
+                { key: 'idle7' },
+                { key: 'idle8' },
+                { key: 'idle9' },
+                { key: 'idle10' },
+                { key: 'idle11' }   
+            ],
+            frameRate: 11
+        });
+
+        this.anims.create({
+            key: 'up',
+            frames:[
+                { key: 'jump0' },
+                { key: 'jump1' },
+                { key: 'jump2' },
+                { key: 'jump3' },
+                { key: 'jump4' }
+            ],
+            frameRate: 5
+        });
+
     }
 
     update(){
        
-
         //variaveis
-    let speed = 300;
-    let prevVelocity = player.body.velocity.clone();
+        let speed = 300;
+        let prevVelocity = player.body.velocity.clone();
 
-    if ((cursors.space.isDown || cursors.up.isDown) && player.body.onFloor())
-        {
-
-            player.body.setVelocityY(-400); // jump up
-            //player.anims.play('rjump', true);
+        if ((cursors.space.isDown || cursors.up.isDown) && player.body.onFloor()){
+                player.body.setVelocityY(-400); // jump up
+                //player.anims.play('rjump', true);
+        }
+        if(player.body.velocity.y!=0){
+            player.anims.play('up', true);
         }
 
-    if (cursors.left.isDown)
-        {
+        if (cursors.left.isDown){
             player.body.setVelocityX(-speed); // move left
-            //player.anims.play('left', true); // play walk animation
-        }
-    else if (cursors.right.isDown)
-        {
+            player.anims.play('left', true); // play walk animation
+        }else if (cursors.right.isDown){
             player.body.setVelocityX(speed); // move right
-            //player.anims.play('right', true); // play walk animatio
+            player.anims.play('right', true); // play walk animatio
         } else {
-
             player.body.setVelocityX(0);
-
-            //player.anims.play('lidle', true)
-            //player.anims.play('idle', true);
+            player.anims.play('downr', true);
         }
+
     }
 
 }

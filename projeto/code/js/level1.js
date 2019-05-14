@@ -302,7 +302,7 @@ class level1 extends Phaser.Scene{
                 { key: 'idle10' },
                 { key: 'idle11' }   
             ],
-            frameRate: 24
+            frameRate: 11
         });
 
         this.anims.create({
@@ -333,7 +333,7 @@ class level1 extends Phaser.Scene{
                 { key: 'jump3' },
                 { key: 'jump4' }
             ],
-            frameRate: 24
+            frameRate: 5
         });
 
 
@@ -353,6 +353,7 @@ class level1 extends Phaser.Scene{
             });
         });
     
+
         //criar textos
         //textInicial
         textInicial = this.add.text(ponto3.x, 30, 'Use as setas para correr e saltar', {
@@ -565,7 +566,7 @@ class level1 extends Phaser.Scene{
         let content16 = [
             "Pressione F para interagir",
             "com o Cavalo Joni"
-        ];
+        ];player.anims.play('up', true);
         text16 = this.add.text(ponto5.x-100, 30, content16, {
             fontSize: '18px',
             padding: { x: 10, y: 5 },
@@ -639,166 +640,171 @@ class level1 extends Phaser.Scene{
 
     update(time, delta) {
 
-    // Apply the controls to the CAMERA each update tick of the game
-    //controls.update(delta);
+        // Apply the controls to the CAMERA each update tick of the game
+        //controls.update(delta);
+        //console.log(player.body.velocity.y);
 
-    //variaveis
-    let speed = 300;
-    let prevVelocity = player.body.velocity.clone();
-
-
-        
-        if ((cursors.space.isDown || cursors.up.isDown) && player.body.onFloor())
-        {
-
+        //variaveis
+        let speed = 300;
+        let prevVelocity = player.body.velocity.clone();
+            
+        if ((/*cursors.space.isDown || */ cursors.up.isDown) && player.body.onFloor()){
             player.body.setVelocityY(-400); // jump up
+
+            //player.anims.play('up', true);
+        }
+
+        /*if(!player.body.onFloor()){
+            player.anims.play('up', true);
+        }*/
+
+        if(player.body.velocity.y!=0){
             player.anims.play('up', true);
         }
 
-    if (cursors.left.isDown) {
+        if (cursors.left.isDown) {
 
-        player.body.setVelocityX(-200); // move left
-        player.anims.play('left', true); // play walk animation
-    }
-    else if (cursors.right.isDown){
-            player.body.setVelocityX(200); // move right
-            player.anims.play('right', true); // play walk animatio
+            player.body.setVelocityX(-200); // move left
+            player.anims.play('left', true); // play walk animation
+        }
+        else if (cursors.right.isDown){
+                player.body.setVelocityX(200); // move right
+                player.anims.play('right', true); // play walk animatio
 
         } else {
-
             player.body.setVelocityX(0);
             //player.anims.play('lidle', true)
             player.anims.play('downr', true);
         }
 
-    //console.log("player.x:"+player.x);
-    //console.log("player.y:"+player.y);
-    if(player.x >= ponto1.x){
-        btn_play.x = player.x + 350;
-    }
+        //console.log("player.x:"+player.x);
+        //console.log("player.y:"+player.y);
+        if(player.x >= ponto1.x){
+            btn_play.x = player.x + 350;
+        }
 
 
-    //KeyCodes
-    //var keyObjF = this.input.keyboard.addKey('F'); 
+        //KeyCodes
+        //var keyObjF = this.input.keyboard.addKey('F'); 
 
-        /*
-    // Horizontal movement
-    if (cursors.left.isDown) {
-        player.body.setVelocityX(-speed);
-        player.anims.play('left', true);
-    } else if (cursors.right.isDown) {
-        player.body.setVelocityX(speed);
-        player.anims.play('right', true);
-    }
+            /*
+        // Horizontal movement
+        if (cursors.left.isDown) {
+            player.body.setVelocityX(-speed);
+            player.anims.play('left', true);
+        } else if (cursors.right.isDown) {
+            player.body.setVelocityX(speed);
+            player.anims.play('right', true);
+        }
 
-    //para saltar
-    if (cursors.up.isDown && player.body.onFloor())
-    {   
-        //console.log("salto");
-        player.setVelocityY(-3000000);
-    }
+        //para saltar
+        if (cursors.up.isDown && player.body.onFloor())
+        {   
+            //console.log("salto");
+            player.setVelocityY(-3000000);
+        }
 
-    //para debug ->passear no mapa
-    if (cursors.up.isDown) {
-        player.body.setVelocityY(-speed);
-    } else if (cursors.down.isDown) {
-        player.body.setVelocityY(speed);
-    }*/
+        //para debug ->passear no mapa
+        if (cursors.up.isDown) {
+            player.body.setVelocityY(-speed);
+        } else if (cursors.down.isDown) {
+            player.body.setVelocityY(speed);
+        }*/
 
 
-    // Normalize and scale the velocity so that player can't move faster along a diagonal
-    //player.body.velocity.normalize().scale(speed);
+        // Normalize and scale the velocity so that player can't move faster along a diagonal
+        //player.body.velocity.normalize().scale(speed);
 
-    //interactividade Cavalo
-    if(player.x-32<=ponto5.x+ponto5.width && player.x+32>=ponto5.x){
-        player.body.debugBodyColor = 0xffff00;
-        text16.setVisible(true);
-        this.input.keyboard.once("keydown_F", event => {
-            text16.destroy();
-            text8.setVisible(true);
+        //interactividade Cavalo
+        if(player.x-32<=ponto5.x+ponto5.width && player.x+32>=ponto5.x){
+            player.body.debugBodyColor = 0xffff00;
+            text16.setVisible(true);
             this.input.keyboard.once("keydown_F", event => {
-                text8.destroy();
-                text9.setVisible(true);
+                text16.destroy();
+                text8.setVisible(true);
                 this.input.keyboard.once("keydown_F", event => {
-                    text9.destroy();
-                    text10.setVisible(true);
+                    text8.destroy();
+                    text9.setVisible(true);
                     this.input.keyboard.once("keydown_F", event => {
-                        text10.destroy();
-                        text11.setVisible(true);
+                        text9.destroy();
+                        text10.setVisible(true);
                         this.input.keyboard.once("keydown_F", event => {
-                            text11.destroy();
-                            text12.setVisible(true);
+                            text10.destroy();
+                            text11.setVisible(true);
                             this.input.keyboard.once("keydown_F", event => {
-                                text12.destroy();
-                                text13.setVisible(true);
-                                gun.setVisible(true);
+                                text11.destroy();
+                                text12.setVisible(true);
                                 this.input.keyboard.once("keydown_F", event => {
-                                    gun.destroy();
-                                    text13.destroy();
-                                    text14.setVisible(true);
+                                    text12.destroy();
+                                    text13.setVisible(true);
+                                    gun.setVisible(true);
                                     this.input.keyboard.once("keydown_F", event => {
-                                        text14.destroy();
-                                        text15.setVisible(true);
+                                        gun.destroy();
+                                        text13.destroy();
+                                        text14.setVisible(true);
                                         this.input.keyboard.once("keydown_F", event => {
-                                            text15.destroy();
-                                            this.scene.stop("level1");
-                                            this.scene.start("menu_historia",brilho);
+                                            text14.destroy();
+                                            text15.setVisible(true);
+                                            this.input.keyboard.once("keydown_F", event => {
+                                                text15.destroy();
+                                                this.scene.stop("level1");
+                                                this.scene.start("menu_historia",brilho);
+                                            });
                                         });
                                     });
                                 });
                             });
                         });
                     });
-                });
 
-            });
-            
-        });
-    }else if(player.x-32<=ponto1.x+ponto1.width && player.x+32>=ponto1.x /*&& player.y>=ponto1.y && player.y<=ponto1.y+ponto1.height*/){
-        player.body.debugBodyColor = 0xffff00;    
-        //bubble_speak
-        //this.createSpeechBubble(20, 20, 320, 160, '“Twin ceramic rotor drives on each wheel! And these look like computer controlled anti-lock brakes! Wow, 200 horses at 12,000 rpm!”');  
-        text1.setVisible(true);       
-    }else if(player.x-32<=ponto2.x+ponto2.width && player.x+32>=ponto2.x /*&& player.y>=ponto2.y && player.y<=ponto2.y+ponto2.height*/){
-        player.body.debugBodyColor = 0xffff00;
-        text2.setVisible(true);  
-    }else if(player.x<=ponto3.x+ponto3.width && player.x>=ponto3.x && player.y>=ponto3.y && player.y<=ponto3.y+ponto3.height){
-        player.body.debugBodyColor = 0xffff00;
-        textInicial.setVisible(true);  
-    }else if(player.x-32<=ponto4.x+ponto4.width && player.x+32>=ponto4.x){
-        player.body.debugBodyColor = 0xffff00;
-        text4.setVisible(true);
-        this.input.keyboard.once("keydown_F", event => {
-            text4.destroy();
-            text3.setVisible(true);
-            this.input.keyboard.once("keydown_F", event => {
-                text3.destroy();
-                text5.setVisible(true);
-                this.input.keyboard.once("keydown_F", event => {
-                    text5.destroy();
-                    text6.setVisible(true);
-                    this.input.keyboard.once("keydown_F", event => {
-                        text6.destroy();
-                        text7.setVisible(true);
-                        this.input.keyboard.once("keydown_F", event => {
-                            text7.destroy();
-                        });
-                    });
                 });
                 
             });
-        });
-    }
-    //controlo dos textos
-    else {
-        player.body.debugBodyColor = 0xff00ff;
-        text1.setVisible(false);
-        text2.setVisible(false);
-        text3.setVisible(false);
-        text4.setVisible(false);
-        textInicial.setVisible(false);
-        text16.setVisible(false); 
-    }
+        }else if(player.x-32<=ponto1.x+ponto1.width && player.x+32>=ponto1.x /*&& player.y>=ponto1.y && player.y<=ponto1.y+ponto1.height*/){
+            player.body.debugBodyColor = 0xffff00;    
+            //bubble_speak
+            //this.createSpeechBubble(20, 20, 320, 160, '“Twin ceramic rotor drives on each wheel! And these look like computer controlled anti-lock brakes! Wow, 200 horses at 12,000 rpm!”');  
+            text1.setVisible(true);       
+        }else if(player.x-32<=ponto2.x+ponto2.width && player.x+32>=ponto2.x /*&& player.y>=ponto2.y && player.y<=ponto2.y+ponto2.height*/){
+            player.body.debugBodyColor = 0xffff00;
+            text2.setVisible(true);  
+        }else if(player.x<=ponto3.x+ponto3.width && player.x>=ponto3.x && player.y>=ponto3.y && player.y<=ponto3.y+ponto3.height){
+            player.body.debugBodyColor = 0xffff00;
+            textInicial.setVisible(true);  
+        }else if(player.x-32<=ponto4.x+ponto4.width && player.x+32>=ponto4.x){
+            player.body.debugBodyColor = 0xffff00;
+            text4.setVisible(true);
+            this.input.keyboard.once("keydown_F", event => {
+                text4.destroy();
+                text3.setVisible(true);
+                this.input.keyboard.once("keydown_F", event => {
+                    text3.destroy();
+                    text5.setVisible(true);
+                    this.input.keyboard.once("keydown_F", event => {
+                        text5.destroy();
+                        text6.setVisible(true);
+                        this.input.keyboard.once("keydown_F", event => {
+                            text6.destroy();
+                            text7.setVisible(true);
+                            this.input.keyboard.once("keydown_F", event => {
+                                text7.destroy();
+                            });
+                        });
+                    });
+                    
+                });
+            });
+        }
+        //controlo dos textos
+        else {
+            player.body.debugBodyColor = 0xff00ff;
+            text1.setVisible(false);
+            text2.setVisible(false);
+            text3.setVisible(false);
+            text4.setVisible(false);
+            textInicial.setVisible(false);
+            text16.setVisible(false); 
+        }
 
     }
 
