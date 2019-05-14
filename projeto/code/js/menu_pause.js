@@ -63,6 +63,7 @@ class menu_pause extends Phaser.Scene{
         btn_vMinus.on("pointerdown",function(event){
             //btnSound.play();
             //console.log("Volume:"+this.sound.volume);
+            volumeBar.clear();
             if(this.sound.volume>0){
                 this.sound.volume = this.sound.volume - 0.1;
             }

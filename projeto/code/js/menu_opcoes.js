@@ -128,7 +128,8 @@ class menu_opcoes extends Phaser.Scene{
         });
         btn_vMinus.on("pointerdown",function(event){
             btnSound.play();
-            //console.log("Volume:"+this.sound.volume);
+            console.log("Volume:"+this.sound.volume);
+            volumeBar.clear();
             if(this.sound.volume>0){
                 this.sound.volume = this.sound.volume - 0.1;
             }
@@ -142,7 +143,7 @@ class menu_opcoes extends Phaser.Scene{
         });
         btn_vPlus.on("pointerdown",function(event){
             btnSound.play();
-            //console.log("Volume:"+this.sound.volume);
+            console.log("Volume:"+this.sound.volume);
             if(this.sound.volume<1){
                 this.sound.volume = this.sound.volume + 0.1;
             }  
@@ -157,6 +158,7 @@ class menu_opcoes extends Phaser.Scene{
         btn_bMinus.on("pointerdown",function(event){
             btnSound.play();
             console.log("brilho:"+obj.brilho);
+            brilhoBar.clear();
             if(obj.brilho>0){
                 obj.brilho=obj.brilho - 0.1;
             }
@@ -205,7 +207,10 @@ class menu_opcoes extends Phaser.Scene{
         //volumeBar update
         //volumeBar.fillStyle(0xe6e6e6,0.5);
         volumeBar.fillStyle(0xe6e6e6,1);
+
         volumeBar.fillRect(ch/2+187,cw/2 -98 ,this.sound.volume*81,32);
+
+
 
         //brilhoBar update
         //volumeBar.fillStyle(0xe6e6e6,0.5);
