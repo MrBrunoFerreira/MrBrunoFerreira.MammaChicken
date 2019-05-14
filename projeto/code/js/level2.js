@@ -111,7 +111,6 @@ class level2 extends Phaser.Scene{
             loadingbar.clear();
             loadingbar.fillStyle(0xe6e6e6,0.5);
             loadingbar.fillRect(ch/2-50,cw/2.5,300*percent,50);
-            
         });
 
         //Loading TEXT
@@ -162,6 +161,7 @@ class level2 extends Phaser.Scene{
 
         let layer3 = map.createStaticLayer('Arvores', [tileset6 ,tileset7,tileset12],0,0);
         let layer4 = map.createStaticLayer('Armadilhas', [tileset8,tileset9,tileset10,tileset11],0,0);
+        //set depth
         layer2.setDepth(10);
 
         //load colisoes
