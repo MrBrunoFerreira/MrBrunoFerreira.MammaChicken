@@ -1,7 +1,6 @@
 "use strict";
 
 var player;
-
 var volumeBar;
 var volumeBox;
 
@@ -35,6 +34,7 @@ class level2 extends Phaser.Scene{
         this.load.image("Obstaculos1","Chicken Run Platformer Game Assets 17/Obstacles/obstacles-03.png");
         this.load.image("Obstaculos2","Chicken Run Platformer Game Assets 17/Obstacles/obstacles-04.png");
         this.load.image("Obstaculos3","Chicken Run Platformer Game Assets 17/Obstacles/obstacles-05.png");
+
 
         //como as animacoes dos characters estao em png tenho de dar load de cada uma
         //load run direita
@@ -157,15 +157,11 @@ class level2 extends Phaser.Scene{
         let tileset12 = map.addTilesetImage("placa");
 
 
-        
-
-        
-
         let layer1 = map.createStaticLayer('Background', tileset1,0,0);
         let layer2 = map.createStaticLayer('Ground', [tileset2 ,tileset3 ,tileset4 ,tileset5],0,0);
+
         let layer3 = map.createStaticLayer('Arvores', [tileset6 ,tileset7,tileset12],0,0);
         let layer4 = map.createStaticLayer('Armadilhas', [tileset8,tileset9,tileset10,tileset11],0,0);
-
         layer2.setDepth(10);
 
         //load colisoes
@@ -200,6 +196,7 @@ class level2 extends Phaser.Scene{
 
     update(){
        
+
         //variaveis
     let speed = 300;
     let prevVelocity = player.body.velocity.clone();
@@ -227,7 +224,6 @@ class level2 extends Phaser.Scene{
             //player.anims.play('lidle', true)
             //player.anims.play('idle', true);
         }
-
     }
 
 }
