@@ -652,7 +652,7 @@ class level1 extends Phaser.Scene{
         {
 
             player.body.setVelocityY(-400); // jump up
-            player.anims.play('rjump', true);
+            player.anims.play('up', true);
         }
 
     if (cursors.left.isDown) {
@@ -668,7 +668,7 @@ class level1 extends Phaser.Scene{
 
             player.body.setVelocityX(0);
             //player.anims.play('lidle', true)
-            player.anims.play('ridle', true);
+            player.anims.play('downr', true);
         }
 
     //console.log("player.x:"+player.x);
