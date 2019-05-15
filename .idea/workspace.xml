@@ -1,11 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="c336fc79-a40a-499c-b97a-560f61114140" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/projeto/code/js/level1.js" beforeDir="false" afterPath="$PROJECT_DIR$/projeto/code/js/level1.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/projeto/code/js/level2.js" beforeDir="false" afterPath="$PROJECT_DIR$/projeto/code/js/level2.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/projeto/code/js/level3.js" beforeDir="false" afterPath="$PROJECT_DIR$/projeto/code/js/level3.js" afterDir="false" />
-    </list>
+    <list default="true" id="c336fc79-a40a-499c-b97a-560f61114140" name="Default Changelist" comment="" />
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
     <ignored path="$PROJECT_DIR$/tmp/" />
@@ -20,20 +16,20 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/projeto/code/js/level1.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="279">
+            <state relative-caret-position="9">
               <caret line="729" column="26" selection-start-line="729" selection-start-column="26" selection-end-line="729" selection-end-column="26" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/projeto/code/js/level3.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3628">
-              <caret line="243" column="14" lean-forward="true" selection-start-line="243" selection-start-column="14" selection-end-line="243" selection-end-column="14" />
+            <state relative-caret-position="3645">
+              <caret line="243" column="14" selection-start-line="243" selection-start-column="14" selection-end-line="243" selection-end-column="14" />
             </state>
           </provider>
         </entry>
@@ -41,8 +37,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/projeto/code/js/menu_historia.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="608">
-              <caret line="126" column="11" lean-forward="true" selection-start-line="126" selection-start-column="11" selection-end-line="126" selection-end-column="11" />
+            <state relative-caret-position="1890">
+              <caret line="126" column="11" selection-start-line="126" selection-start-column="11" selection-end-line="126" selection-end-column="11" />
             </state>
           </provider>
         </entry>
@@ -50,7 +46,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/projeto/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="435">
+            <state relative-caret-position="450">
               <caret line="30" column="56" selection-start-line="30" selection-start-column="56" selection-end-line="30" selection-end-column="56" />
             </state>
           </provider>
@@ -77,7 +73,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/projeto/code/js/menu_opcoes.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="577">
+            <state relative-caret-position="3285">
               <caret line="219" selection-start-line="219" selection-end-line="219" />
             </state>
           </provider>
@@ -218,17 +214,19 @@
       <workItem from="1557868715598" duration="12590000" />
       <workItem from="1557931145026" duration="512000" />
       <workItem from="1557933926009" duration="811000" />
+      <workItem from="1557934873314" duration="152000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="35432000" />
+    <option name="totallyTimeSpent" value="35584000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="67" y="25" width="1299" height="743" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.57166123" visible="true" weight="0.25" />
-      <window_info id="Structure" order="1" sideWeight="0.42833877" side_tool="true" visible="true" weight="0.25" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.5700326" visible="true" weight="0.25" />
+      <window_info id="Structure" order="1" sideWeight="0.42996743" side_tool="true" visible="true" weight="0.25" />
       <window_info id="Favorites" order="2" sideWeight="0.42508143" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32899022" />
@@ -299,9 +297,21 @@
     <entry file="file://$PROJECT_DIR$/projeto/Chicken Run Platformer Game Assets 17/Enemy/Attack_000.png">
       <provider selected="true" editor-type-id="images" />
     </entry>
+    <entry file="file://$PROJECT_DIR$/projeto/code/js/menu_jogar.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-967" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/projeto/code/js/menu_historia.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1890">
+          <caret line="126" column="11" selection-start-line="126" selection-start-column="11" selection-end-line="126" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/projeto/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="435">
+        <state relative-caret-position="450">
           <caret line="30" column="56" selection-start-line="30" selection-start-column="56" selection-end-line="30" selection-end-column="56" />
         </state>
       </provider>
@@ -320,36 +330,24 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/projeto/code/js/menu_jogar.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-967" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/projeto/code/js/menu_opcoes.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="577">
+        <state relative-caret-position="3285">
           <caret line="219" selection-start-line="219" selection-end-line="219" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/projeto/code/js/menu_historia.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="608">
-          <caret line="126" column="11" lean-forward="true" selection-start-line="126" selection-start-column="11" selection-end-line="126" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/projeto/code/js/level1.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="279">
-          <caret line="729" column="26" selection-start-line="729" selection-start-column="26" selection-end-line="729" selection-end-column="26" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/projeto/code/js/level3.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3628">
-          <caret line="243" column="14" lean-forward="true" selection-start-line="243" selection-start-column="14" selection-end-line="243" selection-end-column="14" />
+        <state relative-caret-position="3645">
+          <caret line="243" column="14" selection-start-line="243" selection-start-column="14" selection-end-line="243" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/projeto/code/js/level1.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="9">
+          <caret line="729" column="26" selection-start-line="729" selection-start-column="26" selection-end-line="729" selection-end-column="26" />
         </state>
       </provider>
     </entry>
