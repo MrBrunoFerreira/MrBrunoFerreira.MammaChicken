@@ -1,6 +1,9 @@
 "use strict";
 
-var brilho;
+var obj={
+        brilho:1,
+        nextpage:3
+};
 
 var player;
 var volumeBar;
@@ -23,7 +26,8 @@ class level3 extends Phaser.Scene{
     }
 
     init(data){
-        brilho=data;
+        obj.brilho=data;
+        obj.nextpage=3;
     }
     preload(){
 
@@ -141,7 +145,7 @@ class level3 extends Phaser.Scene{
         let cw=this.game.renderer.width;
 
         //menu_pause sobre o level
-        this.scene.launch("menu_pause",3);
+        this.scene.launch("menu_pause",obj);
 
         //creat mapa/tilesets
         let map = this.make.tilemap({ key: "map3" });      
@@ -263,7 +267,7 @@ class level3 extends Phaser.Scene{
         scene2=1;
         
         //brilho
-        camera.setAlpha(brilho);
+        camera.setAlpha(obj.brilho);
 
 
         scene2=1;
