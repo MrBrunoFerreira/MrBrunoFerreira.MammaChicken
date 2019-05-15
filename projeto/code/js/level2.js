@@ -2,7 +2,8 @@
 
 var obj={
         brilho:1,
-        nextpage:2
+        nextpage:2,
+        hit:false
 };
 
 var player;
@@ -147,6 +148,8 @@ class level2 extends Phaser.Scene{
 
         //menu_pause sobre o level
         this.scene.launch("menu_pause",obj);
+        //status do player sobre o level
+        this.scene.launch("status",obj);
 
         //creat mapa/tilesets
         let map = this.make.tilemap({ key: "map2" });      
@@ -168,13 +171,15 @@ class level2 extends Phaser.Scene{
         let layer2 = map.createStaticLayer('Ground', [tileset2 ,tileset3 ,tileset4 ,tileset5],0,0);
 
         let layer3 = map.createStaticLayer('Arvores', [tileset6 ,tileset7,tileset12],0,0);
-        let layer4 = map.createStaticLayer('Armadilhas', [tileset8,tileset9,tileset10,tileset11],0,0);
+        let layer4 = map.createStaticLayer('Armadilhas', [tileset8,tileset10,tileset11],0,0);
+        let layer5 = map.createStaticLayer('Box', [tileset9],0,0);
         //set depth
         layer2.setDepth(10);
 
         //load colisoes
         layer2.setCollisionByProperty({ collides: true });
         layer4.setCollisionByProperty({ collides: true });
+        layer5.setCollisionByProperty({ collides: true });
 
         //objeto layer
         spawnPoint = map.findObject("Objects", obj => obj.name === "Start");
@@ -189,10 +194,13 @@ class level2 extends Phaser.Scene{
         player.setBounce(0);
 
         //colisoes entre objetos
-        this.physics.add.collider(player, layer4);
+        this.physics.add.collider(player, layer4,function ()
+            {
+                console.log("Hit");
+        },null, this);
         this.physics.add.collider(player, layer2);
+        this.physics.add.collider(player, layer5);
 
-        
 
         // Phaser supports multiple cameras, but you can access the default camera like this:
         camera = this.cameras.main;

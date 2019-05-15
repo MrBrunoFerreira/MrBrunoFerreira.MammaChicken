@@ -42,6 +42,8 @@ var gun;
 
 var scene0;
 
+let layer3;
+
 
 class level1 extends Phaser.Scene{
     constructor(){
@@ -217,6 +219,9 @@ class level1 extends Phaser.Scene{
         
         //menu_pause sobre o level
         this.scene.launch("menu_pause",obj);
+        //status do player sobre o level
+        this.scene.launch("status",obj);
+
         //efeitos
         //clicar btn
         let btnSound=this.sound.add("btn_music");
@@ -235,7 +240,7 @@ class level1 extends Phaser.Scene{
         let tileset9 = map.addTilesetImage("horseBrown");
         let layer1 = map.createStaticLayer('Background', tileset1,0,0);
         let layer2 = map.createStaticLayer('Arvores', [tileset3,tileset4,tileset6,tileset7,tileset8,tileset9],0,0);
-        let layer3 = map.createStaticLayer('Ground', tileset2,0,0);
+        layer3 = map.createStaticLayer('Ground', tileset2,0,0);
         //load colisoes
         layer3.setCollisionByProperty({ collides: true });
         
@@ -259,6 +264,13 @@ class level1 extends Phaser.Scene{
         
         //colisoes entre objetos
         this.physics.add.collider(player, layer3);
+
+        /*this.physics.add.collider(player, layer3,function ()
+            {
+            console.log("hit");
+        },null, this);*/
+        
+        //bounce do objeto
         player.setBounce(0);
 
         //default camera
@@ -723,6 +735,9 @@ class level1 extends Phaser.Scene{
 
 
     update(time, delta) {
+
+
+
         //impedir que o update ocorra primeiro que o load e create
         if(scene0==0){
             
@@ -740,7 +755,7 @@ class level1 extends Phaser.Scene{
         /*if(!player.body.onFloor()){
             player.anims.play('up', true);
         }*/
-        if ((/*cursors.space.isDown || */ cursors.up.isDown) && player.body.onFloor()){
+        if ((/*cursors.space.isDown || */ cursors.up.isDown) /*&& player.body.onFloor() */){
             player.body.setVelocityY(-400); 
         }
 
