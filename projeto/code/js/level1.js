@@ -558,13 +558,7 @@ class level1 extends Phaser.Scene{
         
 
         //brilho
-        //pequena função de loop
-        /*let  myVar=setInterval(litte, 10);
-        function litte(){
-            layer1.setAlpha(brilho);     
-            layer2.setAlpha(brilho);
-            layer3.setAlpha(brilho); 
-        }*/
+        camera.setAlpha(brilho);
         scene0=1;
 
     }
