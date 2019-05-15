@@ -2,10 +2,7 @@
 
 var prevpage;
 
-var obj={
-    brilho:1,
-    page:1
-};
+var brilho;
 
 var volumeBar;
 var volumeBox;
@@ -18,9 +15,8 @@ class menu_pause extends Phaser.Scene{
     }
 
     init(data){
-        prevpage=data;
-        //obj.brilho=data[1];
-        //obj.page=data[2];
+        brilho=data.brilho;
+        prevpage=data.nextpage;
     }
 
     preload(){
@@ -95,8 +91,8 @@ class menu_pause extends Phaser.Scene{
         });
         btn_pause.on("pointerdown",function(event){
             //btnSound.play();
-            //console.log("obj.brilho:"+obj.brilho);
-            //console.log("obj.page:"+obj.page);
+            console.log("obj.brilho:"+obj.brilho);
+            console.log("obj.page:"+obj.page);
 
             btn_pause.setVisible(false);
             bck_pause.setVisible(false);
@@ -344,6 +340,9 @@ class menu_pause extends Phaser.Scene{
         volumeBox.fillRect(cw/2 + 35,ch/2 - 50, 85, 35);
         //volume bar
         volumeBar=this.add.graphics().setVisible(false);
+
+        //brilho
+        this.cameras.main.setAlpha(brilho);
 
     }
 

@@ -1,7 +1,5 @@
 "use strict";
 
-var brilho;
-
 var obj={
         brilho:1,
         nextpage:1
@@ -54,7 +52,8 @@ class level1 extends Phaser.Scene{
 
     init(data) {
         //console.log(data);
-        brilho=data;
+        obj.brilho=data;
+        obj.nextpage=1;
     }
 
     preload() {
@@ -217,7 +216,7 @@ class level1 extends Phaser.Scene{
         let cw=this.game.renderer.width;
         
         //menu_pause sobre o level
-        this.scene.launch("menu_pause",1);
+        this.scene.launch("menu_pause",obj);
         //efeitos
         //clicar btn
         let btnSound=this.sound.add("btn_music");
@@ -668,7 +667,7 @@ class level1 extends Phaser.Scene{
 
 
         //brilho
-        camera.setAlpha(brilho);
+        camera.setAlpha(obj.brilho);
         scene0=1;
 
     }
