@@ -2,12 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c336fc79-a40a-499c-b97a-560f61114140" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/projeto/code/js/Bala.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/projeto/code/js/Enemy.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/projeto/code/js/enemy.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/projeto/code/js/level1.js" beforeDir="false" afterPath="$PROJECT_DIR$/projeto/code/js/level1.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/projeto/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/projeto/index.html" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -26,8 +21,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/projeto/code/js/level1.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-2238">
-              <caret line="614" column="83" lean-forward="true" selection-start-line="614" selection-start-column="8" selection-end-line="614" selection-end-column="83" />
+            <state relative-caret-position="759">
+              <caret line="788" selection-start-line="788" selection-end-line="788" />
             </state>
           </provider>
         </entry>
@@ -62,8 +57,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/projeto/code/js/menu_opcoes.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret line="214" selection-start-line="214" selection-end-line="214" />
+            <state relative-caret-position="3285">
+              <caret line="219" selection-start-line="219" selection-end-line="219" />
             </state>
           </provider>
         </entry>
@@ -205,19 +200,19 @@
       <workItem from="1557793299945" duration="220000" />
       <workItem from="1557844765985" duration="2330000" />
       <workItem from="1557858749571" duration="1755000" />
-      <workItem from="1557868715598" duration="11162000" />
+      <workItem from="1557868715598" duration="12590000" />
+      <workItem from="1557931145026" duration="512000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="32681000" />
+    <option name="totallyTimeSpent" value="34621000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="67" y="25" width="1299" height="743" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.57491857" visible="true" weight="0.25" />
-      <window_info active="true" id="Structure" order="1" sideWeight="0.42508143" side_tool="true" visible="true" weight="0.25" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.57328993" visible="true" weight="0.25" />
+      <window_info active="true" id="Structure" order="1" sideWeight="0.4267101" side_tool="true" visible="true" weight="0.25" />
       <window_info id="Favorites" order="2" sideWeight="0.42508143" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32899022" />
@@ -293,15 +288,15 @@
     <entry file="file://$PROJECT_DIR$/projeto/code/js/level2.js">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/projeto/code/js/menu_opcoes.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret line="214" selection-start-line="214" selection-end-line="214" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/projeto/Chicken Run Platformer Game Assets 17/Enemy/Attack_000.png">
       <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/projeto/code/js/level1.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="759">
+          <caret line="788" selection-start-line="788" selection-end-line="788" />
+        </state>
+      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/projeto/index.html">
       <provider selected="true" editor-type-id="text-editor">
@@ -324,10 +319,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/projeto/code/js/level1.js">
+    <entry file="file://$PROJECT_DIR$/projeto/code/js/menu_opcoes.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2238">
-          <caret line="614" column="83" lean-forward="true" selection-start-line="614" selection-start-column="8" selection-end-line="614" selection-end-column="83" />
+        <state relative-caret-position="3285">
+          <caret line="219" selection-start-line="219" selection-end-line="219" />
         </state>
       </provider>
     </entry>
