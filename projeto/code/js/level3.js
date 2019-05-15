@@ -11,29 +11,28 @@ var ponto1;
 //textos
 var text1;
 
-var scene1;
+var scene2;
 
-class level2 extends Phaser.Scene{
+class level3 extends Phaser.Scene{
     constructor(){
         super({
-            key: "level2"
+            key: "level3"
         });
     }
 
     init(data){
 
     }
-
     preload(){
 
-        scene1=0;
+        scene2=0;
 
         //variaveis
         let ch=this.game.renderer.height;
         let cw=this.game.renderer.width;
 
         //dar load do mapa 
-        this.load.tilemapTiledJSON("map2", "maps/level2.json");
+        this.load.tilemapTiledJSON("map3", "maps/level3.json");
         this.load.image("sky","Chicken Run Platformer Game Assets 17/BG & Platform/image-02.png");
         this.load.image("arvore1","assets/Backgrounds/image1.png");
         this.load.image("arvore2","assets/Backgrounds/image2.png");
@@ -42,10 +41,10 @@ class level2 extends Phaser.Scene{
         this.load.image("plantaforma2","Chicken Run Platformer Game Assets 17/BG & Platform/image-07.png");
         this.load.image("plantaforma3","Chicken Run Platformer Game Assets 17/BG & Platform/image-08.png");
         this.load.image("plantaforma4","Chicken Run Platformer Game Assets 17/BG & Platform/image-09.png");
-        this.load.image("Obstaculos","Chicken Run Platformer Game Assets 17/Obstacles/obstacles-02.png");
+        /*this.load.image("Obstaculos","Chicken Run Platformer Game Assets 17/Obstacles/obstacles-02.png");
         this.load.image("Obstaculos1","Chicken Run Platformer Game Assets 17/Obstacles/obstacles-03.png");
         this.load.image("Obstaculos2","Chicken Run Platformer Game Assets 17/Obstacles/obstacles-04.png");
-        this.load.image("Obstaculos3","Chicken Run Platformer Game Assets 17/Obstacles/obstacles-05.png");
+        this.load.image("Obstaculos3","Chicken Run Platformer Game Assets 17/Obstacles/obstacles-05.png");*/
 
 
         //como as animacoes dos characters estao em png tenho de dar load de cada uma
@@ -93,7 +92,7 @@ class level2 extends Phaser.Scene{
         //para o loading demorar mais
         //retirar no futuro
         for(let i=0; i<100; i++){
-            this.load.image("map"+i,"maps/level2.json");
+            this.load.image("map"+i,"maps/level3.json");
         }
         //LOADING
         //loading box
@@ -140,10 +139,10 @@ class level2 extends Phaser.Scene{
         let cw=this.game.renderer.width;
 
         //menu_pause sobre o level
-        this.scene.launch("menu_pause",2);
+        this.scene.launch("menu_pause",3);
 
         //creat mapa/tilesets
-        let map = this.make.tilemap({ key: "map2" });      
+        let map = this.make.tilemap({ key: "map3" });      
         let tileset1 = map.addTilesetImage("sky");
         let tileset2 = map.addTilesetImage("plantaforma1");
         let tileset3 = map.addTilesetImage("plantaforma2");
@@ -151,24 +150,20 @@ class level2 extends Phaser.Scene{
         let tileset5 = map.addTilesetImage("plantaforma4");
         let tileset6 = map.addTilesetImage("arvore1");
         let tileset7 = map.addTilesetImage("arvore2");
-        let tileset8 = map.addTilesetImage("Obstaculos");
-        let tileset9 = map.addTilesetImage("Obstaculos1");
-        let tileset10 = map.addTilesetImage("Obstaculos2");
-        let tileset11 = map.addTilesetImage("Obstaculos3");
-        let tileset12 = map.addTilesetImage("placa");
+        let tileset8 = map.addTilesetImage("placa");
 
 
         let layer1 = map.createStaticLayer('Background', tileset1,0,0);
         let layer2 = map.createStaticLayer('Ground', [tileset2 ,tileset3 ,tileset4 ,tileset5],0,0);
 
-        let layer3 = map.createStaticLayer('Arvores', [tileset6 ,tileset7,tileset12],0,0);
-        let layer4 = map.createStaticLayer('Armadilhas', [tileset8,tileset9,tileset10,tileset11],0,0);
+        let layer3 = map.createStaticLayer('Arvores', [tileset6 ,tileset7,tileset8],0,0);
+        //let layer4 = map.createStaticLayer('Armadilhas', [tileset8,tileset9,tileset10,tileset11],0,0);
         //set depth
         layer2.setDepth(10);
 
         //load colisoes
         layer2.setCollisionByProperty({ collides: true });
-        layer4.setCollisionByProperty({ collides: true });
+        //layer4.setCollisionByProperty({ collides: true });
 
         //objeto layer
         spawnPoint = map.findObject("Objects", obj => obj.name === "Start");
@@ -183,7 +178,7 @@ class level2 extends Phaser.Scene{
         player.setBounce(0);
 
         //colisoes entre objetos
-        this.physics.add.collider(player, layer4);
+        //this.physics.add.collider(player, layer4);
         this.physics.add.collider(player, layer2);
 
         
@@ -262,31 +257,20 @@ class level2 extends Phaser.Scene{
 
         //create text
         //text1
-        let content1 = [
-            "Desvie-se das armadilhas"
-        ];
-        text1 = this.add.text(ponto0.x, 100, content1, {
-            fontSize: '18px',
-            padding: { x: 10, y: 5 },
-            backgroundColor: '#000000',
-            fill: '#ffffff'
-        });
-        text1.setScrollFactor(1);
-        text1.setVisible(false);
-
-        scene1=1;
-
+        
+        //brilho
         //camera.setAlpha(0.2);
+
+        scene2=1;
     }
 
     update(){
        
         //impedir que o update ocorra primeiro que o load e create
-        if(scene1==0){
+        if(scene2==0){
             
             return;
         }
-
                
         //variaveis
         let speed = 300;
@@ -312,20 +296,9 @@ class level2 extends Phaser.Scene{
         }
 
         //interactividade nos pontos
-        //Ponto0
-        if(player.x-32<=ponto0.x+ponto0.width && player.x+32>=ponto0.x){
-            player.body.debugBodyColor = 0xffff00; //cor para debug
-            text1.setVisible(true);
-
-        }
-        else{
-            player.body.debugBodyColor = 0xff00ff; //cor para debug
-            text1.setVisible(false);
-        }
+        
 
         //colisoes
-
-
 
     }
 
