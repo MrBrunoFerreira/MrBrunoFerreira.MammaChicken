@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="c336fc79-a40a-499c-b97a-560f61114140" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/projeto/code/js/Enemy.js" beforeDir="false" afterPath="$PROJECT_DIR$/projeto/code/js/Enemy.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/projeto/code/js/level2.js" beforeDir="false" afterPath="$PROJECT_DIR$/projeto/code/js/level2.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -22,8 +21,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/projeto/code/js/level1.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="222">
-              <caret line="226" column="92" selection-start-line="226" selection-start-column="92" selection-end-line="226" selection-end-column="92" />
+            <state relative-caret-position="372">
+              <caret line="227" column="32" selection-start-line="227" selection-start-column="32" selection-end-line="227" selection-end-column="32" />
             </state>
           </provider>
         </entry>
@@ -49,8 +48,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/projeto/code/js/level3.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="607">
-              <caret line="408" selection-start-line="408" selection-end-line="408" />
+            <state relative-caret-position="207">
+              <caret line="36" column="18" selection-start-line="36" selection-start-column="16" selection-end-line="36" selection-end-column="18" />
             </state>
           </provider>
         </entry>
@@ -58,8 +57,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/projeto/code/js/Enemy.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="180">
-              <caret line="72" column="110" selection-start-line="72" selection-start-column="110" selection-end-line="72" selection-end-column="110" />
+            <state relative-caret-position="150">
+              <caret line="10" column="4" selection-start-line="10" selection-start-column="4" selection-end-line="10" selection-end-column="4" />
             </state>
           </provider>
         </entry>
@@ -126,9 +125,11 @@
       <find>up</find>
       <find>eIdle1</find>
       <find>.setCollideWorldBounds(true);</find>
-      <find>player</find>
       <find>chasing</find>
+      <find>player</find>
       <find>collider</find>
+      <find>hit</find>
+      <find>boiy</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -143,9 +144,9 @@
         <option value="$PROJECT_DIR$/projeto/index.html" />
         <option value="$PROJECT_DIR$/projeto/code/js/menu_historia.js" />
         <option value="$PROJECT_DIR$/projeto/code/js/main.js" />
-        <option value="$PROJECT_DIR$/projeto/code/js/level1.js" />
         <option value="$PROJECT_DIR$/projeto/code/js/level3.js" />
         <option value="$PROJECT_DIR$/projeto/code/js/level2.js" />
+        <option value="$PROJECT_DIR$/projeto/code/js/level1.js" />
         <option value="$PROJECT_DIR$/projeto/code/js/Enemy.js" />
       </list>
     </option>
@@ -246,12 +247,12 @@
       <workItem from="1557931145026" duration="512000" />
       <workItem from="1557933926009" duration="811000" />
       <workItem from="1557934873314" duration="152000" />
-      <workItem from="1557939493131" duration="12133000" />
+      <workItem from="1557939493131" duration="17982000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="47717000" />
+    <option name="totallyTimeSpent" value="53566000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="67" y="25" width="1299" height="743" extended-state="6" />
@@ -343,13 +344,6 @@
     <entry file="file://$PROJECT_DIR$/projeto/code/js/Preload.js">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/projeto/code/js/level1.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="222">
-          <caret line="226" column="92" selection-start-line="226" selection-start-column="92" selection-end-line="226" selection-end-column="92" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/projeto/code/js/Bala.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="105">
@@ -364,10 +358,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/projeto/code/js/level3.js">
+    <entry file="file://$PROJECT_DIR$/projeto/code/js/level1.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="607">
-          <caret line="408" selection-start-line="408" selection-end-line="408" />
+        <state relative-caret-position="372">
+          <caret line="227" column="32" selection-start-line="227" selection-start-column="32" selection-end-line="227" selection-end-column="32" />
         </state>
       </provider>
     </entry>
@@ -378,10 +372,17 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/projeto/code/js/level3.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="207">
+          <caret line="36" column="18" selection-start-line="36" selection-start-column="16" selection-end-line="36" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/projeto/code/js/Enemy.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="72" column="110" selection-start-line="72" selection-start-column="110" selection-end-line="72" selection-end-column="110" />
+        <state relative-caret-position="150">
+          <caret line="10" column="4" selection-start-line="10" selection-start-column="4" selection-end-line="10" selection-end-column="4" />
         </state>
       </provider>
     </entry>

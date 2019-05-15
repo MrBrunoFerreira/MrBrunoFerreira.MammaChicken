@@ -8,6 +8,8 @@ class Enemy extends Phaser.Physics.Arcade.Sprite {
         this.texture = sprite;
 
     }
+    
+
     spawn(){
         //Setup important stuff after we have been created
         //this.texture = texture;
@@ -15,13 +17,17 @@ class Enemy extends Phaser.Physics.Arcade.Sprite {
         this.anims.play(this.texture);
         this.body.setVelocity(0);
         this.body.setSize(300, 340).setOffset(100,145);
-        this.body.setBounce(0);
-        this.setGravityY(3500);
+        this.body.bounce.y = 0;
+        this.body.bounce.x = 2;
+        //this.setGravityY(3500);
+        //this.setCollideWorldBounds(true);
+        this.enableBody = true;
         // this.body.setCircle(7, 1, 1.5);
         //Random dir
         /*if(Math.round(Math.random())){
             this.changeDir()
         }*/
+
     }
 
     changeDir(){
@@ -53,47 +59,61 @@ class Enemy extends Phaser.Physics.Arcade.Sprite {
         }
     }
 
-    update(_, dt){
-        if(this.paused) return;
+    update(_, dt) {
+        if (this.paused) return;
 
-        this.body.setVelocity(0);
+        //this.body.setVelocityY(1);
 
 
         //------------------------ Enemy AI ------------------------------------
         this.chasing = false;
 
-        if(this.chasing === false){
-            console.log(Math.round(this.y) === Math.round(player.y));
-            console.log(Math.round(this.y));
-            console.log(Math.round(player.y));
-        }
+
 
         //verifica se a posicao jogador e do inimigo no mesmo plano
 
-        if (((Math.round(this.y)-Math.round(player.y)) < 50 || (Math.round(this.y)-Math.round(player.y)) > 50)) {
+        if (Math.abs((Math.round(this.y) - Math.round(player.y)) < 60)) {
 
             //se o inimigo e o jogador estiveram na mesma camada este vai seguilo
             if (Math.round(player.x) > Math.round(this.x)) {
                 // we increase the speed from the default 80 to 200
-                this.body.velocity.x = 100;
+                this.body.velocity.x = 120;
+                this.dir = 1;
             } else {
                 this.body.velocity.x = -100;
+                this.dir = -1;
             }
-            this.chasing = true;
-        }
+        } else {
 
-        if(!this.chasing){
-            // when the slime isn't actively chasing the player,
-            // reduce speeds back to normal
-            if(this.body.velocity.x > 0){
-                this.body.velocity.x = 50;
+            if (this.chasing === false) {
+                console.log(this.body.velocity.x);
             }
 
-            else
+            if (this.dir === 1) {
+                if (this.body.velocity.x === 0 && this.dir === 1) {
+                    this.dir = -1;
+                    this.body.velocity.x = -80;
+                }
+                else{
+                    this.body.velocity.x = 80;
+                }
+            } else if (this.dir === -1) {
+                if (this.body.velocity.x === 0 && this.dir === -1) {
+                    this.dir = 1;
+                    this.body.velocity.x = 80;
+                }
+                else {
+                    this.body.velocity.x = -80;
+                }
+            }
+
+
+
+            /*else
 
                 if(this.body.velocity.x < 0){
                     this.body.velocity.x = -50;
-                }
+                }*/
         }
 
         /*
