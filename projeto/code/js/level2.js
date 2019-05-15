@@ -11,6 +11,9 @@ var ponto1;
 //textos
 var text1;
 
+
+var scene;
+
 class level2 extends Phaser.Scene{
     constructor(){
         super({
@@ -23,6 +26,9 @@ class level2 extends Phaser.Scene{
     }
 
     preload(){
+
+        scene=0;
+
         //variaveis
         let ch=this.game.renderer.height;
         let cw=this.game.renderer.width;
@@ -265,11 +271,18 @@ class level2 extends Phaser.Scene{
         text1.setScrollFactor(1);
         text1.setVisible(false);
 
-
+        scene=1;
     }
 
     update(){
        
+        //impedir que o update ocorra primeiro que o load e create
+        if(scene==0){
+            
+            return;
+        }
+
+               
         //variaveis
         let speed = 300;
         let prevVelocity = player.body.velocity.clone();

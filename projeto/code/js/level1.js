@@ -39,6 +39,8 @@ let btn_play;
 
 var gun;
 
+var scene;
+
 
 class level1 extends Phaser.Scene{
     constructor(){
@@ -53,6 +55,9 @@ class level1 extends Phaser.Scene{
     }
 
     preload() {
+
+        scene=0;
+
         //variaveis
         let ch=this.game.renderer.height;
         let cw=this.game.renderer.width;
@@ -63,7 +68,6 @@ class level1 extends Phaser.Scene{
         this.load.image("Sky","Chicken Run Platformer Game Assets 17/BG & Platform/image-02.png");
         this.load.image("Arvore1","assets/Backgrounds/image2.png");
         this.load.image("Arvore2","assets/Backgrounds/image1.png");
-        this.load.image("Obstaculos","assets/Backgrounds/image5.png");
         this.load.image("placa","assets/Backgrounds/teste1.png");
         this.load.image("owl","assets/Backgrounds/owl6.png");
         this.load.image("horse","assets/Backgrounds/horse-white.png");
@@ -189,13 +193,12 @@ class level1 extends Phaser.Scene{
         let tileset2 = map.addTilesetImage("chao");
         let tileset3 = map.addTilesetImage("Arvore1");
         let tileset4 = map.addTilesetImage("Arvore2");
-        let tileset5 = map.addTilesetImage("Obstaculos");
         let tileset6 = map.addTilesetImage("placa");
         let tileset7 = map.addTilesetImage("owl");
         let tileset8 = map.addTilesetImage("horse");
         let tileset9 = map.addTilesetImage("horseBrown");
         let layer1 = map.createStaticLayer('Background', tileset1,0,0);
-        let layer2 = map.createStaticLayer('Arvores', [tileset3,tileset4,tileset5,tileset6,tileset7,tileset8,tileset9],0,0);
+        let layer2 = map.createStaticLayer('Arvores', [tileset3,tileset4,tileset6,tileset7,tileset8,tileset9],0,0);
         let layer3 = map.createStaticLayer('Ground', tileset2,0,0);
         //load colisoes
         layer3.setCollisionByProperty({ collides: true });
@@ -223,8 +226,7 @@ class level1 extends Phaser.Scene{
             player.body.setVelocity(0);  
             btnSound.play();
             this.scene.pause();
-            this.scene.launch("menu_pause");
-
+            this.scene.launch("menu_pause",1);
         },this);
         btn_play.on("pointerout",function(event){
             this.setScale(0.2);
@@ -236,23 +238,19 @@ class level1 extends Phaser.Scene{
         //bounding box of player
         player.setSize(300, 340).setOffset(100,135);
         
-        //para colisao e bounce
-        //player.setBounce(0.2);
-        //player.setCollideWorldBounds(true);
-
+        
         //colisoes entre objetos
         this.physics.add.collider(player, layer3);
         player.setBounce(0);
 
-        // Phaser supports multiple cameras, but you can access the default camera like this:
+        //default camera
         camera = this.cameras.main;
         camera.startFollow(player);
-
 
         // Set up the arrows 
         cursors = this.input.keyboard.createCursorKeys();
 
-        // Constrain the camera so that it isn't allowed to move outside the width/height of tilemap
+        // Constrain the camera
         camera.setBounds(0, 0, map.widthInPixels, map.heightInPixels);
 
         //animações
@@ -566,7 +564,7 @@ class level1 extends Phaser.Scene{
         let content16 = [
             "Pressione F para interagir",
             "com o Cavalo Joni"
-        ];player.anims.play('up', true);
+        ];
         text16 = this.add.text(ponto5.x-100, 30, content16, {
             fontSize: '18px',
             padding: { x: 10, y: 5 },
@@ -586,6 +584,7 @@ class level1 extends Phaser.Scene{
             layer2.setAlpha(brilho);
             layer3.setAlpha(brilho); 
         }*/
+        scene=1;
 
     }
     
@@ -635,10 +634,16 @@ class level1 extends Phaser.Scene{
         var b = content.getBounds();
 
         content.setPosition(bubble.x + (bubbleWidth / 2) - (b.width / 2), bubble.y + (bubbleHeight / 2) - (b.height / 2));
+
     }
 
 
     update(time, delta) {
+        //impedir que o update ocorra primeiro que o load e create
+        if(scene==0){
+            
+            return;
+        }
 
         // Apply the controls to the CAMERA each update tick of the game
         //controls.update(delta);
@@ -647,16 +652,13 @@ class level1 extends Phaser.Scene{
         //variaveis
         let speed = 300;
         let prevVelocity = player.body.velocity.clone();
-            
-        if ((/*cursors.space.isDown || */ cursors.up.isDown) && player.body.onFloor()){
-            player.body.setVelocityY(-400); // jump up
-
-            //player.anims.play('up', true);
-        }
-
+        
         /*if(!player.body.onFloor()){
             player.anims.play('up', true);
         }*/
+        if ((/*cursors.space.isDown || */ cursors.up.isDown) && player.body.onFloor()){
+            player.body.setVelocityY(-400); 
+        }
 
         if(player.body.velocity.y!=0){
             player.anims.play('up', true);
@@ -664,21 +666,18 @@ class level1 extends Phaser.Scene{
 
         if (cursors.left.isDown) {
 
-            player.body.setVelocityX(-200); // move left
-            player.anims.play('left', true); // play walk animation
+            player.body.setVelocityX(-200);
+            player.anims.play('left', true); 
         }
         else if (cursors.right.isDown){
-                player.body.setVelocityX(200); // move right
-                player.anims.play('right', true); // play walk animatio
+                player.body.setVelocityX(200); 
+                player.anims.play('right', true); 
 
         } else {
             player.body.setVelocityX(0);
-            //player.anims.play('lidle', true)
             player.anims.play('downr', true);
         }
 
-        //console.log("player.x:"+player.x);
-        //console.log("player.y:"+player.y);
         if(player.x >= ponto1.x){
             btn_play.x = player.x + 350;
         }
@@ -747,7 +746,7 @@ class level1 extends Phaser.Scene{
                                             text15.setVisible(true);
                                             this.input.keyboard.once("keydown_F", event => {
                                                 text15.destroy();
-                                                this.scene.stop("level1");
+                                                this.scene.stop();
                                                 this.scene.start("menu_historia",brilho);
                                             });
                                         });

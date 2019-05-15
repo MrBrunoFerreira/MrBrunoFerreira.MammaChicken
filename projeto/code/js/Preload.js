@@ -43,6 +43,8 @@ class Preload extends Phaser.Scene{
         this.load.image("bck_opcoes","assets/Menus/bck_opcoes.png");
         //load background menu pausa
         this.load.image("bck_pause","assets/Menus/menu_pausa.png");
+        //load background alert pausa
+        this.load.image("bck_alert","Chicken Run Platformer Game Assets 17/Game Ui/Image (105).png");
 
         //LOAD BOTOES
         //load btn jogar
@@ -72,6 +74,13 @@ class Preload extends Phaser.Scene{
         //load btn_pause
         this.load.image("btn_pause","Chicken Run Platformer Game Assets 17/Game Ui/Image (18).png");
         //load btn_minivoltar
+        this.load.image("btn_menuVoltar","Chicken Run Platformer Game Assets 17/Game Ui/Image (70).png");
+        //load btn_reiniciar
+        this.load.image("btn_reiniciar","Chicken Run Platformer Game Assets 17/Game Ui/Image (28).png");
+        //load btn_certo
+        this.load.image("btn_certo","Chicken Run Platformer Game Assets 17/Game Ui/Image (47).png");
+        //load btn_errado
+        this.load.image("btn_errado","Chicken Run Platformer Game Assets 17/Game Ui/Image (57).png");
 
         //load music
         this.load.audio("loading_music","assets/Music/loading_music.mp3");
