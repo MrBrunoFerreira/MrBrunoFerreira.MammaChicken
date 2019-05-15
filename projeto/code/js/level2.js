@@ -1,5 +1,7 @@
 "use strict";
 
+var brilho;
+
 var player;
 var volumeBar;
 var volumeBox;
@@ -21,6 +23,7 @@ class level2 extends Phaser.Scene{
     }
 
     init(data){
+        brilho=data;
 
     }
 
@@ -274,9 +277,11 @@ class level2 extends Phaser.Scene{
         text1.setScrollFactor(1);
         text1.setVisible(false);
 
-        scene1=1;
+        
+        //brilho
+        camera.setAlpha(brilho);
 
-        //camera.setAlpha(0.2);
+        scene1=1;
     }
 
     update(){
