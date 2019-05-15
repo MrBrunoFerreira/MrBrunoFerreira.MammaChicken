@@ -11,6 +11,8 @@ var ponto1;
 //textos
 var text1;
 
+//botoes globais
+let btn_play1;
 
 var scene;
 
@@ -173,6 +175,25 @@ class level2 extends Phaser.Scene{
         ponto0 = map.findObject("Objects", obj => obj.name === "Ponto0");
         ponto1 = map.findObject("Objects", obj => obj.name === "Ponto1");
 
+
+        //botoes para o menu
+        //botao play
+        btn_play1=this.add.image(cw - 40, 90,"btn_play").setScale(0.2).setInteractive({cursor:"pointer"}).setVisible(true);
+        //btn_play
+        btn_play1.on("pointerover",function(event){
+            this.setScale(0.22);
+        });
+        btn_play1.on("pointerdown",function(event){
+            player.body.setVelocity(0);  
+            //btnSound.play();
+            this.scene.pause();
+            this.scene.launch("menu_pause",2);
+        },this);
+        btn_play1.on("pointerout",function(event){
+            this.setScale(0.2);
+        });
+
+
         //spawn player
         player=this.physics.add.sprite(spawnPoint.x,spawnPoint.y-100,"idle0").setScale(0.25);
         //bounding box of player
@@ -272,6 +293,8 @@ class level2 extends Phaser.Scene{
         text1.setVisible(false);
 
         scene=1;
+
+        //camera.setAlpha(0.2);
     }
 
     update(){
@@ -304,6 +327,12 @@ class level2 extends Phaser.Scene{
         } else {
             player.body.setVelocityX(0);
             player.anims.play('downr', true);
+        }
+
+        //update btn menu pause
+        if(player.x>392){
+            btn_play1.x = player.x + 350;
+            btn_play1.y = player.y - 250;
         }
 
         //interactividade nos pontos

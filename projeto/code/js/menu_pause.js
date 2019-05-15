@@ -73,8 +73,9 @@ class menu_pause extends Phaser.Scene{
             if(prevpage==1){
                 this.scene.resume("level1");
             }
-            
-
+            if(prevpage==2){
+                this.scene.resume("level2");
+            }
         },this);
         btn_pause.on("pointerout",function(event){
             this.setScale(0.33);
@@ -117,13 +118,13 @@ class menu_pause extends Phaser.Scene{
             //btnSound.play();
             //console.log("Volume:"+this.sound.volume);
             bck_alert.setVisible(true);
-            btn_erro.setVisible(true);
-            btn_certoR.setVisible(true);
             text0.setVisible(true);
+            btn_certoR.setVisible(true);
+            btn_erro.setVisible(true);
             bck_alert.setDepth(10);
-            btn_erro.setDepth(10);
-            btn_certoR.setDepth(10);
             text0.setDepth(10);
+            btn_certoR.setDepth(10);
+            btn_erro.setDepth(10);  
             
         },this);
         btn_reiniciar.on("pointerout",function(event){
@@ -142,11 +143,7 @@ class menu_pause extends Phaser.Scene{
             bck_alert.setDepth(10);
             btn_erro.setDepth(10);
             btn_certoH.setDepth(10);
-            text1.setDepth(10);
-
-
-            
-            
+            text1.setDepth(10);      
         },this);
         btn_menuVoltar.on("pointerout",function(event){
             this.setScale(0.4);
@@ -192,6 +189,24 @@ class menu_pause extends Phaser.Scene{
                 text0.setVisible(false);
                 this.scene.resume("level1");
             }
+            if(prevpage==2){
+                let theOtherScene = this.scene.get('level2');
+                theOtherScene.scene.restart();
+                btn_pause.setVisible(false);
+                bck_pause.setVisible(false);
+                btn_vMinus.setVisible(false);
+                btn_vPlus.setVisible(false);
+                volumeBox.setVisible(false);
+                volumeBar.setVisible(false);
+                btn_reiniciar.setVisible(false);
+                btn_menuVoltar.setVisible(false);
+                bck_alert.setVisible(false);
+                btn_erro.setVisible(false);
+                btn_certoR.setVisible(false);
+                text1.setVisible(false);
+                text0.setVisible(false);
+                this.scene.resume("level2");
+            }
             
         },this);
         btn_certoR.on("pointerout",function(event){
@@ -210,13 +225,17 @@ class menu_pause extends Phaser.Scene{
                 theOtherScene.scene.stop();
                 this.scene.start("menu_historia");
             }
+            if(prevpage==2){
+                this.scene.resume("level2");
+                let theOtherScene = this.scene.get('level2');
+                theOtherScene.scene.stop();
+                this.scene.start("menu_historia");
+            }
             
         },this);
         btn_certoH.on("pointerout",function(event){
             this.setScale(0.3);
         });
-        
-
         //text0 ->Voltar Menu Historia
         let content0 = [
             "      !!ALERTA!!",
@@ -245,7 +264,6 @@ class menu_pause extends Phaser.Scene{
         });
         text1.setScrollFactor(1);
         text1.setVisible(false);
-
 
         //gui
         //volume box

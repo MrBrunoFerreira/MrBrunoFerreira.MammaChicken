@@ -215,7 +215,7 @@ class level1 extends Phaser.Scene{
         //gun
         gun=this.add.image(ponto5.x,150,"gun").setScale(0.5).setVisible(false);
 
-        //botoes
+        //botoes para o menu
         //botao play
         btn_play=this.add.image(cw - 40, 40,"btn_play").setScale(0.2).setInteractive({cursor:"pointer"}).setVisible(true);
         //btn_play
@@ -678,10 +678,10 @@ class level1 extends Phaser.Scene{
             player.anims.play('downr', true);
         }
 
+        //update btn menu pause
         if(player.x >= ponto1.x){
             btn_play.x = player.x + 350;
         }
-
 
         //KeyCodes
         //var keyObjF = this.input.keyboard.addKey('F'); 
