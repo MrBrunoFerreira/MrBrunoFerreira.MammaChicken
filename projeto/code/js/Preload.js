@@ -169,7 +169,7 @@ class Preload extends Phaser.Scene{
         this.input.manager.enable=true;
 
         this.input.once("pointerdown",function(event){
-            this.scene.start("menu_inicial","Preload");
+            this.scene.start("menu_inicial",1);
             music_loading.stop();
             let music_menu=this.sound.add("menu_music");
             music_menu.play({

@@ -24,7 +24,6 @@ class level2 extends Phaser.Scene{
 
     init(data){
         brilho=data;
-
     }
 
     preload(){
