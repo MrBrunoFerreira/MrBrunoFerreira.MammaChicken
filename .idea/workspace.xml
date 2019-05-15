@@ -1,7 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="c336fc79-a40a-499c-b97a-560f61114140" name="Default Changelist" comment="" />
+    <list default="true" id="c336fc79-a40a-499c-b97a-560f61114140" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/projeto/code/js/Bala.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projeto/code/js/Enemy.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projeto/code/js/enemy.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/projeto/code/js/level1.js" beforeDir="false" afterPath="$PROJECT_DIR$/projeto/code/js/level1.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projeto/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/projeto/index.html" afterDir="false" />
+    </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
     <ignored path="$PROJECT_DIR$/tmp/" />
@@ -11,29 +18,52 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="FavoritesManager">
+    <favorites_list name="Mamma-Chicken" />
+  </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/projeto/code/js/level1.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-757">
-              <caret line="641" column="47" selection-start-line="641" selection-start-column="45" selection-end-line="641" selection-end-column="47" />
+            <state relative-caret-position="-2238">
+              <caret line="614" column="83" lean-forward="true" selection-start-line="614" selection-start-column="8" selection-end-line="614" selection-end-column="83" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/projeto/code/js/level2.js">
+        <entry file="file://$PROJECT_DIR$/projeto/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-6" />
+            <state relative-caret-position="435">
+              <caret line="29" column="56" selection-start-line="29" selection-start-column="56" selection-end-line="29" selection-end-column="56" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/projeto/code/js/Bala.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="105">
+              <caret line="7" column="25" selection-start-line="7" selection-start-column="25" selection-end-line="7" selection-end-column="25" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/projeto/code/js/Enemy.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="120">
+              <caret line="8" column="30" selection-start-line="8" selection-start-column="30" selection-end-line="8" selection-end-column="30" />
+            </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/projeto/code/js/menu_opcoes.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="294">
-              <caret line="205" column="26" selection-start-line="205" selection-start-column="26" selection-end-line="205" selection-end-column="26" />
+            <state>
+              <caret line="214" selection-start-line="214" selection-end-line="214" />
             </state>
           </provider>
         </entry>
@@ -54,10 +84,11 @@
       <find>btn_bMinus</find>
       <find>btn_bPlus</find>
       <find>camera</find>
-      <find>player</find>
       <find>slide</find>
       <find>ridle</find>
       <find>up</find>
+      <find>player</find>
+      <find>eIdle1</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -66,9 +97,12 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/projeto/code/js/level1.js" />
-        <option value="$PROJECT_DIR$/projeto/code/js/enemy.js" />
         <option value="$PROJECT_DIR$/projeto/code/js/menu_opcoes.js" />
+        <option value="$PROJECT_DIR$/projeto/code/js/enemy.js" />
+        <option value="$PROJECT_DIR$/projeto/code/js/Bala.js" />
+        <option value="$PROJECT_DIR$/projeto/index.html" />
+        <option value="$PROJECT_DIR$/projeto/code/js/Enemy.js" />
+        <option value="$PROJECT_DIR$/projeto/code/js/level1.js" />
       </list>
     </option>
   </component>
@@ -83,7 +117,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -107,7 +140,7 @@
               <item name="Mamma-Chicken" type="462c0819:PsiDirectoryNode" />
               <item name="projeto" type="462c0819:PsiDirectoryNode" />
               <item name="Chicken Run Platformer Game Assets 17" type="462c0819:PsiDirectoryNode" />
-              <item name="Character Sprites" type="462c0819:PsiDirectoryNode" />
+              <item name="Enemy" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="Mamma-Chicken" type="b2602c69:ProjectViewProjectNode" />
@@ -126,6 +159,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -171,18 +205,20 @@
       <workItem from="1557793299945" duration="220000" />
       <workItem from="1557844765985" duration="2330000" />
       <workItem from="1557858749571" duration="1755000" />
+      <workItem from="1557868715598" duration="11162000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="21519000" />
+    <option name="totallyTimeSpent" value="32681000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="67" y="25" width="1299" height="743" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.5765472" visible="true" weight="0.25" />
-      <window_info id="Structure" order="1" sideWeight="0.42345276" side_tool="true" visible="true" weight="0.25" />
-      <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.57491857" visible="true" weight="0.25" />
+      <window_info active="true" id="Structure" order="1" sideWeight="0.42508143" side_tool="true" visible="true" weight="0.25" />
+      <window_info id="Favorites" order="2" sideWeight="0.42508143" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32899022" />
       <window_info anchor="bottom" id="Run" order="2" />
@@ -217,13 +253,6 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/projeto/Chicken Run Platformer Game Assets 17/Character Sprites/Run with Gun_000.png">
       <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/projeto/code/js/enemy.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1057">
-          <caret line="72" column="44" selection-start-line="72" selection-start-column="44" selection-end-line="72" selection-end-column="44" />
-        </state>
-      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/projeto/Chicken Run Platformer Game Assets 17/Character Sprites/Idle_000.png">
       <provider selected="true" editor-type-id="images" />
@@ -261,22 +290,44 @@
     <entry file="file://$PROJECT_DIR$/projeto/code/js/menu_jogar.js">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
+    <entry file="file://$PROJECT_DIR$/projeto/code/js/level2.js">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
     <entry file="file://$PROJECT_DIR$/projeto/code/js/menu_opcoes.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="294">
-          <caret line="205" column="26" selection-start-line="205" selection-start-column="26" selection-end-line="205" selection-end-column="26" />
+        <state>
+          <caret line="214" selection-start-line="214" selection-end-line="214" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/projeto/code/js/level2.js">
+    <entry file="file://$PROJECT_DIR$/projeto/Chicken Run Platformer Game Assets 17/Enemy/Attack_000.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/projeto/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-6" />
+        <state relative-caret-position="435">
+          <caret line="29" column="56" selection-start-line="29" selection-start-column="56" selection-end-line="29" selection-end-column="56" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/projeto/code/js/Bala.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="7" column="25" selection-start-line="7" selection-start-column="25" selection-end-line="7" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/projeto/code/js/Enemy.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="8" column="30" selection-start-line="8" selection-start-column="30" selection-end-line="8" selection-end-column="30" />
+        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/projeto/code/js/level1.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-757">
-          <caret line="641" column="47" selection-start-line="641" selection-start-column="45" selection-end-line="641" selection-end-column="47" />
+        <state relative-caret-position="-2238">
+          <caret line="614" column="83" lean-forward="true" selection-start-line="614" selection-start-column="8" selection-end-line="614" selection-end-column="83" />
         </state>
       </provider>
     </entry>

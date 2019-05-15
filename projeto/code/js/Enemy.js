@@ -1,14 +1,40 @@
 class Enemy extends Phaser.Physics.Arcade.Sprite {
     constructor(scene, x, y, sprite){
         super(scene,x, y, sprite, 0);
+        this.dir = 1;
+        this.speed = 100;
+        this.jumpDelay = 2000 + Math.floor(Math.random() * 5000); //random jump delays
         this.lifespan = 0;
         this.paused = false; //ai pause
+        this.texture = sprite;
     }
     spawn(){
-        this.setScale(0.5);
-        this.anims.play(this.texture.key);
-        //this.body.setCircle(7, 1, 1.5);
+        //Setup important stuff after we have been created
+        //this.texture = texture;
+        this.setScale(1);
+        this.anims.play(this.texture);
+        this.body.setVelocity(0);
+        this.body.setGravity(0);
+        this.body.setSize(300, 340).setOffset(100,135);
+        this.body.setBounce(0);
+        // this.body.setCircle(7, 1, 1.5);
+        //Random dir
+        /*if(Math.round(Math.random())){
+            this.changeDir()
+        }*/
+    }
 
+    changeDir(){
+        this.dir *= -1;
+        //Update sprite flip
+        if(this.dir === 1)
+            this.flipX = true;
+        else
+            this.flipX = false;
+    }
+
+    jump(){
+        this.body.setVelocityY(-config.physics.player.jumpForce);
     }
 
     pause(){
@@ -33,17 +59,12 @@ class Enemy extends Phaser.Physics.Arcade.Sprite {
     }
 
     update(_, dt){
-        if(this.paused){
-            return;
-        }
+        if(this.paused) return;
 
-        //Make sure to stop walking if we're falling
-        if(this.body.velocity.y > 0){
-            this.body.setVelocityX(0);
-        }else{
-            this.body.setVelocityX(this.dir * this.speed);
-        }
+        this.body.setVelocity(0);
 
+
+        /*
         //Random jumping \o/
         if(this.jumpDelay <= 0 && this.body.onFloor()){
             this.jump();
@@ -75,5 +96,6 @@ class Enemy extends Phaser.Physics.Arcade.Sprite {
                 }
             }
         }
+        */
     }
 }
