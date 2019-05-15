@@ -101,6 +101,17 @@ class menu_historia extends Phaser.Scene{
         btn_level2.on("pointerout",function(event){
             this.setScale(0.3);
         });
+        //btn_level3
+        btn_level3.on("pointerover",function(event){
+            this.setScale(0.32);
+        });
+        btn_level3.on("pointerdown",function(event){
+            btnSound.play();
+            this.scene.start("level3",brilho);
+        },this);
+        btn_level3.on("pointerout",function(event){
+            this.setScale(0.3);
+        });
 
     }
     update(){
