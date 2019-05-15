@@ -6,9 +6,12 @@ var obj={
         hit:false
 };
 
+var morte=false;
+
 var player;
 var volumeBar;
 var volumeBox;
+
 
 //pontos
 var ponto0;
@@ -94,7 +97,17 @@ class level2 extends Phaser.Scene{
         this.load.image('jump3', 'Chicken Run Platformer Game Assets 17/Character Sprites/Jump_003.png');
         this.load.image('jump4', 'Chicken Run Platformer Game Assets 17/Character Sprites/Jump_004.png');
 
-
+        //load morte
+        this.load.image('die0', 'Chicken Run Platformer Game Assets 17/Character Sprites/Die_000.png');
+        this.load.image('die1', 'Chicken Run Platformer Game Assets 17/Character Sprites/Die_001.png');
+        this.load.image('die2', 'Chicken Run Platformer Game Assets 17/Character Sprites/Die_002.png');
+        this.load.image('die3', 'Chicken Run Platformer Game Assets 17/Character Sprites/Die_003.png');
+        this.load.image('die4', 'Chicken Run Platformer Game Assets 17/Character Sprites/Die_004.png');
+        this.load.image('die5', 'Chicken Run Platformer Game Assets 17/Character Sprites/Die_005.png');
+        this.load.image('die6', 'Chicken Run Platformer Game Assets 17/Character Sprites/Die_006.png');
+        this.load.image('die7', 'Chicken Run Platformer Game Assets 17/Character Sprites/Die_007.png');
+        this.load.image('die8', 'Chicken Run Platformer Game Assets 17/Character Sprites/Die_008.png');
+        this.load.image('die9', 'Chicken Run Platformer Game Assets 17/Character Sprites/Die_009.png');
         
 
         //para o loading demorar mais
@@ -196,10 +209,48 @@ class level2 extends Phaser.Scene{
         //colisoes entre objetos
         this.physics.add.collider(player, layer4,function ()
             {
-                console.log("Hit");
+                obj.hit=true;
+
         },null, this);
-        this.physics.add.collider(player, layer2);
-        this.physics.add.collider(player, layer5);
+        this.physics.add.collider(player, layer2,function ()
+            {
+                obj.hit=false;
+        },null, this);
+        this.physics.add.collider(player, layer5,function ()
+            {
+                obj.hit=false;
+        },null, this);
+        
+        //setInterval para verificar se houve colisao de x em x tempo
+        //fazer um mini setinterval dentro de cada ação para dar o player nao
+        //perder todas as vidas
+        setInterval(function () {  
+            if(obj.hit){
+                if(heart1.visible && heart2.visible && heart3.visible){
+                    console.log("hit e 3 coraçoes");
+                    heart3.setVisible(false);
+                    
+                }else if (heart1.visible && heart2.visible && !heart3.visible) {
+                    console.log("hit e 2 coraçoes");
+                    heart2.setVisible(false);
+                    
+                }else if (heart1.visible && !heart2.visible && !heart3.visible) {
+                    console.log("hit e 1 coraçao");
+                    heart1.setVisible(false);
+                    
+                }else if (!heart1.visible && !heart2.visible && !heart3.visible) {
+                    console.log("Morreu");
+                    //animação para morrer
+                    morte=true;
+
+                    
+
+                    //ecrã de morte
+                } 
+            }
+
+        }, 1200);
+
 
 
         // Phaser supports multiple cameras, but you can access the default camera like this:
@@ -211,6 +262,7 @@ class level2 extends Phaser.Scene{
         // Constrain the camera so that it isn't allowed to move outside the width/height of tilemap
         camera.setBounds(0, 0, map.widthInPixels, map.heightInPixels);
 
+        console.log(cursors);
 
         //animações
         this.anims.create({
@@ -274,6 +326,23 @@ class level2 extends Phaser.Scene{
             frameRate: 5
         });
 
+        this.anims.create({
+            key: 'die',
+            frames:[
+                { key: 'die0' },
+                { key: 'die1' },
+                { key: 'die2' },
+                { key: 'die3' },
+                { key: 'die4' },
+                { key: 'die5' },
+                { key: 'die6' },
+                { key: 'die7' },
+                { key: 'die8' },
+                { key: 'die9' }       
+            ],
+            frameRate: 10
+        });
+
         //create text
         //text1
         let content1 = [
@@ -326,6 +395,15 @@ class level2 extends Phaser.Scene{
             player.body.setVelocityX(0);
             player.anims.play('downr', true);
         }
+
+        if(cursors.down.isDown){
+            player.anims.play('die', true);
+        }
+        /*if(morte){
+            player.anims.play('die', true);
+        }*/
+        
+
 
         //interactividade nos pontos
         //Ponto0
