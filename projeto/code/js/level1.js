@@ -133,39 +133,6 @@ class level1 extends Phaser.Scene{
         this.load.image('jump4', 'Chicken Run Platformer Game Assets 17/Character Sprites/Jump_004.png');
 
 
-        //--------------------------INIMIGO----------------------------------------
-        //attack
-        this.load.image('eAttack1', "Chicken Run Platformer Game Assets 17/Enemy/Attack_000.png");
-        this.load.image('eAttack2', "Chicken Run Platformer Game Assets 17/Enemy/Attack_001.png");
-        this.load.image('eAttack3', "Chicken Run Platformer Game Assets 17/Enemy/Attack_002.png");
-        this.load.image('eAttack4', "Chicken Run Platformer Game Assets 17/Enemy/Attack_003.png");
-        this.load.image('eAttack5', "Chicken Run Platformer Game Assets 17/Enemy/Attack_004.png");
-        this.load.image('eAttack6', "Chicken Run Platformer Game Assets 17/Enemy/Attack_005.png");
-
-        //iddle
-        this.load.image('eIdle1', "Chicken Run Platformer Game Assets 17/Enemy/Idle_000.png");
-        this.load.image('eIdle2', "Chicken Run Platformer Game Assets 17/Enemy/Idle_001.png");
-        this.load.image('eIdle3', "Chicken Run Platformer Game Assets 17/Enemy/Idle_002.png");
-        this.load.image('eIdle4', "Chicken Run Platformer Game Assets 17/Enemy/Idle_003.png");
-        this.load.image('eIdle5', "Chicken Run Platformer Game Assets 17/Enemy/Idle_004.png");
-        this.load.image('eIdle6', "Chicken Run Platformer Game Assets 17/Enemy/Idle_005.png");
-        this.load.image('eIdle7', "Chicken Run Platformer Game Assets 17/Enemy/Idle_006.png");
-        this.load.image('eIdle8', "Chicken Run Platformer Game Assets 17/Enemy/Idle_007.png");
-
-        //run
-        this.load.image('eRun1', "Chicken Run Platformer Game Assets 17/Enemy/Run_000.png");
-        this.load.image('eRun2', "Chicken Run Platformer Game Assets 17/Enemy/Run_001.png");
-        this.load.image('eRun3', "Chicken Run Platformer Game Assets 17/Enemy/Run_002.png");
-        this.load.image('eRun4', "Chicken Run Platformer Game Assets 17/Enemy/Run_003.png");
-        this.load.image('eRun5', "Chicken Run Platformer Game Assets 17/Enemy/Run_004.png");
-        this.load.image('eRun6', "Chicken Run Platformer Game Assets 17/Enemy/Run_005.png");
-        this.load.image('eRun7', "Chicken Run Platformer Game Assets 17/Enemy/Run_006.png");
-        this.load.image('eRun8', "Chicken Run Platformer Game Assets 17/Enemy/Run_007.png");
-
-
-
-
-
         //para o loading demorar mais
         //retirar no futuro
         for(let i=0; i<100; i++){
@@ -255,7 +222,6 @@ class level1 extends Phaser.Scene{
         player=this.physics.add.sprite(spawnPoint.x,spawnPoint.y-100,"idle0").setScale(0.25);
         //bounding box of player
         player.setSize(300, 340).setOffset(100,135);
-        
         
         //colisoes entre objetos
         this.physics.add.collider(player, layer3);
@@ -592,80 +558,6 @@ class level1 extends Phaser.Scene{
         text16.setScrollFactor(1);
         text16.setVisible(false);
 
-
-
-
-
-        //--------------------------INIMIGO----------------------------------------
-
-        //animações
-        this.anims.create({
-            key: 'rightEnemy',
-            frames:[
-                { key: 'eAttack1' },
-                { key: 'eAttack2' },
-                { key: 'eAttack3' },
-                { key: 'eAttack4' },
-                { key: 'eAttack5' },
-                { key: 'eAttack6' },
-            ],
-            frameRate: 24
-        });
-
-        //animações
-        this.anims.create({
-            key: 'downEnemy',
-            frames:[
-                { key: 'eIdle1' },
-                { key: 'eIdle2' },
-                { key: 'eIdle3' },
-                { key: 'eIdle4' },
-                { key: 'eIdle5' },
-                { key: 'eIdle6' },
-                { key: 'eIdle7' },
-                { key: 'eIdle8'}
-            ],
-            frameRate: 24
-        });
-
-
-        //animações
-        this.anims.create({
-            key: 'upEnemy',
-            frames:[
-                { key: 'eRun1' },
-                { key: 'eRun2' },
-                { key: 'eRun3' },
-                { key: 'eRun4' },
-                { key: 'eRun5' },
-                { key: 'eRun6' },
-                { key: 'eRun7' },
-                { key: 'eRun8'}
-            ],
-            frameRate: 24
-        });
-
-
-
-
-
-        this.enemies = this.physics.add.group({
-            classType: Enemy,
-            maxSize: 20,
-            runChildUpdate: true,
-        });
-
-
-        this.enemy = this.enemies.get(10, 10, 'downEnemy');
-        this.physics.add.collider(this.enemy, layer3);
-        this.enemy.spawn();
-
-
-
-
-
-
-
         //brilho
         camera.setAlpha(obj.brilho);
         scene0=1;
@@ -755,7 +647,7 @@ class level1 extends Phaser.Scene{
         }
         else if (cursors.right.isDown){
                 player.body.setVelocityX(200); 
-                player.anims.play('right', true); 
+                player.anims.play('right', true);
 
         } else {
             player.body.setVelocityX(0);

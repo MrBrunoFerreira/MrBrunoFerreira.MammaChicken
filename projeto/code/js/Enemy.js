@@ -1,22 +1,22 @@
 class Enemy extends Phaser.Physics.Arcade.Sprite {
-    constructor(scene, x, y, sprite){
+    constructor(scene, x, y, sprite, player){
         super(scene,x, y, sprite, 0);
         this.dir = 1;
         this.speed = 100;
-        this.jumpDelay = 2000 + Math.floor(Math.random() * 5000); //random jump delays
         this.lifespan = 0;
         this.paused = false; //ai pause
         this.texture = sprite;
+
     }
     spawn(){
         //Setup important stuff after we have been created
         //this.texture = texture;
-        this.setScale(1);
+        this.setScale(0.3);
         this.anims.play(this.texture);
         this.body.setVelocity(0);
-        this.body.setGravity(0);
-        this.body.setSize(300, 340).setOffset(100,135);
+        this.body.setSize(300, 340).setOffset(100,145);
         this.body.setBounce(0);
+        this.setGravityY(3500);
         // this.body.setCircle(7, 1, 1.5);
         //Random dir
         /*if(Math.round(Math.random())){
@@ -31,10 +31,6 @@ class Enemy extends Phaser.Physics.Arcade.Sprite {
             this.flipX = true;
         else
             this.flipX = false;
-    }
-
-    jump(){
-        this.body.setVelocityY(-config.physics.player.jumpForce);
     }
 
     pause(){
@@ -52,7 +48,6 @@ class Enemy extends Phaser.Physics.Arcade.Sprite {
         //only if we're actually paused
         if(this.paused){
             this.paused = false;
-            this.setScale(2.5);
             this.body.enable = true;
             this.anims.resume();
         }
@@ -64,38 +59,49 @@ class Enemy extends Phaser.Physics.Arcade.Sprite {
         this.body.setVelocity(0);
 
 
-        /*
-        //Random jumping \o/
-        if(this.jumpDelay <= 0 && this.body.onFloor()){
-            this.jump();
-            this.jumpDelay = 2000 + Math.floor(Math.random() * 5000);
-        }else{
-            this.jumpDelay -= dt;
+        //------------------------ Enemy AI ------------------------------------
+        this.chasing = false;
+
+        //verifica se a posicao jogador e do inimigo e a mesma
+        if (Math.round(this.y) === Math.round(player.y)) {
+            // if both slime and player are on the same 'plane' move towards the player!
+            if (Math.round(player.x) > Math.round(this.x)) {
+                // we increase the speed from the default 80 to 200
+                this.body.velocity.x = 200;
+            } else {
+                this.body.velocity.x = -200;
+            }
+            this.chasing = true;
         }
 
-        //Fall down brings you back up
-        if(this.y > 620){
-            this.y = -20;
-        }
-
-        this.lifespan += dt;
-
-        //Check if youre out of the map and kill enemy
-        if(this.x < 100 || this.x > 700){
-            if(this.gameRunning) {
-                this.destroy();
-                //Check if this was the last enemy
-                if(this.scene.enemies.getChildren().length === 0 && this.scene.gameRunning){
-                    //go to next level
-                    this.scene.gameRunning = false;
-                    this.scene.time.delayedCall(2000, function(){
-                        this.currentLevel++;
-                        this.loadLevel('level' + this.currentLevel);
-                        this.sounds.win.play();
-                    }, [], this.scene)
-                }
+        if(!this.chasing){
+            // when the slime isn't actively chasing the player,
+            // reduce speeds back to normal
+            if(this.body.velocity.x > 0){
+                this.body.velocity.x = 80;
+            }
+            else if(this.body.velocity.x < 0){
+                this.body.velocity.x = -80;
             }
         }
-        */
+
+        /*
+        this.physics.add.collider(this, player, function (slime, platform) {
+            if (slime.body.velocity.x > 0 && slime.x > platform.x + (platform.width - slime.width) ||
+                slime.body.velocity.x < 0 && slime.x < platform.x) {
+
+                // this is still the old platform patrol AI from before // we added the chasing check so the slime will stop at the edge closest to the player if (chasing) { slime.body.velocity.x = 0; } else { slime.body.velocity.x *= -1; } } }); game.physics.arcade.collide(this, slimes, function (slime, slimes) { slime.body.velocity.x *= -1; }); if (this.body.velocity.x > 0) {
+                // this.animations.stop();
+                this.anims.play('right');
+            } else {
+                //this.animations.stop();
+                this.anims.play('left');
+            }
+
+        }, null, this);
+
+*/
+
+
     }
 }
