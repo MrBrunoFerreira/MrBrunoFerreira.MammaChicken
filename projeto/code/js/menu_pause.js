@@ -28,28 +28,60 @@ class menu_pause extends Phaser.Scene{
         let cw=this.game.renderer.width;
 
         //background
-        let bck_pause=this.add.image(cw/2 - 50,ch/2 - 50,"bck_pause").setScale(0.3);
+        let bck_pause=this.add.image(cw/2 - 50,ch/2 - 50,"bck_pause").setScale(0.3).setVisible(false);
         //bck alert
         let bck_alert=this.add.image(cw/2 + 30 ,ch/2 + 30  ,"bck_alert").setScale(0.5).setVisible(false);
 
         //botao pause
-        let btn_pause=this.add.image(cw - 40,40,"btn_pause").setScale(0.33).setInteractive({cursor:"pointer"}).setVisible(true);
+        let btn_pause=this.add.image(cw - 40,40,"btn_pause").setScale(0.33).setInteractive({cursor:"pointer"}).setVisible(false);
         //botao minus volume
-        let btn_vMinus=this.add.image(cw/2 + 15,ch/2 - 35,"btn_minus").setScale(0.2).setInteractive({cursor:"pointer"});
+        let btn_vMinus=this.add.image(cw/2 + 15,ch/2 - 35,"btn_minus").setScale(0.2).setInteractive({cursor:"pointer"}).setVisible(false);
         //botao plus volume
-        let btn_vPlus=this.add.image(cw/2 + 140,ch/2 - 35,"btn_plus").setScale(0.2).setInteractive({cursor:"pointer"});
+        let btn_vPlus=this.add.image(cw/2 + 140,ch/2 - 35,"btn_plus").setScale(0.2).setInteractive({cursor:"pointer"}).setVisible(false);
         //botao reiniciar
-        let btn_reiniciar=this.add.image(cw/2 - 20,ch/2 + 50,"btn_reiniciar").setScale(0.4).setInteractive({cursor:"pointer"});
+        let btn_reiniciar=this.add.image(cw/2 - 20,ch/2 + 50,"btn_reiniciar").setScale(0.4).setInteractive({cursor:"pointer"}).setVisible(false);
         //botao reiniciar
-        let btn_menuVoltar=this.add.image(cw/2 + 100,ch/2  +50 ,"btn_menuVoltar").setScale(0.4).setInteractive({cursor:"pointer"});
+        let btn_menuVoltar=this.add.image(cw/2 + 100,ch/2  +50 ,"btn_menuVoltar").setScale(0.4).setInteractive({cursor:"pointer"}).setVisible(false);
         //botao errado
         let btn_erro=this.add.image(cw/2 - 90,ch/2  +110 ,"btn_errado").setScale(0.3).setInteractive({cursor:"pointer"}).setVisible(false);
         //botao certo Home ->vai menu_historia
         let btn_certoH=this.add.image(cw/2 + 150,ch/2  +110 ,"btn_certo").setScale(0.3).setInteractive({cursor:"pointer"}).setVisible(false);
         //botao certo Reiniciar ->Reinicia nivel
         let btn_certoR=this.add.image(cw/2 + 150,ch/2  +110 ,"btn_certo").setScale(0.3).setInteractive({cursor:"pointer"}).setVisible(false);
+        //botao play
+        let btn_play=this.add.image(cw - 40, 40,"btn_play").setScale(0.2).setInteractive({cursor:"pointer"}).setVisible(true);
 
         //eventListerens
+        //btn_play
+        btn_play.on("pointerover",function(event){
+            this.setScale(0.22);
+        });
+        btn_play.on("pointerdown",function(event){
+            player.body.setVelocity(0);  
+            //btnSound.play();
+            if(prevpage==1){
+                let theOtherScene = this.scene.get('level1');
+                theOtherScene.scene.pause();
+            }else if(prevpage==1){
+                let theOtherScene = this.scene.get('level1');
+                theOtherScene.scene.pause();
+            }
+            btn_play.setVisible(false);
+            bck_pause.setVisible(true);
+            btn_pause.setVisible(true);
+            btn_vMinus.setVisible(true);
+            btn_vPlus.setVisible(true);
+            volumeBox.setVisible(true);
+            volumeBar.setVisible(true);
+            btn_reiniciar.setVisible(true);
+            btn_menuVoltar.setVisible(true);
+
+            //this.scene.launch("menu_pause",1);
+        },this);
+        btn_play.on("pointerout",function(event){
+            this.setScale(0.2);
+        });
+
         //btn_pause
         btn_pause.on("pointerover",function(event){
             this.setScale(0.35);
@@ -70,6 +102,9 @@ class menu_pause extends Phaser.Scene{
             btn_certoH.setVisible(false);
             text0.setVisible(false);
             text1.setVisible(false);
+            volumeBox.setVisible(false);
+            volumeBar.setVisible(false);
+            btn_play.setVisible(true);
             if(prevpage==1){
                 this.scene.resume("level1");
             }
@@ -267,11 +302,11 @@ class menu_pause extends Phaser.Scene{
 
         //gui
         //volume box
-        volumeBox=this.add.graphics();
+        volumeBox=this.add.graphics().setVisible(false);
         volumeBox.fillStyle(0x222222,1);
         volumeBox.fillRect(cw/2 + 35,ch/2 - 50, 85, 35);
         //volume bar
-        volumeBar=this.add.graphics();
+        volumeBar=this.add.graphics().setVisible(false);
 
     }
 

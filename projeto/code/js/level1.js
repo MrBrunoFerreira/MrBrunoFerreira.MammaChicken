@@ -34,12 +34,10 @@ var text14;
 var text15;
 var text16;
 
-//botoes globais
-let btn_play;
 
 var gun;
 
-var scene;
+var scene0;
 
 
 class level1 extends Phaser.Scene{
@@ -56,7 +54,7 @@ class level1 extends Phaser.Scene{
 
     preload() {
 
-        scene=0;
+        scene0=0;
 
         //variaveis
         let ch=this.game.renderer.height;
@@ -180,12 +178,13 @@ class level1 extends Phaser.Scene{
         let ch=this.game.renderer.height;
         let cw=this.game.renderer.width;
         
+        //menu_pause sobre o level
+        this.scene.launch("menu_pause",1);
         //efeitos
         //clicar btn
         let btnSound=this.sound.add("btn_music");
         //this.sound.mute=true;
 
-        
 
         //creat mapa/tilesets
         let map = this.make.tilemap({ key: "map1" });      
@@ -214,24 +213,6 @@ class level1 extends Phaser.Scene{
 
         //gun
         gun=this.add.image(ponto5.x,150,"gun").setScale(0.5).setVisible(false);
-
-        //botoes para o menu
-        //botao play
-        btn_play=this.add.image(cw - 40, 40,"btn_play").setScale(0.2).setInteractive({cursor:"pointer"}).setVisible(true);
-        //btn_play
-        btn_play.on("pointerover",function(event){
-            this.setScale(0.22);
-        });
-        btn_play.on("pointerdown",function(event){
-            player.body.setVelocity(0);  
-            btnSound.play();
-            this.scene.pause();
-            this.scene.launch("menu_pause",1);
-        },this);
-        btn_play.on("pointerout",function(event){
-            this.setScale(0.2);
-        });
-
 
         //spawn player
         player=this.physics.add.sprite(spawnPoint.x,spawnPoint.y-100,"idle0").setScale(0.25);
@@ -584,7 +565,7 @@ class level1 extends Phaser.Scene{
             layer2.setAlpha(brilho);
             layer3.setAlpha(brilho); 
         }*/
-        scene=1;
+        scene0=1;
 
     }
     
@@ -640,7 +621,7 @@ class level1 extends Phaser.Scene{
 
     update(time, delta) {
         //impedir que o update ocorra primeiro que o load e create
-        if(scene==0){
+        if(scene0==0){
             
             return;
         }
@@ -678,38 +659,9 @@ class level1 extends Phaser.Scene{
             player.anims.play('downr', true);
         }
 
-        //update btn menu pause
-        if(player.x >= ponto1.x){
-            btn_play.x = player.x + 350;
-        }
 
         //KeyCodes
         //var keyObjF = this.input.keyboard.addKey('F'); 
-
-            /*
-        // Horizontal movement
-        if (cursors.left.isDown) {
-            player.body.setVelocityX(-speed);
-            player.anims.play('left', true);
-        } else if (cursors.right.isDown) {
-            player.body.setVelocityX(speed);
-            player.anims.play('right', true);
-        }
-
-        //para saltar
-        if (cursors.up.isDown && player.body.onFloor())
-        {   
-            //console.log("salto");
-            player.setVelocityY(-3000000);
-        }
-
-        //para debug ->passear no mapa
-        if (cursors.up.isDown) {
-            player.body.setVelocityY(-speed);
-        } else if (cursors.down.isDown) {
-            player.body.setVelocityY(speed);
-        }*/
-
 
         // Normalize and scale the velocity so that player can't move faster along a diagonal
         //player.body.velocity.normalize().scale(speed);

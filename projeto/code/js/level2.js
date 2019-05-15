@@ -11,10 +11,7 @@ var ponto1;
 //textos
 var text1;
 
-//botoes globais
-let btn_play1;
-
-var scene;
+var scene1;
 
 class level2 extends Phaser.Scene{
     constructor(){
@@ -29,7 +26,7 @@ class level2 extends Phaser.Scene{
 
     preload(){
 
-        scene=0;
+        scene1=0;
 
         //variaveis
         let ch=this.game.renderer.height;
@@ -142,6 +139,9 @@ class level2 extends Phaser.Scene{
         let ch=this.game.renderer.height;
         let cw=this.game.renderer.width;
 
+        //menu_pause sobre o level
+        this.scene.launch("menu_pause",2);
+
         //creat mapa/tilesets
         let map = this.make.tilemap({ key: "map2" });      
         let tileset1 = map.addTilesetImage("sky");
@@ -174,24 +174,6 @@ class level2 extends Phaser.Scene{
         spawnPoint = map.findObject("Objects", obj => obj.name === "Start");
         ponto0 = map.findObject("Objects", obj => obj.name === "Ponto0");
         ponto1 = map.findObject("Objects", obj => obj.name === "Ponto1");
-
-
-        //botoes para o menu
-        //botao play
-        btn_play1=this.add.image(cw - 40, 90,"btn_play").setScale(0.2).setInteractive({cursor:"pointer"}).setVisible(true);
-        //btn_play
-        btn_play1.on("pointerover",function(event){
-            this.setScale(0.22);
-        });
-        btn_play1.on("pointerdown",function(event){
-            player.body.setVelocity(0);  
-            //btnSound.play();
-            this.scene.pause();
-            this.scene.launch("menu_pause",2);
-        },this);
-        btn_play1.on("pointerout",function(event){
-            this.setScale(0.2);
-        });
 
 
         //spawn player
@@ -292,7 +274,7 @@ class level2 extends Phaser.Scene{
         text1.setScrollFactor(1);
         text1.setVisible(false);
 
-        scene=1;
+        scene1=1;
 
         //camera.setAlpha(0.2);
     }
@@ -300,7 +282,7 @@ class level2 extends Phaser.Scene{
     update(){
        
         //impedir que o update ocorra primeiro que o load e create
-        if(scene==0){
+        if(scene1==0){
             
             return;
         }
@@ -327,12 +309,6 @@ class level2 extends Phaser.Scene{
         } else {
             player.body.setVelocityX(0);
             player.anims.play('downr', true);
-        }
-
-        //update btn menu pause
-        if(player.x>392){
-            btn_play1.x = player.x + 350;
-            btn_play1.y = player.y - 250;
         }
 
         //interactividade nos pontos
