@@ -91,9 +91,7 @@ class menu_pause extends Phaser.Scene{
         });
         btn_pause.on("pointerdown",function(event){
             //btnSound.play();
-            console.log("obj.brilho:"+obj.brilho);
-            console.log("obj.page:"+obj.page);
-
+        
             btn_pause.setVisible(false);
             bck_pause.setVisible(false);
             btn_vMinus.setVisible(false);
@@ -215,6 +213,8 @@ class menu_pause extends Phaser.Scene{
         });
         btn_certoR.on("pointerdown",function(event){
             //btnSound.play();
+            let scene1 = this.scene.get('status');
+            scene1.scene.stop();
             if(prevpage==1){
                 let theOtherScene = this.scene.get('level1');
                 theOtherScene.scene.restart();
@@ -281,6 +281,8 @@ class menu_pause extends Phaser.Scene{
         btn_certoH.on("pointerdown",function(event){
             //btnSound.play();
             //para voltar para o menu historia
+            let scene2 = this.scene.get('status');
+            scene2.scene.stop();
             if(prevpage==1){
                 this.scene.resume("level1");
                 let theOtherScene = this.scene.get('level1');
