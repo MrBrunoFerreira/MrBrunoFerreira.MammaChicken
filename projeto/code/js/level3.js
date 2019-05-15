@@ -172,6 +172,8 @@ class level3 extends Phaser.Scene{
 
         //menu_pause sobre o level
         this.scene.launch("menu_pause",obj);
+        //status do player sobre o level
+        this.scene.launch("status",obj);
 
         //creat mapa/tilesets
         let map = this.make.tilemap({ key: "map3" });      
