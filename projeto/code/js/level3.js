@@ -262,12 +262,15 @@ class level3 extends Phaser.Scene{
         //camera.setAlpha(0.2);
 
         scene2=1;
+
+
+
     }
 
     update(){
        
         //impedir que o update ocorra primeiro que o load e create
-        if(scene2==0){
+        if(scene2===0){
             
             return;
         }
