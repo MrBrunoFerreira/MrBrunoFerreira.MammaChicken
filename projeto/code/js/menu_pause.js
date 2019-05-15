@@ -2,6 +2,11 @@
 
 var prevpage;
 
+var obj={
+    brilho:1,
+    page:1
+};
+
 var volumeBar;
 var volumeBox;
 
@@ -14,6 +19,8 @@ class menu_pause extends Phaser.Scene{
 
     init(data){
         prevpage=data;
+        //obj.brilho=data[1];
+        //obj.page=data[2];
     }
 
     preload(){
@@ -88,6 +95,9 @@ class menu_pause extends Phaser.Scene{
         });
         btn_pause.on("pointerdown",function(event){
             //btnSound.play();
+            //console.log("obj.brilho:"+obj.brilho);
+            //console.log("obj.page:"+obj.page);
+
             btn_pause.setVisible(false);
             bck_pause.setVisible(false);
             btn_vMinus.setVisible(false);

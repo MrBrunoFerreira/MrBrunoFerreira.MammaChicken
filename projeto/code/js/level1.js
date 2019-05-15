@@ -2,6 +2,11 @@
 
 var brilho;
 
+var obj={
+        brilho:1,
+        nextpage:1
+};
+
 var camera; 
 var player;
 var cursors;
