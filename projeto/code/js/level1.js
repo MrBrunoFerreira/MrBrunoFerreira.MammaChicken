@@ -647,7 +647,7 @@ class level1 extends Phaser.Scene{
         /*if(!player.body.onFloor()){
             player.anims.play('up', true);
         }*/
-        if ((/*cursors.space.isDown || */ cursors.up.isDown) /*&& player.body.onFloor() */){
+        if ((/*cursors.space.isDown || */ cursors.up.isDown) && player.body.onFloor() ){
             player.body.setVelocityY(-400); 
         }
 

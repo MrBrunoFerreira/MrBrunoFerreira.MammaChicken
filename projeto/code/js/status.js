@@ -6,6 +6,10 @@ var brilho;
 
 var hit;
 
+var heart1;
+let heart2;
+let heart3;
+
 class status extends Phaser.Scene{
     constructor(){
         super({
@@ -31,9 +35,9 @@ class status extends Phaser.Scene{
         //background
         let bck_bar=this.add.image(80 , 20 ,"bck_health").setScale(0.3).setVisible(true);
         //load hearts
-        let heart1=this.add.image(40 , 20 ,"img_heart").setScale(0.3).setVisible(true);
-        let heart2=this.add.image(80 , 20 ,"img_heart").setScale(0.3).setVisible(true);
-        let heart3=this.add.image(120 , 20 ,"img_heart").setScale(0.3).setVisible(true);
+        heart1=this.add.image(40 , 20 ,"img_heart").setScale(0.3).setVisible(true);
+        heart2=this.add.image(80 , 20 ,"img_heart").setScale(0.3).setVisible(true);
+        heart3=this.add.image(120 , 20 ,"img_heart").setScale(0.3).setVisible(true);
 
         //console.log("heart1.visible="+heart1.visible);
 
@@ -62,7 +66,6 @@ class status extends Phaser.Scene{
 
         if(hit){
             console.log("hit");
-          
         }
     }
 
