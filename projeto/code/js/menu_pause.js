@@ -111,6 +111,9 @@ class menu_pause extends Phaser.Scene{
             if(prevpage==2){
                 this.scene.resume("level2");
             }
+            if(prevpage==3){
+                this.scene.resume("level3");
+            }
         },this);
         btn_pause.on("pointerout",function(event){
             this.setScale(0.33);
@@ -242,6 +245,24 @@ class menu_pause extends Phaser.Scene{
                 text0.setVisible(false);
                 this.scene.resume("level2");
             }
+            if(prevpage==3){
+                let theOtherScene = this.scene.get('level3');
+                theOtherScene.scene.restart();
+                btn_pause.setVisible(false);
+                bck_pause.setVisible(false);
+                btn_vMinus.setVisible(false);
+                btn_vPlus.setVisible(false);
+                volumeBox.setVisible(false);
+                volumeBar.setVisible(false);
+                btn_reiniciar.setVisible(false);
+                btn_menuVoltar.setVisible(false);
+                bck_alert.setVisible(false);
+                btn_erro.setVisible(false);
+                btn_certoR.setVisible(false);
+                text1.setVisible(false);
+                text0.setVisible(false);
+                this.scene.resume("level3");
+            }
             
         },this);
         btn_certoR.on("pointerout",function(event){
@@ -263,6 +284,12 @@ class menu_pause extends Phaser.Scene{
             if(prevpage==2){
                 this.scene.resume("level2");
                 let theOtherScene = this.scene.get('level2');
+                theOtherScene.scene.stop();
+                this.scene.start("menu_historia");
+            }
+            if(prevpage==3){
+                this.scene.resume("level3");
+                let theOtherScene = this.scene.get('level3');
                 theOtherScene.scene.stop();
                 this.scene.start("menu_historia");
             }

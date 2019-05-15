@@ -25,7 +25,7 @@ function main(){
             }
         },
         pixelArt: false,
-        scene: [Boot, Preload, menu_inicial, menu_creditos, menu_opcoes, menu_jogar,menu_historia,level1,level2,menu_pause]
+        scene: [Boot, Preload, menu_inicial, menu_creditos, menu_opcoes, menu_jogar,menu_historia,level1,level2,level3,menu_pause]
     });
 
     game.scale.pageAlignHorizontally = true;
