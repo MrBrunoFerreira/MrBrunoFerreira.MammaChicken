@@ -202,7 +202,7 @@ class level2 extends Phaser.Scene{
         //spawn player
         player=this.physics.add.sprite(spawnPoint.x,spawnPoint.y-100,"idle0").setScale(0.25);
         //bounding box of player
-        player.setSize(300, 340).setOffset(100,135);
+        player.setSize(200, 310).setOffset(140,165);
         player.setBounce(0);
 
         //colisoes entre objetos
@@ -246,8 +246,6 @@ class level2 extends Phaser.Scene{
 
         // Constrain the camera so that it isn't allowed to move outside the width/height of tilemap
         camera.setBounds(0, 0, map.widthInPixels, map.heightInPixels);
-
-        console.log(cursors);
 
         //animações
         this.anims.create({
