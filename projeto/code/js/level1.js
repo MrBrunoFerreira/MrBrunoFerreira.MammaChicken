@@ -228,7 +228,6 @@ class level1 extends Phaser.Scene{
         //bounding box of player
         player.setSize(300, 340).setOffset(100,135);
         
-        
         //colisoes entre objetos
         this.physics.add.collider(player, layer3);
 
@@ -571,8 +570,6 @@ class level1 extends Phaser.Scene{
         text16.setScrollFactor(1);
         text16.setVisible(false);
 
-        
-
         //brilho
         camera.setAlpha(obj.brilho);
         scene0=1;
@@ -665,7 +662,7 @@ class level1 extends Phaser.Scene{
         }
         else if (cursors.right.isDown){
                 player.body.setVelocityX(200); 
-                player.anims.play('right', true); 
+                player.anims.play('right', true);
 
         } else {
             player.body.setVelocityX(0);

@@ -358,14 +358,14 @@ class level2 extends Phaser.Scene{
         }
         
         //variaveis
-        let speed = 300;
+        let speed = 200;
         let prevVelocity = player.body.velocity.clone();
 
         if ((cursors.space.isDown || cursors.up.isDown) && player.body.onFloor()){
                 player.body.setVelocityY(-400); // jump up
                 //player.anims.play('rjump', true);
         }
-        if(player.body.velocity.y!=0){
+        if(player.body.velocity.y!==0){
             player.anims.play('up', true);
         }
 
