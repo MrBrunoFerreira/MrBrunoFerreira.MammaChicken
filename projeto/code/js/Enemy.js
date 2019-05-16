@@ -8,7 +8,7 @@ class Enemy extends Phaser.Physics.Arcade.Sprite {
         this.texture = sprite;
 
     }
-    
+
 
     spawn(){
         //Setup important stuff after we have been created
@@ -85,9 +85,6 @@ class Enemy extends Phaser.Physics.Arcade.Sprite {
             }
         } else {
 
-            if (this.chasing === false) {
-                console.log(this.body.velocity.x);
-            }
 
             if (this.dir === 1) {
                 if (this.body.velocity.x === 0 && this.dir === 1) {
