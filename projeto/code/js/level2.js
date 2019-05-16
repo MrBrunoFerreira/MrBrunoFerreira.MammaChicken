@@ -3,7 +3,6 @@
 var obj={
         brilho:1,
         nextpage:2,
-        hit:false
 };
 
 var morte=false;
@@ -209,50 +208,36 @@ class level2 extends Phaser.Scene{
         //colisoes entre objetos
         this.physics.add.collider(player, layer4,function ()
             {
-                obj.hit=true;
+                
+                player.body.setVelocityY(-400);
 
-        },null, this);
-        this.physics.add.collider(player, layer2,function ()
-            {
-                obj.hit=false;
-        },null, this);
-        this.physics.add.collider(player, layer5,function ()
-            {
-                obj.hit=false;
-        },null, this);
-        
-        //setInterval para verificar se houve colisao de x em x tempo
-        //fazer um mini setinterval dentro de cada ação para dar o player nao
-        //perder todas as vidas
-        setInterval(function () {  
-            if(obj.hit){
-                if(heart1.visible && heart2.visible && heart3.visible){
-                    console.log("hit e 3 coraçoes");
-                    heart3.setVisible(false);
-                    
+                if(!heart1.visible && !heart2.visible && !heart3.visible){
+                    console.log("Morreu");
+                    //animação para morrer
+                    morte=true;
+                    //ecrã de morte
+                    this.scene.pause();
+                    this.scene.launch("afterdeath",obj);
+                }else if (heart1.visible && !heart2.visible && !heart3.visible) {
+                    console.log("hit e 1 coraçao");
+                    heart1.setVisible(false);
                 }else if (heart1.visible && heart2.visible && !heart3.visible) {
                     console.log("hit e 2 coraçoes");
                     heart2.setVisible(false);
                     
-                }else if (heart1.visible && !heart2.visible && !heart3.visible) {
-                    console.log("hit e 1 coraçao");
-                    heart1.setVisible(false);
-                    
-                }else if (!heart1.visible && !heart2.visible && !heart3.visible) {
-                    console.log("Morreu");
-                    //animação para morrer
-                    morte=true;
-
-                    
-
-                    //ecrã de morte
+                }else if (heart1.visible && heart2.visible && heart3.visible) {
+                    console.log("hit e 3 coraçoes");
+                    heart3.setVisible(false);
                 } 
-            }
 
-        }, 1200);
-
-
-
+        },null, this);
+        this.physics.add.collider(player, layer2,function ()
+            {
+        },null, this);
+        this.physics.add.collider(player, layer5,function ()
+            {
+        },null, this);
+        
         // Phaser supports multiple cameras, but you can access the default camera like this:
         camera = this.cameras.main;
         camera.startFollow(player);
@@ -340,7 +325,7 @@ class level2 extends Phaser.Scene{
                 { key: 'die8' },
                 { key: 'die9' }       
             ],
-            frameRate: 10
+            frameRate: 20
         });
 
         //create text
@@ -371,8 +356,7 @@ class level2 extends Phaser.Scene{
             
             return;
         }
-
-               
+        
         //variaveis
         let speed = 300;
         let prevVelocity = player.body.velocity.clone();
@@ -391,19 +375,16 @@ class level2 extends Phaser.Scene{
         }else if (cursors.right.isDown){
             player.body.setVelocityX(speed); // move right
             player.anims.play('right', true); // play walk animatio
-        } else {
+            //player.anims.play('die', true);
+        }else if (cursors.down.isDown){
+            player.body.setVelocityX(speed); // move right
+            //player.anims.play('right', true); // play walk animatio
+            player.anims.play('die', true);
+        }  else {
             player.body.setVelocityX(0);
             player.anims.play('downr', true);
         }
-
-        if(cursors.down.isDown){
-            player.anims.play('die', true);
-        }
-        /*if(morte){
-            player.anims.play('die', true);
-        }*/
-        
-
+    
 
         //interactividade nos pontos
         //Ponto0
