@@ -4,8 +4,6 @@ var prevpage;
 
 var brilho;
 
-var hit;
-
 var heart1;
 let heart2;
 let heart3;
@@ -20,7 +18,6 @@ class status extends Phaser.Scene{
     init(data){
         brilho=data.brilho;
         prevpage=data.nextpage;
-        hit=data.hit;
     }
 
     preload(){
@@ -64,9 +61,6 @@ class status extends Phaser.Scene{
         let ch=this.game.renderer.height;
         let cw=this.game.renderer.width;
 
-        if(hit){
-            console.log("hit");
-        }
     }
 
 }
