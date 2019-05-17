@@ -181,7 +181,6 @@ class level2 extends Phaser.Scene{
 
         let layer1 = map.createStaticLayer('Background', tileset1,0,0);
         let layer2 = map.createStaticLayer('Ground', [tileset2 ,tileset3 ,tileset4 ,tileset5],0,0);
-
         let layer3 = map.createStaticLayer('Arvores', [tileset6 ,tileset7,tileset12],0,0);
         let layer4 = map.createStaticLayer('Armadilhas', [tileset8,tileset10,tileset11],0,0);
         let layer5 = map.createStaticLayer('Box', [tileset9],0,0);

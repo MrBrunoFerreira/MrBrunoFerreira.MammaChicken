@@ -774,6 +774,17 @@
    <properties>
     <property name="collides" type="bool" value="true"/>
    </properties>
+   <objectgroup draworder="index">
+    <properties>
+     <property name="colisao" type="bool" value="true"/>
+    </properties>
+    <object id="1" x="15.1024" y="31.413">
+     <properties>
+      <property name="colisao" type="bool" value="true"/>
+     </properties>
+     <polygon points="0,0 6.19198,-19.8345 13.0887,0.302048"/>
+    </object>
+   </objectgroup>
   </tile>
   <tile id="323">
    <properties>
