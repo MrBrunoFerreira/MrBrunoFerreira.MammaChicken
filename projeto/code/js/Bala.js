@@ -5,19 +5,32 @@ class Bala extends Phaser.Physics.Arcade.Sprite {
 
     fire(source){
         //General setup stuff
-        this.setScale(1.5);
+        this.setScale(0.05);
         //this.body.isCircle = true;
         this.body.allowGravity = false;
         //Direction false: left, true: right
-        let dir = source.flipX;
-        let speed = 500;
-        if(dir)
+        this.dir = source.dir;
+        let speed = 600;
+        if(this.dir === 1) {
             this.body.setVelocityX(speed);
-        else
+            this.bulletDir = 1;
+        }
+        else {
             this.body.setVelocityX(-speed);
+            this.bulletDir = -1;
+        }
+        this.setActive(true);
+        this.setVisible(true);
     }
 
     hit(other){
         //tira vida ao inimigo
+        this.setActive(false);
+        this.setVisible(false);
+    }
+
+
+    update(time) {
+
     }
 }
