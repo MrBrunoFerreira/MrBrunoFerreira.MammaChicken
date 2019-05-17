@@ -424,7 +424,7 @@ class level3 extends Phaser.Scene{
         }
 
 
-        if (cursors.space.isDown && time > this.lastFired && (cursors.left.isDown || cursors.right.isDown )) {
+        if (cursors.space.isDown && time > this.lastFired /*&& (cursors.left.isDown || cursors.right.isDown )*/) {
             this.bullet = this.bullets.get(player.x + 45, player.y+25);
             console.log("cliquei espaco");
 
