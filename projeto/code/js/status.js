@@ -43,19 +43,6 @@ class status extends Phaser.Scene{
 
     }
 
-    getheart(){
-        if(status.heart1.visible && status.heart2.visible && status.heart3.visible){
-            return 3;
-        } else if (heart1.visible && heart2.visible && !heart3.visible) {
-            return 2;
-        }else if (heart1.visible && !heart2.visible && !heart3.visible) {
-            return 1;
-        }else if (!heart1.visible && !heart2.visible && !heart3.visible) {
-            return 0;
-        }
-    }
-    
-
     update(){
         //variavies
         let ch=this.game.renderer.height;
