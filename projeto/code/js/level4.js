@@ -92,6 +92,20 @@ class level4 extends Phaser.Scene{
         this.load.image('jump2', 'Chicken Run Platformer Game Assets 17/Character Sprites/Jump_002.png');
         this.load.image('jump3', 'Chicken Run Platformer Game Assets 17/Character Sprites/Jump_003.png');
         this.load.image('jump4', 'Chicken Run Platformer Game Assets 17/Character Sprites/Jump_004.png');
+        //load shoot direita
+        this.load.image('shootr0', 'Chicken Run Platformer Game Assets 17/Character Sprites/Shoot_000.png');
+        this.load.image('shootr1', 'Chicken Run Platformer Game Assets 17/Character Sprites/Shoot_001.png');
+        this.load.image('shootr2', 'Chicken Run Platformer Game Assets 17/Character Sprites/Shoot_002.png');
+        this.load.image('shootr3', 'Chicken Run Platformer Game Assets 17/Character Sprites/Shoot_003.png');
+        this.load.image('shootr4', 'Chicken Run Platformer Game Assets 17/Character Sprites/Shoot_004.png');
+        this.load.image('shootr5', 'Chicken Run Platformer Game Assets 17/Character Sprites/Shoot_005.png');
+        //load shoot esquerda
+        this.load.image('shootl0', 'Chicken Run Platformer Game Assets 17/Character Sprites/Shoot_010.png');
+        this.load.image('shootl1', 'Chicken Run Platformer Game Assets 17/Character Sprites/Shoot_011.png');
+        this.load.image('shootl2', 'Chicken Run Platformer Game Assets 17/Character Sprites/Shoot_012.png');
+        this.load.image('shootl3', 'Chicken Run Platformer Game Assets 17/Character Sprites/Shoot_013.png');
+        this.load.image('shootl4', 'Chicken Run Platformer Game Assets 17/Character Sprites/Shoot_014.png');
+        this.load.image('shootl5', 'Chicken Run Platformer Game Assets 17/Character Sprites/Shoot_015.png');
 
 
 
@@ -305,6 +319,31 @@ class level4 extends Phaser.Scene{
             frameRate: 5
         });
 
+        this.anims.create({
+            key: 'shootr',
+            frames:[
+                { key: 'shootr0' },
+                { key: 'shootr1' },
+                { key: 'shootr2' },
+                { key: 'shootr3' },
+                { key: 'shootr4' },
+                { key: "shootr5" }
+            ],
+            frameRate: 1
+        });
+        this.anims.create({
+            key: 'shootl',
+            frames:[
+                { key: 'shootl0' },
+                { key: 'shootl1' },
+                { key: 'shootl2' },
+                { key: 'shootl3' },
+                { key: 'shootl4' },
+                { key: "shootl5" }
+            ],
+            frameRate: 1
+        });
+
         //create text
         //text1
 
@@ -323,7 +362,7 @@ class level4 extends Phaser.Scene{
 
         this.lastFired = 0;
 
-        this.physics.add.collider(this.bullets, this.enemies, function(){this.bullet.hit(this.enemy);}, undefined, this)
+        this.physics.add.collider(this.bullets, this.enemies, function(){this.bullet.hit(this.enemy);}, undefined, this);
         
     }
 
@@ -366,8 +405,14 @@ class level4 extends Phaser.Scene{
 
         //Bullet fire
         if (this.cursors.space.isDown && time > this.lastFired /*&& (cursors.left.isDown || cursors.right.isDown )*/) {
-            this.bullet = this.bullets.get(player.x + 45, player.y+25, 'bullet');
-            console.log("cliquei espaco");
+            
+            if(player.body.velocity.x>=0){
+                player.anims.play('shootr', true);
+                this.bullet = this.bullets.get(player.x + 45, player.y+25, 'bullet');
+            }else{
+                player.anims.play('shootl', true);
+                this.bullet = this.bullets.get(player.x + 45, player.y+25, 'bullet');
+            }
 
             if (this.bullet)
             {
