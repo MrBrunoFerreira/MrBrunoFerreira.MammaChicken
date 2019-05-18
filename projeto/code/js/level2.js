@@ -97,18 +97,23 @@ class level2 extends Phaser.Scene{
         this.load.image('jump2', 'Chicken Run Platformer Game Assets 17/Character Sprites/Jump_002.png');
         this.load.image('jump3', 'Chicken Run Platformer Game Assets 17/Character Sprites/Jump_003.png');
         this.load.image('jump4', 'Chicken Run Platformer Game Assets 17/Character Sprites/Jump_004.png');
+        //load shoot direita
+        this.load.image('shootr0', 'Chicken Run Platformer Game Assets 17/Character Sprites/Shoot_000.png');
+        this.load.image('shootr1', 'Chicken Run Platformer Game Assets 17/Character Sprites/Shoot_001.png');
+        this.load.image('shootr2', 'Chicken Run Platformer Game Assets 17/Character Sprites/Shoot_002.png');
+        this.load.image('shootr3', 'Chicken Run Platformer Game Assets 17/Character Sprites/Shoot_003.png');
+        this.load.image('shootr4', 'Chicken Run Platformer Game Assets 17/Character Sprites/Shoot_004.png');
+        this.load.image('shootr5', 'Chicken Run Platformer Game Assets 17/Character Sprites/Shoot_005.png');
+        //load shoot esquerda
+        this.load.image('shootl0', 'Chicken Run Platformer Game Assets 17/Character Sprites/Shoot_010.png');
+        this.load.image('shootl1', 'Chicken Run Platformer Game Assets 17/Character Sprites/Shoot_011.png');
+        this.load.image('shootl2', 'Chicken Run Platformer Game Assets 17/Character Sprites/Shoot_012.png');
+        this.load.image('shootl3', 'Chicken Run Platformer Game Assets 17/Character Sprites/Shoot_013.png');
+        this.load.image('shootl4', 'Chicken Run Platformer Game Assets 17/Character Sprites/Shoot_014.png');
+        this.load.image('shootl5', 'Chicken Run Platformer Game Assets 17/Character Sprites/Shoot_015.png');
 
-        //load morte
-        this.load.image('die0', 'Chicken Run Platformer Game Assets 17/Character Sprites/Die_000.png');
-        this.load.image('die1', 'Chicken Run Platformer Game Assets 17/Character Sprites/Die_001.png');
-        this.load.image('die2', 'Chicken Run Platformer Game Assets 17/Character Sprites/Die_002.png');
-        this.load.image('die3', 'Chicken Run Platformer Game Assets 17/Character Sprites/Die_003.png');
-        this.load.image('die4', 'Chicken Run Platformer Game Assets 17/Character Sprites/Die_004.png');
-        this.load.image('die5', 'Chicken Run Platformer Game Assets 17/Character Sprites/Die_005.png');
-        this.load.image('die6', 'Chicken Run Platformer Game Assets 17/Character Sprites/Die_006.png');
-        this.load.image('die7', 'Chicken Run Platformer Game Assets 17/Character Sprites/Die_007.png');
-        this.load.image('die8', 'Chicken Run Platformer Game Assets 17/Character Sprites/Die_008.png');
-        this.load.image('die9', 'Chicken Run Platformer Game Assets 17/Character Sprites/Die_009.png');
+        //--------------------------------------Bala------------------------------------------
+        this.load.image('bullet', "Chicken Run Platformer Game Assets 17/Coins, PowerUps & bullets/Bullet-1.png");
 
 
         //--------------------------------------Bala------------------------------------------
@@ -334,22 +339,29 @@ class level2 extends Phaser.Scene{
             ],
             frameRate: 5
         });
-
         this.anims.create({
-            key: 'die',
+            key: 'shootr',
             frames:[
-                { key: 'die0' },
-                { key: 'die1' },
-                { key: 'die2' },
-                { key: 'die3' },
-                { key: 'die4' },
-                { key: 'die5' },
-                { key: 'die6' },
-                { key: 'die7' },
-                { key: 'die8' },
-                { key: 'die9' }       
+                { key: 'shootr0' },
+                { key: 'shootr1' },
+                { key: 'shootr2' },
+                { key: 'shootr3' },
+                { key: 'shootr4' },
+                { key: "shootr5" }
             ],
-            frameRate: 20
+            frameRate: 1
+        });
+        this.anims.create({
+            key: 'shootl',
+            frames:[
+                { key: 'shootl0' },
+                { key: 'shootl1' },
+                { key: 'shootl2' },
+                { key: 'shootl3' },
+                { key: 'shootl4' },
+                { key: "shootl5" }
+            ],
+            frameRate: 1
         });
 
         //create text
@@ -357,7 +369,7 @@ class level2 extends Phaser.Scene{
         let content1 = [
             "Desvie-se das armadilhas"
         ];
-        text1 = this.add.text(ponto0.x, 150, content1, {
+        text1 = this.add.text(ponto0.x, 225, content1, {
             fontSize: '18px',
             padding: { x: 10, y: 5 },
             backgroundColor: '#000000',
@@ -396,9 +408,12 @@ class level2 extends Phaser.Scene{
         this.camera.setAlpha(obj.brilho);
 
         scene1=1;
+
+        
     }
 
     update(time, delta){
+
        
         //impedir que o update ocorra primeiro que o load e create
         if(scene1===0){
@@ -409,7 +424,6 @@ class level2 extends Phaser.Scene{
         //variaveis
         let speed = 300;
         let prevVelocity = player.body.velocity.clone();
-
 
         //cursors.space.isDown ||
         if ((this.cursors.up.isDown) && player.body.onFloor()){
@@ -478,7 +492,28 @@ class level2 extends Phaser.Scene{
             text1.setVisible(false);
         }
 
-        //colisoes
+        //Bullet fire
+        if (this.cursors.space.isDown && time > this.lastFired) {
+
+            if(player.body.velocity.x>=0){
+                player.anims.play('shootr', true);
+                this.bullet = this.bullets.get(player.x + 45, player.y+25, 'bullet');
+            }else{
+                player.anims.play('shootl', true);
+                this.bullet = this.bullets.get(player.x + 45, player.y+25, 'bullet');
+            }
+
+            
+            //console.log("cliquei espaco");
+
+            if (this.bullet)
+            {
+                this.bullet.fire(player);
+
+                //incrementa o tempo que tem que esperar ate ao proximo tiro
+                this.lastFired = time + 500;
+            }
+        }
 
 
 
