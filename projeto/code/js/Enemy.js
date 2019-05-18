@@ -6,7 +6,7 @@ class Enemy extends Phaser.Physics.Arcade.Sprite {
         this.lifespan = 0;
         this.paused = false; //ai pause
         this.texture = sprite;
-
+        this.hp = new HealthBar(scene, x - 100, y - 110);
     }
 
 
@@ -59,7 +59,7 @@ class Enemy extends Phaser.Physics.Arcade.Sprite {
         }
     }
 
-    update(_, dt) {
+    update(_, dt, time) {
         if (this.paused) return;
 
         //this.body.setVelocityY(1);
@@ -67,7 +67,6 @@ class Enemy extends Phaser.Physics.Arcade.Sprite {
 
         //------------------------ Enemy AI ------------------------------------
         this.chasing = false;
-
 
 
         //verifica se a posicao jogador e do inimigo no mesmo plano
@@ -103,30 +102,11 @@ class Enemy extends Phaser.Physics.Arcade.Sprite {
                     this.body.velocity.x = -80;
                 }
             }
-
-
-
-            /*else
-
-                if(this.body.velocity.x < 0){
-                    this.body.velocity.x = -50;
-                }*/
         }
 
-        /*
-        this.game.physics.arcade.collide(this, player, function () {
-            if (slime.body.velocity.x > 0 && slime.x > platform.x + (platform.width - slime.width) ||
-                slime.body.velocity.x < 0 && slime.x < platform.x) { // this is still the old platform patrol AI from before // we added the chasing check so the slime will stop at the edge closest to the player if (chasing) { slime.body.velocity.x = 0; } else { slime.body.velocity.x *= -1; } } }); game.physics.arcade.collide(this, slimes, function (slime, slimes) { slime.body.velocity.x *= -1; }); if (this.body.velocity.x > 0) {
-                // this.animations.stop();
-                this.anims.play('right');
-            } else {
-                //this.animations.stop();
-                this.anims.play('left');
-            }
-            console.log("hit");
-        },this);
-        */
-
+        this.hp.x = this.x - 40;
+        this.hp.y = this.y - 80;
+        this.hp.draw();
 
     }
 }
