@@ -92,8 +92,39 @@ class level3 extends Phaser.Scene{
         this.load.image('jump3', 'Chicken Run Platformer Game Assets 17/Character Sprites/Jump_003.png');
         this.load.image('jump4', 'Chicken Run Platformer Game Assets 17/Character Sprites/Jump_004.png');
 
+        //--------------------------INIMIGO----------------------------------------
+        //attack
+        this.load.image('eAttack1', "Chicken Run Platformer Game Assets 17/Enemy/Attack_000.png");
+        this.load.image('eAttack2', "Chicken Run Platformer Game Assets 17/Enemy/Attack_001.png");
+        this.load.image('eAttack3', "Chicken Run Platformer Game Assets 17/Enemy/Attack_002.png");
+        this.load.image('eAttack4', "Chicken Run Platformer Game Assets 17/Enemy/Attack_003.png");
+        this.load.image('eAttack5', "Chicken Run Platformer Game Assets 17/Enemy/Attack_004.png");
+        this.load.image('eAttack6', "Chicken Run Platformer Game Assets 17/Enemy/Attack_005.png");
 
-        
+        //iddle
+        this.load.image('eIdle1', "Chicken Run Platformer Game Assets 17/Enemy/Idle_000.png");
+        this.load.image('eIdle2', "Chicken Run Platformer Game Assets 17/Enemy/Idle_001.png");
+        this.load.image('eIdle3', "Chicken Run Platformer Game Assets 17/Enemy/Idle_002.png");
+        this.load.image('eIdle4', "Chicken Run Platformer Game Assets 17/Enemy/Idle_003.png");
+        this.load.image('eIdle5', "Chicken Run Platformer Game Assets 17/Enemy/Idle_004.png");
+        this.load.image('eIdle6', "Chicken Run Platformer Game Assets 17/Enemy/Idle_005.png");
+        this.load.image('eIdle7', "Chicken Run Platformer Game Assets 17/Enemy/Idle_006.png");
+        this.load.image('eIdle8', "Chicken Run Platformer Game Assets 17/Enemy/Idle_007.png");
+
+        //run
+        this.load.image('eRun1', "Chicken Run Platformer Game Assets 17/Enemy/Run_000.png");
+        this.load.image('eRun2', "Chicken Run Platformer Game Assets 17/Enemy/Run_001.png");
+        this.load.image('eRun3', "Chicken Run Platformer Game Assets 17/Enemy/Run_002.png");
+        this.load.image('eRun4', "Chicken Run Platformer Game Assets 17/Enemy/Run_003.png");
+        this.load.image('eRun5', "Chicken Run Platformer Game Assets 17/Enemy/Run_004.png");
+        this.load.image('eRun6', "Chicken Run Platformer Game Assets 17/Enemy/Run_005.png");
+        this.load.image('eRun7', "Chicken Run Platformer Game Assets 17/Enemy/Run_006.png");
+        this.load.image('eRun8', "Chicken Run Platformer Game Assets 17/Enemy/Run_007.png");
+
+
+        //--------------------------------------Bala------------------------------------------
+        this.load.image('bullet', "Chicken Run Platformer Game Assets 17/Coins, PowerUps & bullets/Bullet-1.png");
+
 
         //para o loading demorar mais
         //retirar no futuro
@@ -178,17 +209,17 @@ class level3 extends Phaser.Scene{
         //layer4.setCollisionByProperty({ collides: true });
 
         //objeto layer
-        spawnPoint = map.findObject("Objects", obj => obj.name === "Start");
+        this.spawnPoint = map.findObject("Objects", obj => obj.name === "Start");
         ponto0 = map.findObject("Objects", obj => obj.name === "Ponto0");
         ponto1 = map.findObject("Objects", obj => obj.name === "Ponto1");
 
 
         //spawn player
-        player=this.physics.add.sprite(spawnPoint.x,spawnPoint.y-100,"idle0").setScale(0.25);
+        player=this.physics.add.sprite(this.spawnPoint.x,this.spawnPoint.y-100,"idle0").setScale(0.25);
         //bounding box of player
         player.setSize(200, 310).setOffset(140,165);        
         player.setBounce(0);
-
+        player.dir = 0;
         //colisoes entre objetos
         this.physics.add.collider(player, layer2);
         this.physics.add.collider(player, layer4);
@@ -196,13 +227,13 @@ class level3 extends Phaser.Scene{
         
 
         // Phaser supports multiple cameras, but you can access the default camera like this:
-        camera = this.cameras.main;
-        camera.startFollow(player);
+        this.camera = this.cameras.main;
+        this.camera.startFollow(player);
         // Set up the arrows 
-        cursors = this.input.keyboard.createCursorKeys();
+        this.cursors = this.input.keyboard.createCursorKeys();
 
         // Constrain the camera so that it isn't allowed to move outside the width/height of tilemap
-        camera.setBounds(0, 0, map.widthInPixels, map.heightInPixels);
+        this.camera.setBounds(0, 0, map.widthInPixels, map.heightInPixels);
 
 
         //animações
@@ -273,46 +304,142 @@ class level3 extends Phaser.Scene{
         scene2=1;
         
         //brilho
-        camera.setAlpha(obj.brilho);
+        this.camera.setAlpha(obj.brilho);
 
-        
+
+        scene2=1;
+
+
+        //--------------------------INIMIGO----------------------------------------
+
+        //animações
+        this.anims.create({
+            key: 'rightEnemy',
+            frames:[
+                { key: 'eAttack1' },
+                { key: 'eAttack2' },
+                { key: 'eAttack3' },
+                { key: 'eAttack4' },
+                { key: 'eAttack5' },
+                { key: 'eAttack6' },
+            ],
+            frameRate: 24
+        });
+
+        //animações
+        this.anims.create({
+            key: 'downEnemy',
+            frames:[
+                { key: 'eIdle1' },
+                { key: 'eIdle2' },
+                { key: 'eIdle3' },
+                { key: 'eIdle4' },
+                { key: 'eIdle5' },
+                { key: 'eIdle6' },
+                { key: 'eIdle7' },
+                { key: 'eIdle8'}
+            ],
+            frameRate: 24
+        });
+
+
+        //animações
+        this.anims.create({
+            key: 'upEnemy',
+            frames:[
+                { key: 'eRun1' },
+                { key: 'eRun2' },
+                { key: 'eRun3' },
+                { key: 'eRun4' },
+                { key: 'eRun5' },
+                { key: 'eRun6' },
+                { key: 'eRun7' },
+                { key: 'eRun8'}
+            ],
+            frameRate: 24
+        });
+
+
+
+
+
+        this.enemies = this.physics.add.group({
+            classType: Enemy,
+            maxSize: 20,
+            runChildUpdate: true,
+        });
+
+
+        this.enemy = this.enemies.get(250, 250, 'downEnemy', player);
+        this.physics.add.collider(this.enemy, layer2);
+        this.physics.add.collider(this.enemy, player);
+        this.enemy.spawn();
+
+        //-------------------------Bala-----------------------------
+        this.bullets = this.physics.add.group({
+            classType: Bala,
+            maxSize: 1000,
+            runChildUpdate:true
+        });
+
+        this.lastFired = 0;
+
+        this.physics.add.collider(this.bullets, this.enemies, function(){this.bullet.hit(this.enemy);}, undefined, this)
+
+
     }
 
-    update(){
+
+    update(time, delta){
        
         //impedir que o update ocorra primeiro que o load e create
-        if(scene2==0){
+        if(scene2===0){
             
             return;
         }
-               
+
         //variaveis
         let speed = 300;
         let prevVelocity = player.body.velocity.clone();
 
-        if ((cursors.space.isDown || cursors.up.isDown) && player.body.onFloor()){
-                player.body.setVelocityY(-400); // jump up
-                //player.anims.play('rjump', true);
+
+        //cursors.space.isDown ||
+        if ((this.cursors.up.isDown) && player.body.onFloor()){
+            player.body.setVelocityY(-400); // jump up
+            //player.anims.play('rjump', true);
         }
-        if(player.body.velocity.y!=0){
+        if(player.body.velocity.y!==0){
             player.anims.play('up', true);
         }
 
-        if (cursors.left.isDown){
+        if (this.cursors.left.isDown){
             player.body.setVelocityX(-speed); // move left
             player.anims.play('left', true); // play walk animation
-        }else if (cursors.right.isDown){
+            player.dir = -1
+        }else if (this.cursors.right.isDown){
             player.body.setVelocityX(speed); // move right
             player.anims.play('right', true); // play walk animatio
+            player.dir = 1
         } else {
             player.body.setVelocityX(0);
             player.anims.play('downr', true);
+            player.dir = 0;
         }
 
-        //interactividade nos pontos
-        
 
-        //colisoes
+        //Bullet fire
+        if (this.cursors.space.isDown && time > this.lastFired /*&& (cursors.left.isDown || cursors.right.isDown )*/) {
+            this.bullet = this.bullets.get(player.x + 45, player.y+25, 'bullet');
+            console.log("cliquei espaco");
+
+            if (this.bullet)
+            {
+                this.bullet.fire(player);
+
+                //incrementa o tempo que tem que esperar ate ao proximo tiro
+                this.lastFired = time + 500;
+            }
+        }
 
     }
 
