@@ -375,7 +375,7 @@ class level3 extends Phaser.Scene{
         this.physics.add.collider(this.enemy, player);
         this.enemy.spawn();
 
-        //bala-------------------------------------------
+        //-------
         this.bullets = this.physics.add.group({
             classType: Bala,
             maxSize: 1000,

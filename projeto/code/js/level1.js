@@ -8,7 +8,6 @@ var obj={
 var player;
 var scene0;
 
-
 class level1 extends Phaser.Scene{
     constructor(){
         super({
