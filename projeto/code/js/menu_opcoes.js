@@ -162,6 +162,7 @@ class menu_opcoes extends Phaser.Scene{
             if(obj.brilho>0){
                 obj.brilho=obj.brilho - 0.1;
             }
+
         },this);
         btn_bMinus.on("pointerout",function(event){
             this.setScale(0.2);
