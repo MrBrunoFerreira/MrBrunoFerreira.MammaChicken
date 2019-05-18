@@ -132,7 +132,7 @@ class afterdeath extends Phaser.Scene{
                 this.scene.resume("arcade");
                 let theOtherScene = this.scene.get('arcade');
                 theOtherScene.scene.stop();
-                this.scene.start("menu_historia");
+                this.scene.start("menu_jogar");
             }
             
         },this);

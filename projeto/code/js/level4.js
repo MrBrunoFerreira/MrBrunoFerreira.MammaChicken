@@ -191,7 +191,7 @@ class level4 extends Phaser.Scene{
         //objeto layer
         this.spawnPoint = map.findObject("Objects", obj => obj.name === "Start");
         ponto0 = map.findObject("Objects", obj => obj.name === "Ponto0");
-        ponto1 = map.findObject("Objects", obj => obj.name === "Ponto1");
+        //ponto1 = map.findObject("Objects", obj => obj.name === "Ponto1");
 
 
         //spawn player
