@@ -8,7 +8,6 @@ var obj={
 var player;
 var scene0;
 
-
 class level1 extends Phaser.Scene{
     constructor(){
         super({
@@ -220,7 +219,7 @@ class level1 extends Phaser.Scene{
 
         //animações
         this.anims.create({
-            key: 'right',
+            key: 'right1',
             frames:[
                 { key: 'run0' },
                 { key: 'run1' },
@@ -235,7 +234,7 @@ class level1 extends Phaser.Scene{
         });
 
         this.anims.create({
-            key: 'left',
+            key: 'left1',
             frames:[
                 { key: 'run10' },
                 { key: 'run11' },
@@ -250,7 +249,7 @@ class level1 extends Phaser.Scene{
         });
 
         this.anims.create({
-            key: 'downr',
+            key: 'down',
             frames:[
                 { key: 'idle0' },
                 { key: 'idle1' },
@@ -266,25 +265,6 @@ class level1 extends Phaser.Scene{
                 { key: 'idle11' }   
             ],
             frameRate: 11
-        });
-
-        this.anims.create({
-            key: 'downl',
-            frames:[
-                { key: 'idle20' },
-                { key: 'idle21' },
-                { key: 'idle22' },
-                { key: 'idle23' },
-                { key: 'idle24' },
-                { key: 'idle25' },
-                { key: 'idle26' },
-                { key: 'idle27' },
-                { key: 'idle28' },
-                { key: 'idle29' },
-                { key: 'idle30' },
-                { key: 'idle31' }   
-            ],
-            frameRate: 24
         });
 
         this.anims.create({
@@ -544,6 +524,7 @@ class level1 extends Phaser.Scene{
         scene0=1;
 
     }
+  
     update(time, delta) {
 
 
@@ -570,16 +551,16 @@ class level1 extends Phaser.Scene{
         if (this.cursors.left.isDown) {
 
             player.body.setVelocityX(-speed);
-            player.anims.play('left', true); 
+            player.anims.play('left1', true); 
         }
         else if (this.cursors.right.isDown){
 
                 player.body.setVelocityX(speed); 
-                player.anims.play('right', true); 
+                player.anims.play('right1', true); 
 
         } else {
             player.body.setVelocityX(0);
-            player.anims.play('downr', true);
+            player.anims.play('down', true);
         }
 
 

@@ -375,7 +375,7 @@ class level3 extends Phaser.Scene{
         this.physics.add.collider(this.enemy, player);
         this.enemy.spawn();
 
-        //bala-------------------------------------------
+        //-------------------------Bala-----------------------------
         this.bullets = this.physics.add.group({
             classType: Bala,
             maxSize: 1000,
@@ -397,7 +397,7 @@ class level3 extends Phaser.Scene{
             
             return;
         }
-               
+
         //variaveis
         let speed = 300;
         let prevVelocity = player.body.velocity.clone();
@@ -405,8 +405,8 @@ class level3 extends Phaser.Scene{
 
         //cursors.space.isDown ||
         if ((this.cursors.up.isDown) && player.body.onFloor()){
-                player.body.setVelocityY(-400); // jump up
-                //player.anims.play('rjump', true);
+            player.body.setVelocityY(-400); // jump up
+            //player.anims.play('rjump', true);
         }
         if(player.body.velocity.y!==0){
             player.anims.play('up', true);
@@ -427,8 +427,9 @@ class level3 extends Phaser.Scene{
         }
 
 
+        //Bullet fire
         if (this.cursors.space.isDown && time > this.lastFired /*&& (cursors.left.isDown || cursors.right.isDown )*/) {
-            this.bullet = this.bullets.get(player.x + 45, player.y+25);
+            this.bullet = this.bullets.get(player.x + 45, player.y+25, 'bullet');
             console.log("cliquei espaco");
 
             if (this.bullet)
@@ -436,16 +437,9 @@ class level3 extends Phaser.Scene{
                 this.bullet.fire(player);
 
                 //incrementa o tempo que tem que esperar ate ao proximo tiro
-                this.lastFired = time + 400;
+                this.lastFired = time + 500;
             }
         }
-
-        //interactividade nos pontos
-        
-
-        //colisoes
-
-
 
     }
 

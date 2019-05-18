@@ -44,10 +44,10 @@ class arcade extends Phaser.Scene{
         this.load.image("arvore2","assets/Backgrounds/image2.png");
         this.load.image("plantaforma1","Chicken Run Platformer Game Assets 17/BG & Platform/image-06.png");
         this.load.image("chao","Chicken Run Platformer Game Assets 17/BG & Platform/image-09.png");
-        /*this.load.image("Obstaculos","Chicken Run Platformer Game Assets 17/Obstacles/obstacles-02.png");
-        this.load.image("Obstaculos1","Chicken Run Platformer Game Assets 17/Obstacles/obstacles-03.png");
-        this.load.image("Obstaculos2","Chicken Run Platformer Game Assets 17/Obstacles/obstacles-04.png");
-        this.load.image("Obstaculos3","Chicken Run Platformer Game Assets 17/Obstacles/obstacles-05.png");*/
+        this.load.image("armadilha1","Chicken Run Platformer Game Assets 17/Obstacles/obstacles-02.png");
+        this.load.image("metal1","assets/Backgrounds/metal1.png");
+        this.load.image("metal2","assets/Backgrounds/metal2.png");
+        this.load.image("metal3","assets/Backgrounds/metal3.png");
 
 
         //como as animacoes dos characters estao em png tenho de dar load de cada uma
@@ -91,7 +91,10 @@ class arcade extends Phaser.Scene{
 
 
 
-        this.spawnPoint = map.findObject("Objects", obj => obj.name === "Start");
+        //--------------------------------------Bala------------------------------------------
+        this.load.image('bullet2', "Chicken Run Platformer Game Assets 17/Coins, PowerUps & bullets/Bullet-2.png");
+
+
         //para o loading demorar mais
         //retirar no futuro
         for(let i=0; i<100; i++){
@@ -147,23 +150,25 @@ class arcade extends Phaser.Scene{
         this.scene.launch("status",obj);
 
         //creat mapa/tilesets
-        let map = this.make.tilemap({ key: "map5" });      
+        let map = this.make.tilemap({ key: "map5" });
         let tileset1 = map.addTilesetImage("sky");
         let tileset2 = map.addTilesetImage("chao");
         let tileset3 = map.addTilesetImage("arena");
         let tileset4 = map.addTilesetImage("plantaforma1");
         let tileset5 = map.addTilesetImage("arvore2");
-        /*let tileset6 = map.addTilesetImage("arvore1");
-        let tileset7 = map.addTilesetImage("arvore2");
-        let tileset8 = map.addTilesetImage("placa");*/
+        let tileset6 = map.addTilesetImage("metal1");
+        let tileset7 = map.addTilesetImage("metal2");
+        let tileset8 = map.addTilesetImage("metal3");
+        let tileset9 = map.addTilesetImage("armadilha1");
 
 
-        let layer1 = map.createStaticLayer('Background', tileset1,0,0);
-        let layer2 = map.createStaticLayer('Ground', [tileset2 ,tileset4],0,0);
+        //let layer1 = map.createStaticLayer('Background', tileset1,0,0);
+        let layer2 = map.createStaticLayer('Ground', [tileset6 ,tileset7,tileset8],0,0);
 
         //let layer3 = map.createStaticLayer('Arvores', [tileset6 ,tileset7,tileset8],0,0);
         let layer4 = map.createStaticLayer('Worldbounds', [tileset5],0,0);
         let layer5 = map.createStaticLayer('arenabck', [tileset3],0,0);
+        let layer6 = map.createStaticLayer('Armadilhas', [tileset9],0,0);
         //let layer4 = map.createStaticLayer('Armadilhas', [tileset8,tileset9,tileset10,tileset11],0,0);
         //set depth
         layer2.setDepth(10);
@@ -171,17 +176,14 @@ class arcade extends Phaser.Scene{
         //load colisoes
         layer2.setCollisionByProperty({ collides: true });
         layer4.setCollisionByProperty({ collides: true });
+        layer6.setCollisionByProperty({ collides: true });
 
         //layer4.setCollisionByProperty({ collides: true });
 
-        //objeto layer
-        spawnPoint = map.findObject("Objects", obj => obj.name === "Start");
-        //ponto0 = map.findObject("Objects", obj => obj.name === "Ponto0");
-        //ponto1 = map.findObject("Objects", obj => obj.name === "Ponto1");
-
+        this.spawnPoint = map.findObject("Objects", obj => obj.name === "Start");
 
         //spawn player
-        player=this.physics.add.sprite(spawnPoint.x,spawnPoint.y-100,"idle0").setScale(0.25);
+        player=this.physics.add.sprite(this.spawnPoint.x,this.spawnPoint.y-100,"idle0").setScale(0.25);
         //bounding box of player
         player.setSize(200, 310).setOffset(140,165);
         player.setBounce(0);
@@ -189,17 +191,34 @@ class arcade extends Phaser.Scene{
         //colisoes entre objetos
         this.physics.add.collider(player, layer2);
         this.physics.add.collider(player, layer4);
+        this.physics.add.collider(player, layer6,function ()
+            {
+                player.body.setVelocityY(-400);
+
+                if(!heart1.visible && !heart2.visible && !heart3.visible){
+                    morte=true;
+                    //ecrã de morte
+                    this.scene.pause();
+                    this.scene.launch("afterdeath",obj);
+                }else if (heart1.visible && !heart2.visible && !heart3.visible) {
+                    heart1.setVisible(false);
+                }else if (heart1.visible && heart2.visible && !heart3.visible) {
+                    heart2.setVisible(false);   
+                }else if (heart1.visible && heart2.visible && heart3.visible) {
+                    heart3.setVisible(false);
+                } 
+        },null, this);
 
         
 
         // Phaser supports multiple cameras, but you can access the default camera like this:
-        camera = this.cameras.main;
-        camera.startFollow(player);
+        this.camera = this.cameras.main;
+        this.camera.startFollow(player);
         // Set up the arrows 
-        cursors = this.input.keyboard.createCursorKeys();
+        this.cursors = this.input.keyboard.createCursorKeys();
 
         // Constrain the camera so that it isn't allowed to move outside the width/height of tilemap
-        camera.setBounds(0, 0, map.widthInPixels, map.heightInPixels);
+        this.camera.setBounds(0, 0, map.widthInPixels, map.heightInPixels);
 
 
         //animações
@@ -270,46 +289,75 @@ class arcade extends Phaser.Scene{
         scene5=1;
         
         //brilho
-        camera.setAlpha(obj.brilho);
+        this.camera.setAlpha(obj.brilho);
 
-        
+
+
+
+        //-------------------------Bala-----------------------------
+        this.bullets = this.physics.add.group({
+            classType: Bala,
+            maxSize: 1000,
+            runChildUpdate:true
+        });
+
+        this.lastFired = 0;
+
+        this.physics.add.collider(this.bullets, this.enemies, function(){this.bullet.hit(this.enemy);}, undefined, this)
+
+
     }
 
-    update(){
+    update(time, delta){
        
         //impedir que o update ocorra primeiro que o load e create
-        if(scene5==0){
+        if(scene5===0){
             
             return;
         }
-               
+
         //variaveis
         let speed = 300;
         let prevVelocity = player.body.velocity.clone();
 
-        if ((cursors.space.isDown || cursors.up.isDown) && player.body.onFloor()){
-                player.body.setVelocityY(-500); // jump up
-                //player.anims.play('rjump', true);
+
+        //cursors.space.isDown ||
+        if ((this.cursors.up.isDown) && player.body.onFloor()){
+            player.body.setVelocityY(-400); // jump up
+            //player.anims.play('rjump', true);
         }
-        if(player.body.velocity.y!=0){
+        if(player.body.velocity.y!==0){
             player.anims.play('up', true);
         }
 
-        if (cursors.left.isDown){
+        if (this.cursors.left.isDown){
             player.body.setVelocityX(-speed); // move left
             player.anims.play('left', true); // play walk animation
-        }else if (cursors.right.isDown){
+            player.dir = -1
+        }else if (this.cursors.right.isDown){
             player.body.setVelocityX(speed); // move right
             player.anims.play('right', true); // play walk animatio
+            player.dir = 1
         } else {
             player.body.setVelocityX(0);
             player.anims.play('downr', true);
+            player.dir = 0;
         }
 
-        //interactividade nos pontos
-        
 
-        //colisoes
+        //Bullet fire
+        if (this.cursors.space.isDown && time > this.lastFired /*&& (cursors.left.isDown || cursors.right.isDown )*/) {
+            this.bullet = this.bullets.get(player.x + 45, player.y+25, 'bullet2');
+            console.log("cliquei espaco");
+
+            if (this.bullet)
+            {
+                this.bullet.fire(player);
+
+                //incrementa o tempo que tem que esperar ate ao proximo tiro
+                this.lastFired = time + 500;
+            }
+        }
 
     }
 

@@ -1,6 +1,6 @@
 class Bala extends Phaser.Physics.Arcade.Sprite {
-    constructor(scene, x, y, frame){
-        super(scene, x, y, 'bullet', frame);
+    constructor(scene, x, y, sprite, frame){
+        super(scene, x, y, sprite, frame);
     }
 
     fire(source){

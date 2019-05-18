@@ -20,7 +20,7 @@ function main(){
         physics:{
             default: "arcade",
             arcade: {
-                gravity:{ y:700},
+                gravity:{ y:600},
                 debug: true
             }
         },
