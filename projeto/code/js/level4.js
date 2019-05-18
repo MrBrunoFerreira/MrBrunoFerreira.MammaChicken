@@ -94,7 +94,10 @@ class level4 extends Phaser.Scene{
         this.load.image('jump4', 'Chicken Run Platformer Game Assets 17/Character Sprites/Jump_004.png');
 
 
-        
+
+        //--------------------------------------Bala------------------------------------------
+        this.load.image('bullet', "Chicken Run Platformer Game Assets 17/Coins, PowerUps & bullets/Bullet-1.png");
+
 
         //para o loading demorar mais
         //retirar no futuro
@@ -310,24 +313,37 @@ class level4 extends Phaser.Scene{
         //brilho
         this.camera.setAlpha(obj.brilho);
 
+
+        //-------------------------Bala-----------------------------
+        this.bullets = this.physics.add.group({
+            classType: Bala,
+            maxSize: 1000,
+            runChildUpdate:true
+        });
+
+        this.lastFired = 0;
+
+        this.physics.add.collider(this.bullets, this.enemies, function(){this.bullet.hit(this.enemy);}, undefined, this)
         
     }
 
-    update(){
+    update(time, delta){
        
         //impedir que o update ocorra primeiro que o load e create
-        if(scene4==0){
+        if(scene4===0){
             
             return;
         }
-               
+
         //variaveis
         let speed = 300;
         let prevVelocity = player.body.velocity.clone();
 
-        if ((this.cursors.space.isDown || this.cursors.up.isDown) && player.body.onFloor()){
-                player.body.setVelocityY(-400); // jump up
-                //player.anims.play('rjump', true);
+
+        //cursors.space.isDown ||
+        if ((this.cursors.up.isDown) && player.body.onFloor()){
+            player.body.setVelocityY(-400); // jump up
+            //player.anims.play('rjump', true);
         }
         if(player.body.velocity.y!==0){
             player.anims.play('up', true);
@@ -336,18 +352,31 @@ class level4 extends Phaser.Scene{
         if (this.cursors.left.isDown){
             player.body.setVelocityX(-speed); // move left
             player.anims.play('left', true); // play walk animation
+            player.dir = -1
         }else if (this.cursors.right.isDown){
             player.body.setVelocityX(speed); // move right
             player.anims.play('right', true); // play walk animatio
+            player.dir = 1
         } else {
             player.body.setVelocityX(0);
             player.anims.play('downr', true);
+            player.dir = 0;
         }
 
-        //interactividade nos pontos
-        
 
-        //colisoes
+        //Bullet fire
+        if (this.cursors.space.isDown && time > this.lastFired /*&& (cursors.left.isDown || cursors.right.isDown )*/) {
+            this.bullet = this.bullets.get(player.x + 45, player.y+25, 'bullet');
+            console.log("cliquei espaco");
+
+            if (this.bullet)
+            {
+                this.bullet.fire(player);
+
+                //incrementa o tempo que tem que esperar ate ao proximo tiro
+                this.lastFired = time + 500;
+            }
+        }
 
     }
 
