@@ -56,64 +56,96 @@ class menu_historia extends Phaser.Scene{
         //btnSound.play();
 
         //eventListerens dos btns
+
         //btn_voltar
-        btn_voltar.on("pointerover",function(event){
+        btn_voltar.on("pointerover",function(){
             this.setScale(0.32);
         });
-        btn_voltar.on("pointerdown",function(event){
+
+
+        btn_voltar.on("pointerdown",function(){
             btnSound.play();
             this.scene.start("menu_jogar",brilho);
         },this);
-        btn_voltar.on("pointerout",function(event){
+
+
+        btn_voltar.on("pointerout",function(){
             this.setScale(0.3);
         });
+
+
         //btn_opcoes
-        btn_opcoes.on("pointerover",function(event){
+        btn_opcoes.on("pointerover",function(){
             this.setScale(0.32);
         });
-        btn_opcoes.on("pointerdown",function(event){
+
+
+        btn_opcoes.on("pointerdown",function(){
             btnSound.play();
             console.log("cliquei botao opcoes");
             this.scene.start("menu_opcoes","3");
         },this);
-        btn_opcoes.on("pointerout",function(event){
-            this.setScale(0.3);
-        });
-        //btn_level1
-        btn_level1.on("pointerover",function(event){
-            this.setScale(0.32);
-        });
-        btn_level1.on("pointerdown",function(event){
-            btnSound.play();
-            this.scene.start("level1",brilho);
-        },this);
-        btn_level1.on("pointerout",function(event){
-            this.setScale(0.3);
-        });
-        //btn_level2
-        btn_level2.on("pointerover",function(event){
-            this.setScale(0.32);
-        });
-        btn_level2.on("pointerdown",function(event){
-            btnSound.play();
-            this.scene.start("level2",brilho);
-        },this);
-        btn_level2.on("pointerout",function(event){
-            this.setScale(0.3);
-        });
-        //btn_level3
-        btn_level3.on("pointerover",function(event){
-            this.setScale(0.32);
-        });
-        btn_level3.on("pointerdown",function(event){
-            btnSound.play();
-            this.scene.start("level3",brilho);
-        },this);
-        btn_level3.on("pointerout",function(event){
+
+
+        btn_opcoes.on("pointerout",function(){
             this.setScale(0.3);
         });
 
+
+        //btn_level1
+        btn_level1.on("pointerover",function(){
+            this.setScale(0.32);
+        });
+
+
+        btn_level1.on("pointerdown",function(){
+            btnSound.play();
+            this.scene.start("level1",brilho);
+        },this);
+
+
+        btn_level1.on("pointerout",function(){
+            this.setScale(0.3);
+        });
+
+
+
+        //btn_level2
+        btn_level2.on("pointerover",function(){
+            this.setScale(0.32);
+        });
+
+
+        btn_level2.on("pointerdown",function(){
+            btnSound.play();
+            this.scene.start("level2",brilho);
+        },this);
+
+
+        btn_level2.on("pointerout",function(){
+            this.setScale(0.3);
+        });
+
+
+
+        //btn_level3
+        btn_level3.on("pointerover",function(){
+            this.setScale(0.32);
+        });
+
+
+        btn_level3.on("pointerdown",function(){
+            btnSound.play();
+            this.scene.start("level3",brilho);
+        },this);
+
+
+        btn_level3.on("pointerout",function(){
+            this.setScale(0.3);
+        });
     }
+
+
     update(){
 
     }
