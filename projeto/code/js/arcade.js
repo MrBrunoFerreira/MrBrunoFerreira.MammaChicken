@@ -44,10 +44,10 @@ class arcade extends Phaser.Scene{
         this.load.image("arvore2","assets/Backgrounds/image2.png");
         this.load.image("plantaforma1","Chicken Run Platformer Game Assets 17/BG & Platform/image-06.png");
         this.load.image("chao","Chicken Run Platformer Game Assets 17/BG & Platform/image-09.png");
-        /*this.load.image("Obstaculos","Chicken Run Platformer Game Assets 17/Obstacles/obstacles-02.png");
-        this.load.image("Obstaculos1","Chicken Run Platformer Game Assets 17/Obstacles/obstacles-03.png");
-        this.load.image("Obstaculos2","Chicken Run Platformer Game Assets 17/Obstacles/obstacles-04.png");
-        this.load.image("Obstaculos3","Chicken Run Platformer Game Assets 17/Obstacles/obstacles-05.png");*/
+        this.load.image("armadilha1","Chicken Run Platformer Game Assets 17/Obstacles/obstacles-02.png");
+        this.load.image("metal1","assets/Backgrounds/metal1.png");
+        this.load.image("metal2","assets/Backgrounds/metal2.png");
+        this.load.image("metal3","assets/Backgrounds/metal3.png");
 
 
         //como as animacoes dos characters estao em png tenho de dar load de cada uma
@@ -153,17 +153,19 @@ class arcade extends Phaser.Scene{
         let tileset3 = map.addTilesetImage("arena");
         let tileset4 = map.addTilesetImage("plantaforma1");
         let tileset5 = map.addTilesetImage("arvore2");
-        /*let tileset6 = map.addTilesetImage("arvore1");
-        let tileset7 = map.addTilesetImage("arvore2");
-        let tileset8 = map.addTilesetImage("placa");*/
+        let tileset6 = map.addTilesetImage("metal1");
+        let tileset7 = map.addTilesetImage("metal2");
+        let tileset8 = map.addTilesetImage("metal3");
+        let tileset9 = map.addTilesetImage("armadilha1");
 
 
-        let layer1 = map.createStaticLayer('Background', tileset1,0,0);
-        let layer2 = map.createStaticLayer('Ground', [tileset2 ,tileset4],0,0);
+        //let layer1 = map.createStaticLayer('Background', tileset1,0,0);
+        let layer2 = map.createStaticLayer('Ground', [tileset6 ,tileset7,tileset8],0,0);
 
         //let layer3 = map.createStaticLayer('Arvores', [tileset6 ,tileset7,tileset8],0,0);
         let layer4 = map.createStaticLayer('Worldbounds', [tileset5],0,0);
         let layer5 = map.createStaticLayer('arenabck', [tileset3],0,0);
+        let layer6 = map.createStaticLayer('Armadilhas', [tileset9],0,0);
         //let layer4 = map.createStaticLayer('Armadilhas', [tileset8,tileset9,tileset10,tileset11],0,0);
         //set depth
         layer2.setDepth(10);
@@ -171,6 +173,7 @@ class arcade extends Phaser.Scene{
         //load colisoes
         layer2.setCollisionByProperty({ collides: true });
         layer4.setCollisionByProperty({ collides: true });
+        layer6.setCollisionByProperty({ collides: true });
 
         //layer4.setCollisionByProperty({ collides: true });
 
@@ -189,6 +192,23 @@ class arcade extends Phaser.Scene{
         //colisoes entre objetos
         this.physics.add.collider(player, layer2);
         this.physics.add.collider(player, layer4);
+        this.physics.add.collider(player, layer6,function ()
+            {
+                player.body.setVelocityY(-400);
+
+                if(!heart1.visible && !heart2.visible && !heart3.visible){
+                    morte=true;
+                    //ecrã de morte
+                    this.scene.pause();
+                    this.scene.launch("afterdeath",obj);
+                }else if (heart1.visible && !heart2.visible && !heart3.visible) {
+                    heart1.setVisible(false);
+                }else if (heart1.visible && heart2.visible && !heart3.visible) {
+                    heart2.setVisible(false);   
+                }else if (heart1.visible && heart2.visible && heart3.visible) {
+                    heart3.setVisible(false);
+                } 
+        },null, this);
 
         
 
