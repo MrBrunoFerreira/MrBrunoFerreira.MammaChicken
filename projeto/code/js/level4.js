@@ -189,13 +189,13 @@ class level4 extends Phaser.Scene{
         //layer4.setCollisionByProperty({ collides: true });
 
         //objeto layer
-        spawnPoint = map.findObject("Objects", obj => obj.name === "Start");
+        this.spawnPoint = map.findObject("Objects", obj => obj.name === "Start");
         ponto0 = map.findObject("Objects", obj => obj.name === "Ponto0");
         ponto1 = map.findObject("Objects", obj => obj.name === "Ponto1");
 
 
         //spawn player
-        player=this.physics.add.sprite(spawnPoint.x,spawnPoint.y-100,"idle0").setScale(0.25);
+        player=this.physics.add.sprite(this.spawnPoint.x,this.spawnPoint.y-100,"idle0").setScale(0.25);
         //bounding box of player
         player.setSize(200, 310).setOffset(140,165);        
         player.setBounce(0);
@@ -231,13 +231,13 @@ class level4 extends Phaser.Scene{
         
 
         // Phaser supports multiple cameras, but you can access the default camera like this:
-        camera = this.cameras.main;
-        camera.startFollow(player);
+        this.camera = this.cameras.main;
+        this.camera.startFollow(player);
         // Set up the arrows 
-        cursors = this.input.keyboard.createCursorKeys();
+        this.cursors = this.input.keyboard.createCursorKeys();
 
         // Constrain the camera so that it isn't allowed to move outside the width/height of tilemap
-        camera.setBounds(0, 0, map.widthInPixels, map.heightInPixels);
+        this.camera.setBounds(0, 0, map.widthInPixels, map.heightInPixels);
 
 
         //animações
@@ -308,7 +308,7 @@ class level4 extends Phaser.Scene{
         scene4=1;
         
         //brilho
-        camera.setAlpha(obj.brilho);
+        this.camera.setAlpha(obj.brilho);
 
         
     }
@@ -325,18 +325,18 @@ class level4 extends Phaser.Scene{
         let speed = 300;
         let prevVelocity = player.body.velocity.clone();
 
-        if ((cursors.space.isDown || cursors.up.isDown) && player.body.onFloor()){
+        if ((this.cursors.space.isDown || this.cursors.up.isDown) && player.body.onFloor()){
                 player.body.setVelocityY(-400); // jump up
                 //player.anims.play('rjump', true);
         }
-        if(player.body.velocity.y!=0){
+        if(player.body.velocity.y!==0){
             player.anims.play('up', true);
         }
 
-        if (cursors.left.isDown){
+        if (this.cursors.left.isDown){
             player.body.setVelocityX(-speed); // move left
             player.anims.play('left', true); // play walk animation
-        }else if (cursors.right.isDown){
+        }else if (this.cursors.right.isDown){
             player.body.setVelocityX(speed); // move right
             player.anims.play('right', true); // play walk animatio
         } else {
