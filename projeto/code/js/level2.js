@@ -18,6 +18,8 @@ var ponto1;
 
 //textos
 var text1;
+var text2;
+var text3;
 
 var scene1;
 
@@ -59,23 +61,23 @@ class level2 extends Phaser.Scene{
 
         //como as animacoes dos characters estao em png tenho de dar load de cada uma
         //load run direita
-        this.load.image('run0', 'Chicken Run Platformer Game Assets 17/Character Sprites/Run with Gun_000.png');
-        this.load.image('run1', 'Chicken Run Platformer Game Assets 17/Character Sprites/Run with Gun_001.png');
-        this.load.image('run2', 'Chicken Run Platformer Game Assets 17/Character Sprites/Run with Gun_002.png');
-        this.load.image('run3', 'Chicken Run Platformer Game Assets 17/Character Sprites/Run with Gun_003.png');
-        this.load.image('run4', 'Chicken Run Platformer Game Assets 17/Character Sprites/Run with Gun_004.png');
-        this.load.image('run5', 'Chicken Run Platformer Game Assets 17/Character Sprites/Run with Gun_005.png');
-        this.load.image('run6', 'Chicken Run Platformer Game Assets 17/Character Sprites/Run with Gun_006.png');
-        this.load.image('run7', 'Chicken Run Platformer Game Assets 17/Character Sprites/Run with Gun_007.png');
+        this.load.image('0run', 'Chicken Run Platformer Game Assets 17/Character Sprites/Run with Gun_000.png');
+        this.load.image('1run', 'Chicken Run Platformer Game Assets 17/Character Sprites/Run with Gun_001.png');
+        this.load.image('2run', 'Chicken Run Platformer Game Assets 17/Character Sprites/Run with Gun_002.png');
+        this.load.image('3run', 'Chicken Run Platformer Game Assets 17/Character Sprites/Run with Gun_003.png');
+        this.load.image('4run', 'Chicken Run Platformer Game Assets 17/Character Sprites/Run with Gun_004.png');
+        this.load.image('5run', 'Chicken Run Platformer Game Assets 17/Character Sprites/Run with Gun_005.png');
+        this.load.image('6run', 'Chicken Run Platformer Game Assets 17/Character Sprites/Run with Gun_006.png');
+        this.load.image('7run', 'Chicken Run Platformer Game Assets 17/Character Sprites/Run with Gun_007.png');
         //load run esquerda
-        this.load.image('run10', 'Chicken Run Platformer Game Assets 17/Character Sprites/Run with Gun_010.png');
-        this.load.image('run11', 'Chicken Run Platformer Game Assets 17/Character Sprites/Run with Gun_011.png');
-        this.load.image('run12', 'Chicken Run Platformer Game Assets 17/Character Sprites/Run with Gun_012.png');
-        this.load.image('run13', 'Chicken Run Platformer Game Assets 17/Character Sprites/Run with Gun_013.png');
-        this.load.image('run14', 'Chicken Run Platformer Game Assets 17/Character Sprites/Run with Gun_014.png');
-        this.load.image('run15', 'Chicken Run Platformer Game Assets 17/Character Sprites/Run with Gun_015.png');
-        this.load.image('run16', 'Chicken Run Platformer Game Assets 17/Character Sprites/Run with Gun_016.png');
-        this.load.image('run17', 'Chicken Run Platformer Game Assets 17/Character Sprites/Run with Gun_017.png');
+        this.load.image('10run', 'Chicken Run Platformer Game Assets 17/Character Sprites/Run with Gun_010.png');
+        this.load.image('11run', 'Chicken Run Platformer Game Assets 17/Character Sprites/Run with Gun_011.png');
+        this.load.image('12run', 'Chicken Run Platformer Game Assets 17/Character Sprites/Run with Gun_012.png');
+        this.load.image('13run', 'Chicken Run Platformer Game Assets 17/Character Sprites/Run with Gun_013.png');
+        this.load.image('14run', 'Chicken Run Platformer Game Assets 17/Character Sprites/Run with Gun_014.png');
+        this.load.image('15run', 'Chicken Run Platformer Game Assets 17/Character Sprites/Run with Gun_015.png');
+        this.load.image('16run', 'Chicken Run Platformer Game Assets 17/Character Sprites/Run with Gun_016.png');
+        this.load.image('17run', 'Chicken Run Platformer Game Assets 17/Character Sprites/Run with Gun_017.png');
         //load idle direita
         this.load.image('idle0', 'Chicken Run Platformer Game Assets 17/Character Sprites/Idle_000.png');
         this.load.image('idle1', 'Chicken Run Platformer Game Assets 17/Character Sprites/Idle_001.png');
@@ -181,10 +183,11 @@ class level2 extends Phaser.Scene{
 
         let layer1 = map.createStaticLayer('Background', tileset1,0,0);
         let layer2 = map.createStaticLayer('Ground', [tileset2 ,tileset3 ,tileset4 ,tileset5],0,0);
-
         let layer3 = map.createStaticLayer('Arvores', [tileset6 ,tileset7,tileset12],0,0);
         let layer4 = map.createStaticLayer('Armadilhas', [tileset8,tileset10,tileset11],0,0);
         let layer5 = map.createStaticLayer('Box', [tileset9],0,0);
+        let layer6 = map.createStaticLayer('Worldbounds', [tileset7],0,0);
+
         //set depth
         layer2.setDepth(10);
 
@@ -192,6 +195,7 @@ class level2 extends Phaser.Scene{
         layer2.setCollisionByProperty({ collides: true });
         layer4.setCollisionByProperty({ collides: true });
         layer5.setCollisionByProperty({ collides: true });
+        layer6.setCollisionByProperty({ collides: true });
 
         //objeto layer
         spawnPoint = map.findObject("Objects", obj => obj.name === "Start");
@@ -202,7 +206,7 @@ class level2 extends Phaser.Scene{
         //spawn player
         player=this.physics.add.sprite(spawnPoint.x,spawnPoint.y-100,"idle0").setScale(0.25);
         //bounding box of player
-        player.setSize(300, 340).setOffset(100,135);
+        player.setSize(200, 310).setOffset(140,165);
         player.setBounce(0);
 
         //colisoes entre objetos
@@ -237,6 +241,9 @@ class level2 extends Phaser.Scene{
         this.physics.add.collider(player, layer5,function ()
             {
         },null, this);
+        this.physics.add.collider(player, layer6,function ()
+            {
+        },null, this);
         
         // Phaser supports multiple cameras, but you can access the default camera like this:
         camera = this.cameras.main;
@@ -247,20 +254,18 @@ class level2 extends Phaser.Scene{
         // Constrain the camera so that it isn't allowed to move outside the width/height of tilemap
         camera.setBounds(0, 0, map.widthInPixels, map.heightInPixels);
 
-        console.log(cursors);
-
         //animações
         this.anims.create({
             key: 'right',
             frames:[
-                { key: 'run0' },
-                { key: 'run1' },
-                { key: 'run2' },
-                { key: 'run3' },
-                { key: 'run4' },
-                { key: 'run5' },
-                { key: 'run6' },
-                { key: 'run7'}
+                { key: '0run' },
+                { key: '1run' },
+                { key: '2run' },
+                { key: '3run' },
+                { key: '4run' },
+                { key: '5run' },
+                { key: '6run' },
+                { key: '7run'}
             ],
             frameRate: 24     
         });
@@ -268,14 +273,14 @@ class level2 extends Phaser.Scene{
         this.anims.create({
             key: 'left',
             frames:[
-                { key: 'run10' },
-                { key: 'run11' },
-                { key: 'run12' },
-                { key: 'run13' },
-                { key: 'run14' },
-                { key: 'run15' },
-                { key: 'run16' },
-                { key: 'run17'}
+                { key: '10run' },
+                { key: '11run' },
+                { key: '12run' },
+                { key: '13run' },
+                { key: '14run' },
+                { key: '15run' },
+                { key: '16run' },
+                { key: '17run'}
             ],
             frameRate: 24     
         });
@@ -333,7 +338,7 @@ class level2 extends Phaser.Scene{
         let content1 = [
             "Desvie-se das armadilhas"
         ];
-        text1 = this.add.text(ponto0.x, 100, content1, {
+        text1 = this.add.text(ponto0.x, 150, content1, {
             fontSize: '18px',
             padding: { x: 10, y: 5 },
             backgroundColor: '#000000',
@@ -341,6 +346,31 @@ class level2 extends Phaser.Scene{
         });
         text1.setScrollFactor(1);
         text1.setVisible(false);
+        //text2
+        let content2 = [
+            "Pressione F para interagir"
+        ];
+        text2 = this.add.text(ponto1.x, 250, content2, {
+            fontSize: '18px',
+            padding: { x: 10, y: 5 },
+            backgroundColor: '#000000',
+            fill: '#ffffff'
+        });
+        text2.setScrollFactor(1);
+        text2.setVisible(false);
+        //text3
+        let content3 = [
+            "Bem... não sei porque",
+            "razão o Joni me deu a P90!?"
+        ];
+        text3 = this.add.text(ponto1.x, 250, content3, {
+            fontSize: '18px',
+            padding: { x: 10, y: 5 },
+            backgroundColor: '#000000',
+            fill: '#ffffff'
+        });
+        text3.setScrollFactor(1);
+        text3.setVisible(false);
 
         
         //brilho
@@ -392,6 +422,22 @@ class level2 extends Phaser.Scene{
             player.body.debugBodyColor = 0xffff00; //cor para debug
             text1.setVisible(true);
 
+        }else if (player.x-32<=ponto1.x+ponto1.width && player.x+32>=ponto1.x) {
+             player.body.debugBodyColor = 0xffff00; //cor para debug
+             text2.setVisible(true);
+             this.input.keyboard.once("keydown_F", event => {
+                text2.destroy();
+                text3.setVisible(true);
+                this.input.keyboard.once("keydown_F", event => {
+                    text3.destroy();
+                    let scene1 = this.scene.get('status');
+                    scene1.scene.stop();
+                    let scene2 = this.scene.get('menu_pause');
+                    scene2.scene.stop();
+                    this.scene.stop();
+                    this.scene.start("menu_historia",brilho);
+                });
+            });
         }
         else{
             player.body.debugBodyColor = 0xff00ff; //cor para debug
