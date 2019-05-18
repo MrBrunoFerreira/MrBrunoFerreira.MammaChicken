@@ -2,15 +2,12 @@
 
 var obj={
         brilho:1,
-        nextpage:2,
+        nextpage:3
 };
-
-var morte=false;
 
 var player;
 var volumeBar;
 var volumeBox;
-
 
 //pontos
 var ponto0;
@@ -18,45 +15,43 @@ var ponto1;
 
 //textos
 var text1;
-var text2;
-var text3;
 
-var scene1;
+var scene4;
 
-class level2 extends Phaser.Scene{
+class level4 extends Phaser.Scene{
     constructor(){
         super({
-            key: "level2"
+            key: "level4"
         });
     }
 
     init(data){
         obj.brilho=data;
-        obj.nextpage=2;
+        obj.nextpage=4;
     }
-
     preload(){
 
-        scene1=0;
+        scene4=0;
 
         //variaveis
         let ch=this.game.renderer.height;
         let cw=this.game.renderer.width;
 
         //dar load do mapa 
-        this.load.tilemapTiledJSON("map2", "maps/level2.json");
+        this.load.tilemapTiledJSON("map4", "maps/level4.json");
         this.load.image("sky","Chicken Run Platformer Game Assets 17/BG & Platform/image-02.png");
         this.load.image("arvore1","assets/Backgrounds/image1.png");
         this.load.image("arvore2","assets/Backgrounds/image2.png");
         this.load.image("placa","assets/Backgrounds/teste1.png");
+        this.load.image("houses","assets/Backgrounds/houses1.png");
         this.load.image("plantaforma1","Chicken Run Platformer Game Assets 17/BG & Platform/image-06.png");
         this.load.image("plantaforma2","Chicken Run Platformer Game Assets 17/BG & Platform/image-07.png");
         this.load.image("plantaforma3","Chicken Run Platformer Game Assets 17/BG & Platform/image-08.png");
-        this.load.image("plantaforma4","Chicken Run Platformer Game Assets 17/BG & Platform/image-09.png");
-        this.load.image("Obstaculos","Chicken Run Platformer Game Assets 17/Obstacles/obstacles-02.png");
-        this.load.image("Obstaculos1","Chicken Run Platformer Game Assets 17/Obstacles/obstacles-03.png");
-        this.load.image("Obstaculos2","Chicken Run Platformer Game Assets 17/Obstacles/obstacles-04.png");
-        this.load.image("Obstaculos3","Chicken Run Platformer Game Assets 17/Obstacles/obstacles-05.png");
+        this.load.image("chao","Chicken Run Platformer Game Assets 17/BG & Platform/image-09.png");
+        this.load.image("armadilha1","Chicken Run Platformer Game Assets 17/Obstacles/obstacles-02.png");
+        this.load.image("armadilha2","Chicken Run Platformer Game Assets 17/Obstacles/obstacles-03.png");
+        this.load.image("armadilha3","Chicken Run Platformer Game Assets 17/Obstacles/obstacles-04.png");
+        this.load.image("armadilha4","Chicken Run Platformer Game Assets 17/Obstacles/obstacles-05.png");
 
 
         //como as animacoes dos characters estao em png tenho de dar load de cada uma
@@ -98,24 +93,16 @@ class level2 extends Phaser.Scene{
         this.load.image('jump3', 'Chicken Run Platformer Game Assets 17/Character Sprites/Jump_003.png');
         this.load.image('jump4', 'Chicken Run Platformer Game Assets 17/Character Sprites/Jump_004.png');
 
-        //load morte
-        this.load.image('die0', 'Chicken Run Platformer Game Assets 17/Character Sprites/Die_000.png');
-        this.load.image('die1', 'Chicken Run Platformer Game Assets 17/Character Sprites/Die_001.png');
-        this.load.image('die2', 'Chicken Run Platformer Game Assets 17/Character Sprites/Die_002.png');
-        this.load.image('die3', 'Chicken Run Platformer Game Assets 17/Character Sprites/Die_003.png');
-        this.load.image('die4', 'Chicken Run Platformer Game Assets 17/Character Sprites/Die_004.png');
-        this.load.image('die5', 'Chicken Run Platformer Game Assets 17/Character Sprites/Die_005.png');
-        this.load.image('die6', 'Chicken Run Platformer Game Assets 17/Character Sprites/Die_006.png');
-        this.load.image('die7', 'Chicken Run Platformer Game Assets 17/Character Sprites/Die_007.png');
-        this.load.image('die8', 'Chicken Run Platformer Game Assets 17/Character Sprites/Die_008.png');
-        this.load.image('die9', 'Chicken Run Platformer Game Assets 17/Character Sprites/Die_009.png');
 
-        this.cursors = this.input.keyboard.createCursorKeys();
+
+        //--------------------------------------Bala------------------------------------------
+        this.load.image('bullet', "Chicken Run Platformer Game Assets 17/Coins, PowerUps & bullets/Bullet-1.png");
+
 
         //para o loading demorar mais
         //retirar no futuro
         for(let i=0; i<100; i++){
-            this.load.image("map"+i,"maps/level2.json");
+            this.load.image("map"+i,"maps/level4.json");
         }
         //LOADING
         //loading box
@@ -167,28 +154,31 @@ class level2 extends Phaser.Scene{
         this.scene.launch("status",obj);
 
         //creat mapa/tilesets
-        let map = this.make.tilemap({ key: "map2" });      
+        let map = this.make.tilemap({ key: "map4" });      
         let tileset1 = map.addTilesetImage("sky");
         let tileset2 = map.addTilesetImage("plantaforma1");
         let tileset3 = map.addTilesetImage("plantaforma2");
         let tileset4 = map.addTilesetImage("plantaforma3");
-        let tileset5 = map.addTilesetImage("plantaforma4");
+        let tileset5 = map.addTilesetImage("chao");
         let tileset6 = map.addTilesetImage("arvore1");
         let tileset7 = map.addTilesetImage("arvore2");
-        let tileset8 = map.addTilesetImage("Obstaculos");
-        let tileset9 = map.addTilesetImage("Obstaculos1");
-        let tileset10 = map.addTilesetImage("Obstaculos2");
-        let tileset11 = map.addTilesetImage("Obstaculos3");
-        let tileset12 = map.addTilesetImage("placa");
+        let tileset8 = map.addTilesetImage("placa");
+        let tileset9 = map.addTilesetImage("armadilha1");
+        let tileset10 = map.addTilesetImage("armadilha2");
+        let tileset11 = map.addTilesetImage("armadilha3");
+        let tileset12 = map.addTilesetImage("armadilha4");
+        let tileset13 = map.addTilesetImage("houses");
+
 
 
         let layer1 = map.createStaticLayer('Background', tileset1,0,0);
         let layer2 = map.createStaticLayer('Ground', [tileset2 ,tileset3 ,tileset4 ,tileset5],0,0);
-        let layer3 = map.createStaticLayer('Arvores', [tileset6 ,tileset7,tileset12],0,0);
-        let layer4 = map.createStaticLayer('Armadilhas', [tileset8,tileset10,tileset11],0,0);
-        let layer5 = map.createStaticLayer('Box', [tileset9],0,0);
-        let layer6 = map.createStaticLayer('Worldbounds', [tileset7],0,0);
+        let layer3 = map.createStaticLayer('Arvores', [tileset6 ,tileset7,tileset8,tileset13],0,0);
+        let layer4 = map.createStaticLayer('Worldbounds', [tileset7],0,0);
+        let layer5 = map.createStaticLayer('Armadilhas', [tileset9,tileset11,tileset12],0,0);
+        let layer6 = map.createStaticLayer('Box', [tileset10],0,0);
 
+        //let layer4 = map.createStaticLayer('Armadilhas', [tileset8,tileset9,tileset10,tileset11],0,0);
         //set depth
         layer2.setDepth(10);
 
@@ -198,22 +188,27 @@ class level2 extends Phaser.Scene{
         layer5.setCollisionByProperty({ collides: true });
         layer6.setCollisionByProperty({ collides: true });
 
+
+        //layer4.setCollisionByProperty({ collides: true });
+
         //objeto layer
         this.spawnPoint = map.findObject("Objects", obj => obj.name === "Start");
         ponto0 = map.findObject("Objects", obj => obj.name === "Ponto0");
-        ponto1 = map.findObject("Objects", obj => obj.name === "Ponto1");
+        //ponto1 = map.findObject("Objects", obj => obj.name === "Ponto1");
 
 
         //spawn player
         player=this.physics.add.sprite(this.spawnPoint.x,this.spawnPoint.y-100,"idle0").setScale(0.25);
         //bounding box of player
-        player.setSize(200, 310).setOffset(140,165);
+        player.setSize(200, 310).setOffset(140,165);        
         player.setBounce(0);
 
         //colisoes entre objetos
-        this.physics.add.collider(player, layer4,function ()
+        this.physics.add.collider(player, layer2);
+        this.physics.add.collider(player, layer4);
+        this.physics.add.collider(player, layer6);
+        this.physics.add.collider(player, layer5,function ()
             {
-                
                 player.body.setVelocityY(-400);
 
                 if(!heart1.visible && !heart2.visible && !heart3.visible){
@@ -234,18 +229,10 @@ class level2 extends Phaser.Scene{
                     console.log("hit e 3 coraçoes");
                     heart3.setVisible(false);
                 } 
+        },null, this);
 
-        },null, this);
-        this.physics.add.collider(player, layer2,function ()
-            {
-        },null, this);
-        this.physics.add.collider(player, layer5,function ()
-            {
-        },null, this);
-        this.physics.add.collider(player, layer6,function ()
-            {
-        },null, this);
         
+
         // Phaser supports multiple cameras, but you can access the default camera like this:
         this.camera = this.cameras.main;
         this.camera.startFollow(player);
@@ -254,6 +241,7 @@ class level2 extends Phaser.Scene{
 
         // Constrain the camera so that it isn't allowed to move outside the width/height of tilemap
         this.camera.setBounds(0, 0, map.widthInPixels, map.heightInPixels);
+
 
         //animações
         this.anims.create({
@@ -317,84 +305,45 @@ class level2 extends Phaser.Scene{
             frameRate: 5
         });
 
-        this.anims.create({
-            key: 'die',
-            frames:[
-                { key: 'die0' },
-                { key: 'die1' },
-                { key: 'die2' },
-                { key: 'die3' },
-                { key: 'die4' },
-                { key: 'die5' },
-                { key: 'die6' },
-                { key: 'die7' },
-                { key: 'die8' },
-                { key: 'die9' }       
-            ],
-            frameRate: 20
-        });
-
         //create text
         //text1
-        let content1 = [
-            "Desvie-se das armadilhas"
-        ];
-        text1 = this.add.text(ponto0.x, 150, content1, {
-            fontSize: '18px',
-            padding: { x: 10, y: 5 },
-            backgroundColor: '#000000',
-            fill: '#ffffff'
-        });
-        text1.setScrollFactor(1);
-        text1.setVisible(false);
-        //text2
-        let content2 = [
-            "Pressione F para interagir"
-        ];
-        text2 = this.add.text(ponto1.x, 250, content2, {
-            fontSize: '18px',
-            padding: { x: 10, y: 5 },
-            backgroundColor: '#000000',
-            fill: '#ffffff'
-        });
-        text2.setScrollFactor(1);
-        text2.setVisible(false);
-        //text3
-        let content3 = [
-            "Bem... não sei porque",
-            "razão o Joni me deu a P90!?"
-        ];
-        text3 = this.add.text(ponto1.x, 250, content3, {
-            fontSize: '18px',
-            padding: { x: 10, y: 5 },
-            backgroundColor: '#000000',
-            fill: '#ffffff'
-        });
-        text3.setScrollFactor(1);
-        text3.setVisible(false);
 
+        scene4=1;
         
         //brilho
         this.camera.setAlpha(obj.brilho);
 
-        scene1=1;
+
+        //-------------------------Bala-----------------------------
+        this.bullets = this.physics.add.group({
+            classType: Bala,
+            maxSize: 1000,
+            runChildUpdate:true
+        });
+
+        this.lastFired = 0;
+
+        this.physics.add.collider(this.bullets, this.enemies, function(){this.bullet.hit(this.enemy);}, undefined, this)
+        
     }
 
-    update(){
+    update(time, delta){
        
         //impedir que o update ocorra primeiro que o load e create
-        if(scene1==0){
+        if(scene4===0){
             
             return;
         }
-        
+
         //variaveis
         let speed = 300;
         let prevVelocity = player.body.velocity.clone();
 
-        if ((this.cursors.space.isDown || this.cursors.up.isDown) && player.body.onFloor()){
-                player.body.setVelocityY(-450); // jump up
-                //player.anims.play('rjump', true);
+
+        //cursors.space.isDown ||
+        if ((this.cursors.up.isDown) && player.body.onFloor()){
+            player.body.setVelocityY(-400); // jump up
+            //player.anims.play('rjump', true);
         }
         if(player.body.velocity.y!==0){
             player.anims.play('up', true);
@@ -403,51 +352,31 @@ class level2 extends Phaser.Scene{
         if (this.cursors.left.isDown){
             player.body.setVelocityX(-speed); // move left
             player.anims.play('left', true); // play walk animation
+            player.dir = -1
         }else if (this.cursors.right.isDown){
             player.body.setVelocityX(speed); // move right
             player.anims.play('right', true); // play walk animatio
-            //player.anims.play('die', true);
-        }else if (this.cursors.down.isDown){
-            player.body.setVelocityX(speed); // move right
-            //player.anims.play('right', true); // play walk animatio
-            player.anims.play('die', true);
-        }  else {
+            player.dir = 1
+        } else {
             player.body.setVelocityX(0);
             player.anims.play('downr', true);
-        }
-    
-
-        //interactividade nos pontos
-        //Ponto0
-        if(player.x-32<=ponto0.x+ponto0.width && player.x+32>=ponto0.x){
-            player.body.debugBodyColor = 0xffff00; //cor para debug
-            text1.setVisible(true);
-
-        }else if (player.x-32<=ponto1.x+ponto1.width && player.x+32>=ponto1.x) {
-             player.body.debugBodyColor = 0xffff00; //cor para debug
-             text2.setVisible(true);
-             this.input.keyboard.once("keydown_F", event => {
-                text2.destroy();
-                text3.setVisible(true);
-                this.input.keyboard.once("keydown_F", event => {
-                    text3.destroy();
-                    let scene1 = this.scene.get('status');
-                    scene1.scene.stop();
-                    let scene2 = this.scene.get('menu_pause');
-                    scene2.scene.stop();
-                    this.scene.stop();
-                    this.scene.start("menu_historia",brilho);
-                });
-            });
-        }
-        else{
-            player.body.debugBodyColor = 0xff00ff; //cor para debug
-            text1.setVisible(false);
+            player.dir = 0;
         }
 
-        //colisoes
 
+        //Bullet fire
+        if (this.cursors.space.isDown && time > this.lastFired /*&& (cursors.left.isDown || cursors.right.isDown )*/) {
+            this.bullet = this.bullets.get(player.x + 45, player.y+25, 'bullet');
+            console.log("cliquei espaco");
 
+            if (this.bullet)
+            {
+                this.bullet.fire(player);
+
+                //incrementa o tempo que tem que esperar ate ao proximo tiro
+                this.lastFired = time + 500;
+            }
+        }
 
     }
 
