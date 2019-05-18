@@ -70,6 +70,24 @@ class afterdeath extends Phaser.Scene{
                 text0.setVisible(false);
                 this.scene.resume("level3");
             }
+            if(prevpage==4){
+                let theOtherScene = this.scene.get('level4');
+                theOtherScene.scene.restart();
+                bck_panel.setVisible(false);
+                btn_errado.setVisible(false);
+                btn_certo.setVisible(false);
+                text0.setVisible(false);
+                this.scene.resume("level4");
+            }
+            if(prevpage==5){
+                let theOtherScene = this.scene.get('arcade');
+                theOtherScene.scene.restart();
+                bck_panel.setVisible(false);
+                btn_errado.setVisible(false);
+                btn_certo.setVisible(false);
+                text0.setVisible(false);
+                this.scene.resume("arcade");
+            }
             
         },this);
         btn_certo.on("pointerout",function(event){
@@ -101,6 +119,18 @@ class afterdeath extends Phaser.Scene{
             if(prevpage==3){
                 this.scene.resume("level3");
                 let theOtherScene = this.scene.get('level3');
+                theOtherScene.scene.stop();
+                this.scene.start("menu_historia");
+            }
+            if(prevpage==4){
+                this.scene.resume("level4");
+                let theOtherScene = this.scene.get('level4');
+                theOtherScene.scene.stop();
+                this.scene.start("menu_historia");
+            }
+            if(prevpage==5){
+                this.scene.resume("arcade");
+                let theOtherScene = this.scene.get('arcade');
                 theOtherScene.scene.stop();
                 this.scene.start("menu_historia");
             }
