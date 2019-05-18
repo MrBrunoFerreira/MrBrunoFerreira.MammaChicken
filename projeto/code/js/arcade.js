@@ -90,8 +90,8 @@ class arcade extends Phaser.Scene{
         this.load.image('jump4', 'Chicken Run Platformer Game Assets 17/Character Sprites/Jump_004.png');
 
 
-        
 
+        this.spawnPoint = map.findObject("Objects", obj => obj.name === "Start");
         //para o loading demorar mais
         //retirar no futuro
         for(let i=0; i<100; i++){
