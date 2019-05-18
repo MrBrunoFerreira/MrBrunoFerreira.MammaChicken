@@ -93,10 +93,9 @@ class menu_jogar extends Phaser.Scene{
         btn_arcada.on("pointerover",function(event){
             this.setScale(0.32);
         });
-        /*btn_arcada.on("pointerdown",function(event){
-            console.log("cliquei botao opcoes");
-            this.scene.start("menu_opcoes","Passei data para menu_opcoes");
-        },this);*/
+        btn_arcada.on("pointerdown",function(event){
+            this.scene.start("arcade",brilho);
+        },this);
         btn_arcada.on("pointerout",function(event){
             this.setScale(0.3);
         });

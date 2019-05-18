@@ -65,8 +65,20 @@ class menu_pause extends Phaser.Scene{
             if(prevpage==1){
                 let theOtherScene = this.scene.get('level1');
                 theOtherScene.scene.pause();
-            }else if(prevpage==1){
-                let theOtherScene = this.scene.get('level1');
+            }else if(prevpage==2){
+                let theOtherScene = this.scene.get('level2');
+                theOtherScene.scene.pause();
+            }
+            else if(prevpage==3){
+                let theOtherScene = this.scene.get('level3');
+                theOtherScene.scene.pause();
+            }
+            else if(prevpage==4){
+                let theOtherScene = this.scene.get('level4');
+                theOtherScene.scene.pause();
+            }
+            else if(prevpage==5){
+                let theOtherScene = this.scene.get('arcade');
                 theOtherScene.scene.pause();
             }
             btn_play.setVisible(false);
@@ -117,6 +129,12 @@ class menu_pause extends Phaser.Scene{
             }
             if(prevpage==3){
                 this.scene.resume("level3");
+            }
+            if(prevpage==4){
+                this.scene.resume("level4");
+            }
+            if(prevpage==5){
+                this.scene.resume("arcade");
             }
         },this);
         btn_pause.on("pointerout",function(event){
@@ -269,6 +287,42 @@ class menu_pause extends Phaser.Scene{
                 text0.setVisible(false);
                 this.scene.resume("level3");
             }
+            if(prevpage==4){
+                let theOtherScene = this.scene.get('level4');
+                theOtherScene.scene.restart();
+                btn_pause.setVisible(false);
+                bck_pause.setVisible(false);
+                btn_vMinus.setVisible(false);
+                btn_vPlus.setVisible(false);
+                volumeBox.setVisible(false);
+                volumeBar.setVisible(false);
+                btn_reiniciar.setVisible(false);
+                btn_menuVoltar.setVisible(false);
+                bck_alert.setVisible(false);
+                btn_erro.setVisible(false);
+                btn_certoR.setVisible(false);
+                text1.setVisible(false);
+                text0.setVisible(false);
+                this.scene.resume("level4");
+            }
+            if(prevpage==5){
+                let theOtherScene = this.scene.get('arcade');
+                theOtherScene.scene.restart();
+                btn_pause.setVisible(false);
+                bck_pause.setVisible(false);
+                btn_vMinus.setVisible(false);
+                btn_vPlus.setVisible(false);
+                volumeBox.setVisible(false);
+                volumeBar.setVisible(false);
+                btn_reiniciar.setVisible(false);
+                btn_menuVoltar.setVisible(false);
+                bck_alert.setVisible(false);
+                btn_erro.setVisible(false);
+                btn_certoR.setVisible(false);
+                text1.setVisible(false);
+                text0.setVisible(false);
+                this.scene.resume("arcade");
+            }
             
         },this);
         btn_certoR.on("pointerout",function(event){
@@ -300,6 +354,18 @@ class menu_pause extends Phaser.Scene{
                 let theOtherScene = this.scene.get('level3');
                 theOtherScene.scene.stop();
                 this.scene.start("menu_historia");
+            }
+            if(prevpage==4){
+                this.scene.resume("level4");
+                let theOtherScene = this.scene.get('level4');
+                theOtherScene.scene.stop();
+                this.scene.start("menu_historia");
+            }
+            if(prevpage==5){
+                this.scene.resume("arcade");
+                let theOtherScene = this.scene.get('arcade');
+                theOtherScene.scene.stop();
+                this.scene.start("menu_jogar");
             }
             
         },this);

@@ -42,8 +42,6 @@ var gun;
 
 var scene0;
 
-let layer3;
-
 
 class level1 extends Phaser.Scene{
     constructor(){
@@ -207,9 +205,13 @@ class level1 extends Phaser.Scene{
         let tileset9 = map.addTilesetImage("horseBrown");
         let layer1 = map.createStaticLayer('Background', tileset1,0,0);
         let layer2 = map.createStaticLayer('Arvores', [tileset3,tileset4,tileset6,tileset7,tileset8,tileset9],0,0);
-        layer3 = map.createStaticLayer('Ground', tileset2,0,0);
+        let layer3 = map.createStaticLayer('Ground', tileset2,0,0);
+        let layer4 = map.createStaticLayer('Worldbounds', tileset3,0,0);
+
         //load colisoes
         layer3.setCollisionByProperty({ collides: true });
+        layer4.setCollisionByProperty({ collides: true });
+
         
         //objeto layer
         spawnPoint = map.findObject("Objects", obj => obj.name === "Start");        
@@ -231,6 +233,8 @@ class level1 extends Phaser.Scene{
         
         //colisoes entre objetos
         this.physics.add.collider(player, layer3);
+        this.physics.add.collider(player, layer4);
+
 
         /*this.physics.add.collider(player, layer3,function ()
             {
@@ -660,11 +664,11 @@ class level1 extends Phaser.Scene{
 
         if (cursors.left.isDown) {
 
-            player.body.setVelocityX(-200);
+            player.body.setVelocityX(-speed);
             player.anims.play('left', true); 
         }
         else if (cursors.right.isDown){
-                player.body.setVelocityX(200); 
+                player.body.setVelocityX(speed); 
                 player.anims.play('right', true); 
 
         } else {
@@ -711,6 +715,10 @@ class level1 extends Phaser.Scene{
                                             text15.setVisible(true);
                                             this.input.keyboard.once("keydown_F", event => {
                                                 text15.destroy();
+                                                let scene1 = this.scene.get('status');
+                                                scene1.scene.stop();
+                                                let scene2 = this.scene.get('menu_pause');
+                                                scene2.scene.stop();
                                                 this.scene.stop();
                                                 this.scene.start("menu_historia",brilho);
                                             });
