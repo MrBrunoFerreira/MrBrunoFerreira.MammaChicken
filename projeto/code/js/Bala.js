@@ -25,8 +25,7 @@ class Bala extends Phaser.Physics.Arcade.Sprite {
 
     hit(other){
         //tira vida ao inimigo
-        this.setActive(false);
-        this.setVisible(false);
+        this.destroy();
     }
 
 

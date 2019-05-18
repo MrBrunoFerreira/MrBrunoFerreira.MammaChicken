@@ -384,7 +384,10 @@ class level3 extends Phaser.Scene{
 
         this.lastFired = 0;
 
-        this.physics.add.collider(this.bullets, this.enemies, function(){this.bullet.hit(this.enemy);}, undefined, this)
+        this.physics.add.collider(this.bullets, this.enemies, function(){
+            this.bullet.hit(this.enemy);
+            this.enemy.hp.decrease(20);
+            }, undefined, this)
 
 
     }

@@ -49,7 +49,7 @@ class Enemy extends Phaser.Physics.Arcade.Sprite {
             this.setFrame(0);
         }
     }
-
+    
     resume(){
         //only if we're actually paused
         if(this.paused){
