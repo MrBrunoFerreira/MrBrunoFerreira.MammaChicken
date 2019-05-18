@@ -49,7 +49,7 @@ class Enemy extends Phaser.Physics.Arcade.Sprite {
             this.setFrame(0);
         }
     }
-    
+
     resume(){
         //only if we're actually paused
         if(this.paused){
@@ -76,10 +76,10 @@ class Enemy extends Phaser.Physics.Arcade.Sprite {
             //se o inimigo e o jogador estiveram na mesma camada este vai seguilo
             if (Math.round(player.x) > Math.round(this.x)) {
                 // we increase the speed from the default 80 to 200
-                this.body.velocity.x = 120;
+                this.body.velocity.x = 250;
                 this.dir = 1;
             } else {
-                this.body.velocity.x = -100;
+                this.body.velocity.x = -250;
                 this.dir = -1;
             }
         } else {
@@ -88,18 +88,18 @@ class Enemy extends Phaser.Physics.Arcade.Sprite {
             if (this.dir === 1) {
                 if (this.body.velocity.x === 0 && this.dir === 1) {
                     this.dir = -1;
-                    this.body.velocity.x = -80;
+                    this.body.velocity.x = -150;
                 }
                 else{
-                    this.body.velocity.x = 80;
+                    this.body.velocity.x = 150;
                 }
             } else if (this.dir === -1) {
                 if (this.body.velocity.x === 0 && this.dir === -1) {
                     this.dir = 1;
-                    this.body.velocity.x = 80;
+                    this.body.velocity.x = 150;
                 }
                 else {
-                    this.body.velocity.x = -80;
+                    this.body.velocity.x = -150;
                 }
             }
         }

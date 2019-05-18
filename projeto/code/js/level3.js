@@ -389,7 +389,6 @@ class level3 extends Phaser.Scene{
             this.enemy.hp.decrease(20);
             }, undefined, this)
 
-
     }
 
 
