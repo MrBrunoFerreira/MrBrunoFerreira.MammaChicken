@@ -8,6 +8,8 @@ var obj={
 var player;
 var scene0;
 
+var levelSound;
+
 class level1 extends Phaser.Scene{
     constructor(){
         super({
@@ -155,7 +157,10 @@ class level1 extends Phaser.Scene{
         //clicar btn
         this.btnSound=this.sound.add("btn_music");
         //this.sound.mute=true;
-
+        levelSound=this.sound.add("level1_music");
+        levelSound.play({
+            loop:true
+        });
 
         //creat mapa/tilesets
         let map = this.make.tilemap({ key: "map1" });      
@@ -602,6 +607,7 @@ class level1 extends Phaser.Scene{
                                             this.text15.setVisible(true);
                                             this.input.keyboard.once("keydown_F", () => {
                                                 this.text15.destroy();
+                                                levelSound.stop();
                                                 let scene1 = this.scene.get('status');
                                                 scene1.scene.stop();
                                                 let scene2 = this.scene.get('menu_pause');
@@ -656,6 +662,7 @@ class level1 extends Phaser.Scene{
                                             this.text7.setVisible(true);
                                             this.input.keyboard.once("keydown_F", () => {
                                                 this.text7.destroy();
+
                                             });
                                         });
                                     });

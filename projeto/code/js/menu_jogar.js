@@ -47,6 +47,9 @@ class menu_jogar extends Phaser.Scene{
         btn_arcada.setAlpha(brilho);
         btn_ranking.setAlpha(brilho);
 
+        var music_menu=this.sound.add("menu_music");
+        music_menu.play();
+
         //efeitos
         //clicar btn
         let btnSound=this.sound.add("btn_music");
@@ -83,7 +86,6 @@ class menu_jogar extends Phaser.Scene{
         });
         btn_historia.on("pointerdown",function(event){
             btnSound.play();
-            //console.log("cliquei botao historia");
             this.scene.start("menu_historia",brilho);
         },this);
         btn_historia.on("pointerout",function(event){

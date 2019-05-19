@@ -38,6 +38,9 @@ class menu_creditos extends Phaser.Scene{
         btn_voltar.setAlpha(brilho);
         btn_sair.setAlpha(brilho);
 
+        var music_menu=this.sound.add("menu_music");
+        music_menu.play();
+
         //efeitos
         //clicar btn
         let btnSound=this.sound.add("btn_music");
