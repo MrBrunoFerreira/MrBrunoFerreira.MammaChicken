@@ -470,7 +470,7 @@ class level3 extends Phaser.Scene{
 
 
         //Bullet fire
-        if (this.cursors.space.isDown && time > this.lastFired ) {
+        if (this.cursors.space.isDown && time > this.lastFired) {
 
             if(player.body.velocity.x>=0){
                 player.anims.play('shootr', true);
