@@ -556,7 +556,7 @@ class arcade extends Phaser.Scene{
         this.physics.add.collider(this.bullets, this.enemy, function(){
             this.bullet.hit(this.enemy);
             enemyHurt.play();
-            this.enemy.hp.decrease(1);
+            this.enemy.hp.decrease(2);
 
         }, undefined, this);
 
@@ -574,7 +574,7 @@ class arcade extends Phaser.Scene{
         this.physics.add.collider(this.bullets, this.enemy2, function(){
             this.bullet.hit(this.enemy2);
             enemyHurt.play();
-            this.enemy2.hp.decrease(1);
+            this.enemy2.hp.decrease(2);
 
         }, undefined, this);
 
@@ -590,7 +590,7 @@ class arcade extends Phaser.Scene{
         this.physics.add.collider(this.bullets, this.enemy3, function(){
             this.bullet.hit(this.enemy3);
             enemyHurt.play();
-            this.enemy3.hp.decrease(1);
+            this.enemy3.hp.decrease(2);
 
         }, undefined, this);
     }
@@ -775,7 +775,7 @@ class arcade extends Phaser.Scene{
             this.lastFiredtt3 = time + 300;
         }
 
-        if(time > this.lastFiredtt3 && this.enemy.hp.value !== 0 &&  this.xdif2 < 200 && this.ydif2 < 200 && this.enemy2.dir === -1){
+        if(time > this.lastFiredtt3 && this.enemy2.hp.value !== 0 &&  this.xdif2 < 200 && this.ydif2 < 200 && this.enemy2.dir === -1){
             this.enemy2.body.setVelocityX(100);
             this.enemy2.anims.play(this.runEsquerda);
 

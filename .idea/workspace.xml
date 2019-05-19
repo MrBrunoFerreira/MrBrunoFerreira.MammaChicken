@@ -3,8 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="c336fc79-a40a-499c-b97a-560f61114140" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/projeto/code/js/arcade.js" beforeDir="false" afterPath="$PROJECT_DIR$/projeto/code/js/arcade.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/projeto/maps/arena.json" beforeDir="false" afterPath="$PROJECT_DIR$/projeto/maps/arena.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/projeto/maps/arena.tmx" beforeDir="false" afterPath="$PROJECT_DIR$/projeto/maps/arena.tmx" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -41,8 +39,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/projeto/code/js/arcade.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="222">
-              <caret line="558" column="36" selection-start-line="558" selection-start-column="36" selection-end-line="558" selection-end-column="36" />
+            <state relative-caret-position="552">
+              <caret line="592" column="37" selection-start-line="592" selection-start-column="37" selection-end-line="592" selection-end-column="37" />
             </state>
           </provider>
         </entry>
@@ -242,12 +240,12 @@
       <workItem from="1558210782014" duration="9381000" />
       <workItem from="1558221522805" duration="9909000" />
       <workItem from="1558270723293" duration="19772000" />
-      <workItem from="1558294744560" duration="4211000" />
+      <workItem from="1558294744560" duration="5304000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="112327000" />
+    <option name="totallyTimeSpent" value="113420000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="67" y="25" width="1299" height="743" extended-state="6" />
@@ -433,8 +431,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/projeto/code/js/arcade.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="222">
-          <caret line="558" column="36" selection-start-line="558" selection-start-column="36" selection-end-line="558" selection-end-column="36" />
+        <state relative-caret-position="552">
+          <caret line="592" column="37" selection-start-line="592" selection-start-column="37" selection-end-line="592" selection-end-column="37" />
         </state>
       </provider>
     </entry>
