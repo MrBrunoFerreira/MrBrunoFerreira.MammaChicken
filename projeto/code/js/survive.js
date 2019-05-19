@@ -4,6 +4,9 @@ var prevpage;
 
 var brilho;
 
+var timer;
+var elapsed ;
+
 class survive extends Phaser.Scene{
     constructor(){
         super({
@@ -28,6 +31,17 @@ class survive extends Phaser.Scene{
         //contador sobrevivencia
         text1 = this.add.text(cw/2 - 60, 30);
 
+        //timer = this.scene.time.delayedCall(0,null);
+        /*timer = this.scene.time.addEvent({
+            delay: 0,                // ms
+            callback: null
+            //args: [],
+            callbackScope: thisArg,
+            loop: true
+        });*/
+        
+        timer = this.time.delayedCall(100000000, null, [], this);
+
         //brilho
         this.cameras.main.setAlpha(brilho);
 
@@ -37,7 +51,10 @@ class survive extends Phaser.Scene{
     update(time){
 
         //update sobrevivencia
-        text1.setText('Sobreviveu:' + time + "segundos");
+        
+        //elapsed = timer.getElapsed(); 
+        text1.setText('Event.progress: ' + timer.getProgress().toString().substr(0, 4));
+        //text1.setText('Sobreviveu:' + timer + "segundos");
 
     }
 
