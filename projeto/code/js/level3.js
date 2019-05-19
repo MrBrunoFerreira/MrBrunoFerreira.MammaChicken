@@ -23,6 +23,7 @@ var jumpSound;
 var text1;
 
 var scene2;
+var timeGlobal;
 
 class level3 extends Phaser.Scene{
     constructor(){
@@ -409,7 +410,7 @@ class level3 extends Phaser.Scene{
                 { key: 'eiAttack5' },
                 { key: 'eiAttack6' },
             ],
-            frameRate: 24,
+            frameRate: 16,
             repeat: -1
         });
 
@@ -424,7 +425,7 @@ class level3 extends Phaser.Scene{
                 { key: 'eiAttack5R' },
                 { key: 'eiAttack6R' },
             ],
-            frameRate: 24,
+            frameRate: 16,
             repeat: -1
         });
 
@@ -505,15 +506,22 @@ class level3 extends Phaser.Scene{
         });
 
 
+        //Enemy 1
         this.enemy = this.enemies.get(550, 0, this.idleEnemyDireita, this.attackEnemyDireita, this.runDireita, player);
         this.physics.add.collider(this.enemy, layer2);
         this.physics.add.collider(this.enemy, player);
+        this.physics.add.collider(this.enemy, layer4);
         this.enemy.spawn();
 
 
-        /*this.enemyTest = this.physics.add.sprite(this.spawnPoint.x,this.spawnPoint.y-100,"eIdle1").setScale(0.25);
-        this.physics.add.collider(this.enemyTest, layer2);
-        this.physics.add.collider(this.enemyTest, player);*/
+        //Enemy 2
+        this.spawnPoint2 = map.findObject("Objects", obj => obj.name === "Ponto1");
+        this.enemy2 = this.enemies.get(this.spawnPoint2.x+400, this.spawnPoint2.y, this.idleEnemyDireita, this.attackEnemyDireita, this.runDireita, player);
+        this.physics.add.collider(this.enemy2, layer2);
+        this.physics.add.collider(this.enemy2, player);
+        this.physics.add.collider(this.enemy2, layer4);
+        this.enemy2.spawn();
+
 
         //-------------------------Bala-----------------------------
         this.bullets = this.physics.add.group({
@@ -530,16 +538,22 @@ class level3 extends Phaser.Scene{
         this.ydif = 0;
         this.xdif = 0;
 
+        //Enemy
         this.physics.add.collider(this.bullets, this.enemies, function(){
             this.bullet.hit(this.enemy);
+            this.bullet.hit(this.enemy2);
             enemyHurt.play();
             this.enemy.hp.decrease(20);
+            this.enemy2.hp.decrease(20);
 
             }, undefined, this)
+
     }
 
 
     update(time, delta){
+
+        timeGlobal = time;
        
         //impedir que o update ocorra primeiro que o load e create
         if(scene2===0){
@@ -620,22 +634,27 @@ class level3 extends Phaser.Scene{
         }
 
 
-        /*
-        if(time > this.lastFiredtt && this.enemy.hp.value !== 0 &&  this.xdif < 300){
-            //console.log("debug" + this.xdif );
-            this.enemyTest.body.setVelocityX(100);
-            this.enemyTest.anims.play(this.run);
-
+        if(time > this.lastFiredtt4 && this.enemy.hp.value !== 0 &&  this.xdif < 400 && this.ydif < 100 && this.enemy.dir === 1){
+            console.log("sdjfosidjfod");
             this.enemy.body.setVelocityX(100);
-            this.enemy.anims.play(this.run);
+            this.enemy.anims.play(this.runDireita);
 
-            this.lastFiredtt = time + 300;
-        }*/
+            this.lastFiredtt4 = time + 300;
+        }
 
-        if(this.ydif < 30 &&  this.wDif < 120 && this.enemy.hp.value !== 0){
+        if(time > this.lastFiredtt4 && this.enemy.hp.value !== 0 &&  this.xdif < 400 && this.ydif < 200 && this.enemy.dir === -1){
+            console.log("sdjfosidjfod");
+            this.enemy.body.setVelocityX(100);
+            this.enemy.anims.play(this.runEsquerda);
+
+            this.lastFiredtt4 = time + 300;
+        }
+
+        if(this.ydif < 30 &&  this.xdif < 10 && this.enemy.hp.value !== 0){
             console.log("1");
             this.anims.play(this.attack);
         }
+
 
         if(this.enemy.hp.value !== 0) {
             if (this.ydif < 40 && this.xdif < 500) {
@@ -643,17 +662,13 @@ class level3 extends Phaser.Scene{
                 if (Math.round(player.x) > Math.round(this.enemy.x) && time > this.lastFiredtt2) {
                     // we increase the speed from the default 80 to 200
                     console.log("2");
-                    this.enemy.anims.play(this.runDireita);
                     this.enemy.body.velocity.x = 250;
                     this.enemy.dir = 1;
                     this.lastFiredtt2 = time + 10;
-                }else
-                if(time > this.lastFiredtt3){
+                }else{
                     console.log("3");
-                    this.enemy.anims.play(this.runEsquerda);
                     this.enemy.body.velocity.x = -250;
                     this.enemy.dir = -1;
-                    this.lastFiredtt3 = time + 2;
                 }
             } else {
 
@@ -663,13 +678,11 @@ class level3 extends Phaser.Scene{
                         this.enemy.dir = -1;
                         this.enemy.body.velocity.x = -150;
                     } else {
-                        this.enemy.anims.play(this.runDireita);
                         this.enemy.body.velocity.x = 150;
                     }
                 } else if (this.enemy.dir === -1) {
                     if (this.enemy.body.velocity.x === 0 && this.enemy.dir === -1) {
                         this.enemy.dir = 1;
-                        this.enemy.anims.play(this.runEsquerda);
                         this.enemy.body.velocity.x = 150;
                     } else {
                         this.enemy.body.velocity.x = -150;
@@ -679,10 +692,89 @@ class level3 extends Phaser.Scene{
         }
 
 
+        //------------------------------------- Enemy 2--------------------------------------
+
+        if(player.y < this.enemy2.y){
+            this.ydif = this.enemy2.y - player.y;
+        }
+        else{
+            this.ydif = player.y - this.enemy2.y;
+        }
+
+        if(player.x < this.enemy2.x){
+            this.xdif = this.enemy2.x - player.x;
+        }
+        else{
+            this.xdif = player.x - this.enemy2.x;
+        }
+
+
+        if(time > this.lastFiredtt3 && this.enemy2.hp.value !== 0 &&  this.xdif < 400 && this.ydif < 100 && this.enemy2.dir === 1){
+            console.log("sdjfosidjfod");
+            this.enemy2.body.setVelocityX(100);
+            this.enemy2.anims.play(this.runDireita);
+
+            this.lastFiredtt3 = time + 300;
+        }
+
+        if(time > this.lastFiredtt3 && this.enemy2.hp.value !== 0 &&  this.xdif < 400 && this.ydif < 200 && this.enemy.dir === -1){
+            console.log("sdjfosidjfod");
+            this.enemy2.body.setVelocityX(100);
+            this.enemy2.anims.play(this.runEsquerda);
+
+            this.lastFiredtt3 = time + 300;
+        }
+
+        if(this.ydif < 30 &&  this.xdif < 10 && this.enemy2.hp.value !== 0){
+            console.log("1");
+            this.anims.play(this.attack);
+        }
+
+
+
+        if(this.enemy2.hp.value !== 0) {
+            if (this.ydif < 40 && this.xdif < 600) {
+
+                if (Math.round(player.x) > Math.round(this.enemy2.x) && time > this.lastFiredtt2) {
+                    // we increase the speed from the default 80 to 200
+                    console.log("2");
+                    this.enemy2.body.velocity.x = 250;
+                    this.enemy2.dir = 1;
+                    this.lastFiredtt2 = time + 10;
+                }else{
+                    console.log("3");
+                    this.enemy2.body.velocity.x = -250;
+                    this.enemy2.dir = -1;
+                }
+            } else {
+
+
+                if (this.enemy2.dir === 1) {
+                    if (this.enemy2.body.velocity.x === 0 && this.enemy.dir === 1) {
+                        this.enemy2.dir = -1;
+                        this.enemy2.body.velocity.x = -150;
+                    } else {
+                        this.enemy2.body.velocity.x = 150;
+                    }
+                } else if (this.enemy2.dir === -1) {
+                    if (this.enemy2.body.velocity.x === 0 && this.enemy.dir === -1) {
+                        this.enemy2.dir = 1;
+                        this.enemy2.body.velocity.x = 150;
+                    } else {
+                        this.enemy2.body.velocity.x = -150;
+                    }
+                }
+            }
+        }
 
         //---------------------------------------------- Destroy enemies--------------------------------
         if(this.enemy.hp.value === 0){
             this.enemy.destroy();
+
+        }
+
+        if(this.enemy2.hp.value === 0){
+            this.enemy2.destroy();
 
         }
 

@@ -532,7 +532,7 @@
  <objectgroup name="Objects">
   <object id="1" name="Start" x="129.091" y="389.03" width="76" height="84"/>
   <object id="2" name="Ponto0" x="480" y="386" width="67" height="93"/>
-  <object id="3" name="Ponto1" x="1088" y="388" width="70" height="86"/>
+  <object id="3" name="Ponto1" x="1412.24" y="391.03" width="70" height="86"/>
   <object id="4" name="Ponto2" x="1314" y="385.333" width="62.6667" height="92"/>
  </objectgroup>
 </map>
