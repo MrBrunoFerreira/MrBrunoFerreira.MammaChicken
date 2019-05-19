@@ -26,6 +26,7 @@ class afterdeath extends Phaser.Scene{
         let ch=this.game.renderer.height;
         let cw=this.game.renderer.width;
 
+        btnSound=this.sound.add("btn_music");
         levelSound.stop();
 
         //background
@@ -40,7 +41,7 @@ class afterdeath extends Phaser.Scene{
             this.setScale(0.35);
         });
         btn_certo.on("pointerdown",function(event){
-            //btnSound.play();
+            btnSound.play();
             let scene1 = this.scene.get('status');
             scene1.scene.stop();
             let scene3 = this.scene.get('menu_pause');
@@ -100,7 +101,7 @@ class afterdeath extends Phaser.Scene{
             this.setScale(0.35);
         });
         btn_errado.on("pointerdown",function(event){
-            //btnSound.play();
+            btnSound.play();
             //para voltar para o menu historia
             let scene2 = this.scene.get('status');
             scene2.scene.stop();
