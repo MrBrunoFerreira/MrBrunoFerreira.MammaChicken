@@ -2,8 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c336fc79-a40a-499c-b97a-560f61114140" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/projeto/code/js/level3.js" beforeDir="false" afterPath="$PROJECT_DIR$/projeto/code/js/level3.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/projeto/code/js/level4.js" beforeDir="false" afterPath="$PROJECT_DIR$/projeto/code/js/level4.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projeto/maps/level4.tmx" beforeDir="false" afterPath="$PROJECT_DIR$/projeto/maps/level4.tmx" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -22,8 +23,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/projeto/code/js/level3.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="308">
-              <caret line="723" column="16" selection-start-line="723" selection-start-column="16" selection-end-line="723" selection-end-column="16" />
+            <state relative-caret-position="177">
+              <caret line="13" column="10" selection-start-line="13" selection-start-column="4" selection-end-line="13" selection-end-column="10" />
             </state>
           </provider>
         </entry>
@@ -31,8 +32,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/projeto/code/js/level4.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="90">
-              <caret line="381" selection-start-line="381" selection-end-line="381" />
+            <state relative-caret-position="207">
+              <caret line="604" column="52" selection-start-line="604" selection-start-column="46" selection-end-line="604" selection-end-column="52" />
             </state>
           </provider>
         </entry>
@@ -84,16 +85,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>gun</find>
-      <find>controls</find>
-      <find>spawn</find>
-      <find>camera</find>
-      <find>cursors</find>
-      <find>spawnPoint</find>
-      <find>map</find>
-      <find>cur</find>
-      <find>space</find>
-      <find>shootr</find>
       <find>sprite</find>
       <find>last</find>
       <find>rightEnemy</find>
@@ -106,14 +97,24 @@
       <find>ponto</find>
       <find>spawnPo</find>
       <find>this.run</find>
-      <find>this.enemy</find>
-      <find>layer4</find>
       <find>this.lastFiredtt3</find>
       <find>player</find>
-      <find>ydif</find>
       <find>collider</find>
       <find>eAttack1</find>
+      <find>ydif</find>
       <find>xdif</find>
+      <find>start</find>
+      <find>spawn</find>
+      <find>lastFiredtt1</find>
+      <find>lastfo</find>
+      <find>bala</find>
+      <find>enemyhurt</find>
+      <find>spaw</find>
+      <find>enemyhu</find>
+      <find>this.enemy</find>
+      <find>layer4</find>
+      <find>spawnP</find>
+      <find>Ponto1</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -133,8 +134,8 @@
         <option value="$PROJECT_DIR$/projeto/code/js/arcade.js" />
         <option value="$PROJECT_DIR$/projeto/code/js/Enemy.js" />
         <option value="$PROJECT_DIR$/projeto/code/js/level2.js" />
-        <option value="$PROJECT_DIR$/projeto/code/js/level4.js" />
         <option value="$PROJECT_DIR$/projeto/code/js/level3.js" />
+        <option value="$PROJECT_DIR$/projeto/code/js/level4.js" />
       </list>
     </option>
   </component>
@@ -166,13 +167,6 @@
               <item name="Mamma-Chicken" type="462c0819:PsiDirectoryNode" />
               <item name="projeto" type="462c0819:PsiDirectoryNode" />
               <item name="Chicken Run Platformer Game Assets 17" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Mamma-Chicken" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Mamma-Chicken" type="462c0819:PsiDirectoryNode" />
-              <item name="projeto" type="462c0819:PsiDirectoryNode" />
-              <item name="Chicken Run Platformer Game Assets 17" type="462c0819:PsiDirectoryNode" />
-              <item name="Enemy" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="Mamma-Chicken" type="b2602c69:ProjectViewProjectNode" />
@@ -247,19 +241,18 @@
       <workItem from="1558195914723" duration="3095000" />
       <workItem from="1558210782014" duration="9381000" />
       <workItem from="1558221522805" duration="9909000" />
-      <workItem from="1558270723293" duration="16827000" />
+      <workItem from="1558270723293" duration="19772000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="105171000" />
+    <option name="totallyTimeSpent" value="108116000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="67" y="25" width="1299" height="743" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.55700326" visible="true" weight="0.2515674" />
-      <window_info id="Structure" order="1" sideWeight="0.44299674" side_tool="true" visible="true" weight="0.2515674" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.5553746" visible="true" weight="0.2515674" />
+      <window_info id="Structure" order="1" sideWeight="0.4446254" side_tool="true" visible="true" weight="0.2515674" />
       <window_info id="Favorites" order="2" sideWeight="0.42508143" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32899022" />
@@ -431,15 +424,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/projeto/code/js/level4.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="381" selection-start-line="381" selection-end-line="381" />
+        <state relative-caret-position="207">
+          <caret line="604" column="52" selection-start-line="604" selection-start-column="46" selection-end-line="604" selection-end-column="52" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/projeto/code/js/level3.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="308">
-          <caret line="723" column="16" selection-start-line="723" selection-start-column="16" selection-end-line="723" selection-end-column="16" />
+        <state relative-caret-position="177">
+          <caret line="13" column="10" selection-start-line="13" selection-start-column="4" selection-end-line="13" selection-end-column="10" />
         </state>
       </provider>
     </entry>

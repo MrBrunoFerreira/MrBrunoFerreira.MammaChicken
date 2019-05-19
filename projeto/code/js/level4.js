@@ -115,7 +115,63 @@ class level4 extends Phaser.Scene{
         this.load.image('shootl4', 'Chicken Run Platformer Game Assets 17/Character Sprites/Shoot_014.png');
         this.load.image('shootl5', 'Chicken Run Platformer Game Assets 17/Character Sprites/Shoot_015.png');
 
+        //--------------------------INIMIGO----------------------------------------
+        //attack
+        this.load.image('eiAttack1', "Chicken Run Platformer Game Assets 17/Enemy/Attack_000.png");
+        this.load.image('eiAttack2', "Chicken Run Platformer Game Assets 17/Enemy/Attack_001.png");
+        this.load.image('eiAttack3', "Chicken Run Platformer Game Assets 17/Enemy/Attack_002.png");
+        this.load.image('eiAttack4', "Chicken Run Platformer Game Assets 17/Enemy/Attack_003.png");
+        this.load.image('eiAttack5', "Chicken Run Platformer Game Assets 17/Enemy/Attack_004.png");
+        this.load.image('eiAttack6', "Chicken Run Platformer Game Assets 17/Enemy/Attack_005.png");
 
+        //iddle
+        this.load.image('eIdle1', "Chicken Run Platformer Game Assets 17/Enemy/Idle_000.png");
+        this.load.image('eIdle2', "Chicken Run Platformer Game Assets 17/Enemy/Idle_001.png");
+        this.load.image('eIdle3', "Chicken Run Platformer Game Assets 17/Enemy/Idle_002.png");
+        this.load.image('eIdle4', "Chicken Run Platformer Game Assets 17/Enemy/Idle_003.png");
+        this.load.image('eIdle5', "Chicken Run Platformer Game Assets 17/Enemy/Idle_004.png");
+        this.load.image('eIdle6', "Chicken Run Platformer Game Assets 17/Enemy/Idle_005.png");
+        this.load.image('eIdle7', "Chicken Run Platformer Game Assets 17/Enemy/Idle_006.png");
+        this.load.image('eIdle8', "Chicken Run Platformer Game Assets 17/Enemy/Idle_007.png");
+
+        //run
+        this.load.image('eRun1', "Chicken Run Platformer Game Assets 17/Enemy/Run_000.png");
+        this.load.image('eRun2', "Chicken Run Platformer Game Assets 17/Enemy/Run_001.png");
+        this.load.image('eRun3', "Chicken Run Platformer Game Assets 17/Enemy/Run_002.png");
+        this.load.image('eRun4', "Chicken Run Platformer Game Assets 17/Enemy/Run_003.png");
+        this.load.image('eRun5', "Chicken Run Platformer Game Assets 17/Enemy/Run_004.png");
+        this.load.image('eRun6', "Chicken Run Platformer Game Assets 17/Enemy/Run_005.png");
+        this.load.image('eRun7', "Chicken Run Platformer Game Assets 17/Enemy/Run_006.png");
+        this.load.image('eRun8', "Chicken Run Platformer Game Assets 17/Enemy/Run_007.png");
+
+
+        //attackLeft
+        this.load.image('eiAttack1R', "Chicken Run Platformer Game Assets 17/Enemy/Attack_000R.png");
+        this.load.image('eiAttack2R', "Chicken Run Platformer Game Assets 17/Enemy/Attack_001R.png");
+        this.load.image('eiAttack3R', "Chicken Run Platformer Game Assets 17/Enemy/Attack_002R.png");
+        this.load.image('eiAttack4R', "Chicken Run Platformer Game Assets 17/Enemy/Attack_003R.png");
+        this.load.image('eiAttack5R', "Chicken Run Platformer Game Assets 17/Enemy/Attack_004R.png");
+        this.load.image('eiAttack6R', "Chicken Run Platformer Game Assets 17/Enemy/Attack_005R.png");
+
+        //iddleLeft
+        this.load.image('eIdle1R', "Chicken Run Platformer Game Assets 17/Enemy/Idle_000R.png");
+        this.load.image('eIdle2R', "Chicken Run Platformer Game Assets 17/Enemy/Idle_001R.png");
+        this.load.image('eIdle3R', "Chicken Run Platformer Game Assets 17/Enemy/Idle_002R.png");
+        this.load.image('eIdle4R', "Chicken Run Platformer Game Assets 17/Enemy/Idle_003R.png");
+        this.load.image('eIdle5R', "Chicken Run Platformer Game Assets 17/Enemy/Idle_004R.png");
+        this.load.image('eIdle6R', "Chicken Run Platformer Game Assets 17/Enemy/Idle_005R.png");
+        this.load.image('eIdle7R', "Chicken Run Platformer Game Assets 17/Enemy/Idle_006R.png");
+        this.load.image('eIdle8R', "Chicken Run Platformer Game Assets 17/Enemy/Idle_007R.png");
+
+        //runLeft
+        this.load.image('eRun1R', "Chicken Run Platformer Game Assets 17/Enemy/Run_000R.png");
+        this.load.image('eRun2R', "Chicken Run Platformer Game Assets 17/Enemy/Run_001R.png");
+        this.load.image('eRun3R', "Chicken Run Platformer Game Assets 17/Enemy/Run_002R.png");
+        this.load.image('eRun4R', "Chicken Run Platformer Game Assets 17/Enemy/Run_003R.png");
+        this.load.image('eRun5R', "Chicken Run Platformer Game Assets 17/Enemy/Run_004R.png");
+        this.load.image('eRun6R', "Chicken Run Platformer Game Assets 17/Enemy/Run_005R.png");
+        this.load.image('eRun7R', "Chicken Run Platformer Game Assets 17/Enemy/Run_006R.png");
+        this.load.image('eRun8R', "Chicken Run Platformer Game Assets 17/Enemy/Run_007R.png");
 
         //--------------------------------------Bala------------------------------------------
         this.load.image('bullet', "Chicken Run Platformer Game Assets 17/Coins, PowerUps & bullets/Bullet-1.png");
@@ -430,6 +486,124 @@ class level4 extends Phaser.Scene{
 
         this.physics.add.collider(this.bullets, this.enemies, function(){this.bullet.hit(this.enemy);}, undefined, this);
 
+
+        //--------------------------INIMIGO----------------------------------------
+
+        //animações
+        this.attackEnemyDireita = this.anims.create({
+            key: 'rightEnemy',
+            frames:[
+                { key: 'eiAttack1' },
+                { key: 'eiAttack2' },
+                { key: 'eiAttack3' },
+                { key: 'eiAttack4' },
+                { key: 'eiAttack5' },
+                { key: 'eiAttack6' },
+            ],
+            frameRate: 16,
+            repeat: -1
+        });
+
+        //animações
+        this.attackEnemyEsquerda = this.anims.create({
+            key: 'leftEnemy',
+            frames:[
+                { key: 'eiAttack1R' },
+                { key: 'eiAttack2R' },
+                { key: 'eiAttack3R' },
+                { key: 'eiAttack4R' },
+                { key: 'eiAttack5R' },
+                { key: 'eiAttack6R' },
+            ],
+            frameRate: 16,
+            repeat: -1
+        });
+
+        //animações
+        this.idleEnemyDireita = this.anims.create({
+            key: 'downEnemy',
+            frames:[
+                { key: 'eIdle1' },
+                { key: 'eIdle2' },
+                { key: 'eIdle3' },
+                { key: 'eIdle4' },
+                { key: 'eIdle5' },
+                { key: 'eIdle6' },
+                { key: 'eIdle7' },
+                { key: 'eIdle8'}
+            ],
+            frameRate: 24,
+            repeat: -1
+        });
+
+        //animações
+        this.idleEnemyEsquerda = this.anims.create({
+            key: 'downEnemyL',
+            frames:[
+                { key: 'eIdle1R' },
+                { key: 'eIdle2R' },
+                { key: 'eIdle3R' },
+                { key: 'eIdle4R' },
+                { key: 'eIdle5R' },
+                { key: 'eIdle6R' },
+                { key: 'eIdle7R' },
+                { key: 'eIdle8R'}
+            ],
+            frameRate: 24,
+            repeat: -1
+        });
+
+
+        //animações
+        this.runDireita = this.anims.create({
+            key: 'upEnemy',
+            frames:[
+                { key: 'eRun1' },
+                { key: 'eRun2' },
+                { key: 'eRun3' },
+                { key: 'eRun4' },
+                { key: 'eRun5' },
+                { key: 'eRun6' },
+                { key: 'eRun7' },
+                { key: 'eRun8'}
+            ],
+            frameRate: 24,
+            repeat: -1
+        });
+
+        //animações
+        this.runEsquerda = this.anims.create({
+            key: 'upEnemyL',
+            frames:[
+                { key: 'eRun1R' },
+                { key: 'eRun2R' },
+                { key: 'eRun3R' },
+                { key: 'eRun4R' },
+                { key: 'eRun5R' },
+                { key: 'eRun6R' },
+                { key: 'eRun7R' },
+                { key: 'eRun8R'}
+            ],
+            frameRate: 24,
+            repeat: -1
+        });
+
+
+        this.enemies = this.physics.add.group({
+            classType: Enemy,
+            maxSize: 20,
+            runChildUpdate: true,
+        });
+
+        //--------------------------------- Inimigos --------------------------------------
+        //objeto layer
+        this.spawnPoint5 = map.findObject("Objects", obj => obj.name === "Inimigo1");
+        //Enemy 1
+        this.enemy = this.enemies.get(this.spawnPoint5.x, this.spawnPoint5.y, this.idleEnemyDireita, this.attackEnemyDireita, this.runDireita, player);
+        this.physics.add.collider(this.enemy, layer2);
+        this.physics.add.collider(this.enemy, player);
+        this.physics.add.collider(this.enemy, layer4);
+        this.enemy.spawn();
 
     }
 
