@@ -352,30 +352,50 @@ class menu_pause extends Phaser.Scene{
                 let theOtherScene = this.scene.get('level1');
                 theOtherScene.scene.stop();
                 this.scene.start("menu_historia");
+                let music_menu=this.sound.add("menu_music");
+                music_menu.play({
+                    loop:true
+                });
             }
             if(prevpage==2){
                 this.scene.resume("level2");
                 let theOtherScene = this.scene.get('level2');
                 theOtherScene.scene.stop();
                 this.scene.start("menu_historia");
+                let music_menu=this.sound.add("menu_music");
+                music_menu.play({
+                    loop:true
+                });
             }
             if(prevpage==3){
                 this.scene.resume("level3");
                 let theOtherScene = this.scene.get('level3');
                 theOtherScene.scene.stop();
                 this.scene.start("menu_historia");
+                let music_menu=this.sound.add("menu_music");
+                music_menu.play({
+                    loop:true
+                });
             }
             if(prevpage==4){
                 this.scene.resume("level4");
                 let theOtherScene = this.scene.get('level4');
                 theOtherScene.scene.stop();
                 this.scene.start("menu_historia");
+                let music_menu=this.sound.add("menu_music");
+                music_menu.play({
+                    loop:true
+                });
             }
             if(prevpage==5){
                 this.scene.resume("arcade");
                 let theOtherScene = this.scene.get('arcade');
                 theOtherScene.scene.stop();
                 this.scene.start("menu_jogar");
+                let music_menu=this.sound.add("menu_music");
+                music_menu.play({
+                    loop:true
+                });
             }
             
         },this);

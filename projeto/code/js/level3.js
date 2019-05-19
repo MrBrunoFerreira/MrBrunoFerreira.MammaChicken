@@ -17,6 +17,7 @@ var levelSound;
 var shootSound;
 var playerHurt;
 var enemyHurt;
+var jumpSound;
 
 //textos
 var text1;
@@ -237,6 +238,7 @@ class level3 extends Phaser.Scene{
         shootSound=this.sound.add("shoot_music");
         playerHurt=this.sound.add("player_hurt");
         enemyHurt=this.sound.add("talhante_hurt");
+        jumpSound=this.sound.add("jump_music");
 
         //creat mapa/tilesets
         let map = this.make.tilemap({ key: "map3" });      
@@ -552,6 +554,7 @@ class level3 extends Phaser.Scene{
 
         //cursors.space.isDown ||
         if ((this.cursors.up.isDown) && player.body.onFloor()){
+            jumpSound.play();
             player.body.setVelocityY(-400); // jump up
             //player.anims.play('rjump', true);
         }

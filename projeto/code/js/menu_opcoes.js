@@ -18,14 +18,7 @@ class menu_opcoes extends Phaser.Scene{
     }
 
     init(data) {
-        //this.utils.String=true;
-        console.log(data);
         pagina_ant=data;
-        console.log(pagina_ant);
-        //console.log('"'+pagina_ant+'"');
-        //pagina_ant=pagina_ant.toString();
-        //pagina_ant=Format('%1',[pagina_ant]);
-        //console.log(pagina_ant);
     }
 
     preload() {
@@ -73,8 +66,8 @@ class menu_opcoes extends Phaser.Scene{
 
         }
 
-        var music_menu=this.sound.add("menu_music");
-        music_menu.play();
+        //var music_menu=this.sound.add("menu_music");
+        //music_menu.play();
 
         //efeitos
         //clicar btn
@@ -90,9 +83,6 @@ class menu_opcoes extends Phaser.Scene{
         });
         btn_voltar.once("pointerdown",function(event){
             btnSound.play();
-            //gui.destroy();
-            console.log("cliquei botao voltar");
-
             //dependente da pagina anterior->a btn voltar tem de voltar a essa scene
             //menu_inicial=1
             //menu_jogar=2
@@ -118,8 +108,7 @@ class menu_opcoes extends Phaser.Scene{
         });
         btn_sair.on("pointerdown",function(event){
             btnSound.play();
-            //gui.destroy();
-            console.log("cliquei");
+            this.sys.game.destroy(true);
         },this);
 
         btn_sair.on("pointerout",function(event){
@@ -131,7 +120,6 @@ class menu_opcoes extends Phaser.Scene{
         });
         btn_vMinus.on("pointerdown",function(event){
             btnSound.play();
-            console.log("Volume:"+this.sound.volume);
             volumeBar.clear();
             if(this.sound.volume>0){
                 this.sound.volume = this.sound.volume - 0.1;
@@ -146,7 +134,6 @@ class menu_opcoes extends Phaser.Scene{
         });
         btn_vPlus.on("pointerdown",function(event){
             btnSound.play();
-            console.log("Volume:"+this.sound.volume);
             if(this.sound.volume<1){
                 this.sound.volume = this.sound.volume + 0.1;
             }  
@@ -160,7 +147,6 @@ class menu_opcoes extends Phaser.Scene{
         });
         btn_bMinus.on("pointerdown",function(event){
             btnSound.play();
-            console.log("brilho:"+obj.brilho);
             brilhoBar.clear();
             if(obj.brilho>0){
                 obj.brilho=obj.brilho - 0.1;
@@ -176,7 +162,6 @@ class menu_opcoes extends Phaser.Scene{
         });
         btn_bPlus.on("pointerdown",function(event){
             btnSound.play();
-            console.log("brilho:"+obj.brilho);
             if(obj.brilho<1){
                 obj.brilho = obj.brilho + 0.1;
             }  
@@ -206,15 +191,11 @@ class menu_opcoes extends Phaser.Scene{
         let ch=this.game.renderer.height;
         let cw=this.game.renderer.width;
 
-        //console.log("Volume="+this.sound.volume);
-
         //volumeBar update
         //volumeBar.fillStyle(0xe6e6e6,0.5);
         volumeBar.fillStyle(0xe6e6e6,1);
 
         volumeBar.fillRect(ch/2+187,cw/2 -98 ,this.sound.volume*81,32);
-
-
 
         //brilhoBar update
         //volumeBar.fillStyle(0xe6e6e6,0.5);

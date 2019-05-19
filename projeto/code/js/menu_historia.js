@@ -50,8 +50,8 @@ class menu_historia extends Phaser.Scene{
         btn_level3.setAlpha(brilho);
         btn_level4.setAlpha(brilho);
 
-        var music_menu=this.sound.add("menu_music");
-        music_menu.play();
+        //var music_menu=this.sound.add("menu_music");
+        //music_menu.play();
 
         //efeitos
         //clicar btn
@@ -85,7 +85,6 @@ class menu_historia extends Phaser.Scene{
 
         btn_opcoes.on("pointerdown",function(){
             btnSound.play();
-            console.log("cliquei botao opcoes");
             this.scene.start("menu_opcoes","3");
         },this);
 
@@ -102,7 +101,9 @@ class menu_historia extends Phaser.Scene{
 
 
         btn_level1.on("pointerdown",function(){
+
             btnSound.play();
+            this.sound.stopAll();
             this.scene.start("level1",brilho);
         },this);
 
@@ -118,18 +119,15 @@ class menu_historia extends Phaser.Scene{
             this.setScale(0.32);
         });
 
-
         btn_level2.on("pointerdown",function(){
             btnSound.play();
+            this.sound.stopAll();
             this.scene.start("level2",brilho);
         },this);
-
 
         btn_level2.on("pointerout",function(){
             this.setScale(0.3);
         });
-
-
 
         //btn_level3
         btn_level3.on("pointerover",function(){
@@ -139,6 +137,7 @@ class menu_historia extends Phaser.Scene{
 
         btn_level3.on("pointerdown",function(){
             btnSound.play();
+            this.sound.stopAll();
             this.scene.start("level3",brilho);
         },this);
 
@@ -153,6 +152,7 @@ class menu_historia extends Phaser.Scene{
         });
         btn_level4.on("pointerdown",function(event){
             btnSound.play();
+            this.sound.stopAll();
             this.scene.start("level4",brilho);
         },this);
         btn_level4.on("pointerout",function(event){

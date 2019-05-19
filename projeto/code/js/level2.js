@@ -15,6 +15,7 @@ var volumeBox;
 var levelSound;
 var shootSound;
 var playerHurt;
+var jumpSound;
 
 
 //pontos
@@ -197,7 +198,7 @@ class level2 extends Phaser.Scene{
         });
         shootSound=this.sound.add("shoot_music");
         playerHurt=this.sound.add("player_hurt");
-
+        jumpSound=this.sound.add("jump_music");
 
         //creat mapa/tilesets
         let map = this.make.tilemap({ key: "map2" });      
@@ -437,6 +438,7 @@ class level2 extends Phaser.Scene{
 
         //cursors.space.isDown ||
         if ((this.cursors.up.isDown) && player.body.onFloor()){
+            jumpSound.play();
             player.body.setVelocityY(-400); // jump up
             //player.anims.play('rjump', true);
         }
@@ -479,6 +481,10 @@ class level2 extends Phaser.Scene{
                     scene2.scene.stop();
                     this.scene.stop();
                     this.scene.start("menu_historia",brilho);
+                    let music_menu=this.sound.add("menu_music");
+                    music_menu.play({
+                        loop:true
+                    });
                 });
             });
         }

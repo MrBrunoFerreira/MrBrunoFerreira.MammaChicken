@@ -9,6 +9,7 @@ var player;
 var scene0;
 
 var levelSound;
+var jumpSound;
 
 class level1 extends Phaser.Scene{
     constructor(){
@@ -161,6 +162,7 @@ class level1 extends Phaser.Scene{
         levelSound.play({
             loop:true
         });
+        jumpSound=this.sound.add("jump_music");
 
         //creat mapa/tilesets
         let map = this.make.tilemap({ key: "map1" });      
@@ -546,6 +548,7 @@ class level1 extends Phaser.Scene{
 
 
         if ((this.cursors.up.isDown) && player.body.onFloor() ){
+            jumpSound.play();
             player.body.setVelocityY(-400); 
         }
 
@@ -614,6 +617,10 @@ class level1 extends Phaser.Scene{
                                                 scene2.scene.stop();
                                                 this.scene.stop();
                                                 this.scene.start("menu_historia",brilho);
+                                                let music_menu=this.sound.add("menu_music");
+                                                music_menu.play({
+                                                    loop:true
+                                                });
                                             });
                                         });
                                     });

@@ -13,6 +13,7 @@ var volumeBox;
 var levelSound;
 var shootSound;
 var playerHurt;
+var jumpSound;
 
 //pontos
 var ponto0;
@@ -174,6 +175,7 @@ class arcade extends Phaser.Scene{
         });
         shootSound=this.sound.add("laser_music");
         playerHurt=this.sound.add("player_hurt");
+        jumpSound=this.sound.add("jump_music");
 
         //creat mapa/tilesets
         let map = this.make.tilemap({ key: "map5" });
@@ -374,6 +376,7 @@ class arcade extends Phaser.Scene{
 
         //cursors.space.isDown ||
         if ((this.cursors.up.isDown) && player.body.onFloor()){
+            jumpSound.play();
             player.body.setVelocityY(-400); // jump up
             //player.anims.play('rjump', true);
         }
