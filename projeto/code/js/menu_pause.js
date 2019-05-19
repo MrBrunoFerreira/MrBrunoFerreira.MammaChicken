@@ -30,6 +30,8 @@ class menu_pause extends Phaser.Scene{
         let ch=this.game.renderer.height;
         let cw=this.game.renderer.width;
 
+        btnSound=this.sound.add("btn_music");
+
         //background
         let bck_pause=this.add.image(cw/2 - 50,ch/2 - 50,"bck_pause").setScale(0.3).setVisible(false);
         //bck alert
@@ -61,7 +63,7 @@ class menu_pause extends Phaser.Scene{
         });
         btn_play.on("pointerdown",function(event){
             player.body.setVelocity(0);  
-            //btnSound.play();
+            btnSound.play();
             if(prevpage==1){
                 let theOtherScene = this.scene.get('level1');
                 theOtherScene.scene.pause();
@@ -107,7 +109,7 @@ class menu_pause extends Phaser.Scene{
             this.setScale(0.35);
         });
         btn_pause.on("pointerdown",function(event){
-            //btnSound.play();
+            btnSound.play();
         
             btn_pause.setVisible(false);
             bck_pause.setVisible(false);
@@ -156,7 +158,7 @@ class menu_pause extends Phaser.Scene{
             this.setScale(0.22);
         });
         btn_vMinus.on("pointerdown",function(event){
-            //btnSound.play();
+            btnSound.play();
             //console.log("Volume:"+this.sound.volume);
             volumeBar.clear();
             if(this.sound.volume>0){
@@ -171,7 +173,7 @@ class menu_pause extends Phaser.Scene{
             this.setScale(0.22);
         });
         btn_vPlus.on("pointerdown",function(event){
-            //btnSound.play();
+            btnSound.play();
             //console.log("Volume:"+this.sound.volume);
             if(this.sound.volume<1){
                 this.sound.volume = this.sound.volume + 0.1;
@@ -185,7 +187,7 @@ class menu_pause extends Phaser.Scene{
             this.setScale(0.45);
         });
         btn_reiniciar.on("pointerdown",function(event){
-            //btnSound.play();
+            btnSound.play();
             //console.log("Volume:"+this.sound.volume);
             bck_alert.setVisible(true);
             text0.setVisible(true);
@@ -205,7 +207,7 @@ class menu_pause extends Phaser.Scene{
             this.setScale(0.45);
         });
         btn_menuVoltar.on("pointerdown",function(event){
-            //btnSound.play();
+            btnSound.play();
             bck_alert.setVisible(true);
             btn_erro.setVisible(true);
             btn_certoH.setVisible(true);
@@ -223,7 +225,7 @@ class menu_pause extends Phaser.Scene{
             this.setScale(0.35);
         });
         btn_erro.on("pointerdown",function(event){
-            //btnSound.play();
+            btnSound.play();
             text0.setVisible(false);
             text1.setVisible(false);
             bck_alert.setVisible(false);
@@ -240,7 +242,7 @@ class menu_pause extends Phaser.Scene{
             this.setScale(0.35);
         });
         btn_certoR.on("pointerdown",function(event){
-            //btnSound.play();
+            btnSound.play();
             let scene1 = this.scene.get('status');
             scene1.scene.stop();
             if(prevpage==1){
@@ -343,7 +345,7 @@ class menu_pause extends Phaser.Scene{
             this.setScale(0.35);
         });
         btn_certoH.on("pointerdown",function(event){
-            //btnSound.play();
+            btnSound.play();
             //para voltar para o menu historia
             let scene2 = this.scene.get('status');
             scene2.scene.stop();
