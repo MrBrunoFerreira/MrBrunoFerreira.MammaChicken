@@ -96,9 +96,9 @@ class Preload extends Phaser.Scene{
 
         //load music
         this.load.audio("loading_music","assets/Music/loading_music.mp3");
-        //this.load.audio("menu_music","assets/Music/menu_music.mp3");
+        this.load.audio("menu_music","assets/Music/menu_music.mp3");
         this.load.audio("btn_music","assets/Music/btn_music.mp3");
-        this.load.audio("menu_music","assets/Music/menus.mp3");
+        //this.load.audio("menu_music","assets/Music/menus.mp3");
         //musica level1
         this.load.audio("level1_music","assets/Music/level1_music.mp3");
         //musica level2
@@ -117,6 +117,8 @@ class Preload extends Phaser.Scene{
         this.load.audio("player_hurt","assets/Music/player_hurt.mp3");
         //musica talhante hurt
         this.load.audio("talhante_hurt","assets/Music/talhante_hurt.mp3");
+        //musica salto player
+        this.load.audio("jump_music","assets/Music/jump_music.mp3");
         
         //LOADING
         //loading box
@@ -202,7 +204,10 @@ class Preload extends Phaser.Scene{
         this.input.once("pointerdown",function(event){
             this.scene.start("menu_inicial",1);
             music_loading.stop();
-            //this.scene.start("menu_historia","main");
+            var music_menu=this.sound.add("menu_music");
+            music_menu.play({
+                loop:true
+            });
         },this);
 
     }
