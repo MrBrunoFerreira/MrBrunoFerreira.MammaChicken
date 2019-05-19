@@ -268,6 +268,7 @@ class level4 extends Phaser.Scene{
         let layer4 = map.createStaticLayer('Worldbounds', [tileset7],0,0);
         let layer5 = map.createStaticLayer('Armadilhas', [tileset9,tileset11,tileset12],0,0);
         let layer6 = map.createStaticLayer('Box', [tileset10],0,0);
+        let layer7 = map.createStaticLayer('Enemybounds', [tileset7],0,0);
 
         //let layer4 = map.createStaticLayer('Armadilhas', [tileset8,tileset9,tileset10,tileset11],0,0);
         //set depth
@@ -278,6 +279,7 @@ class level4 extends Phaser.Scene{
         layer4.setCollisionByProperty({ collides: true });
         layer5.setCollisionByProperty({ collides: true });
         layer6.setCollisionByProperty({ collides: true });
+        layer7.setCollisionByProperty({ collides: true });
 
 
         //layer4.setCollisionByProperty({ collides: true });
@@ -623,6 +625,8 @@ class level4 extends Phaser.Scene{
         this.physics.add.collider(this.enemy, layer2);
         this.physics.add.collider(this.enemy, player);
         this.physics.add.collider(this.enemy, layer4);
+        this.physics.add.collider(this.enemy, layer7);
+
         this.enemy.spawn();
 
 
@@ -642,6 +646,7 @@ class level4 extends Phaser.Scene{
         this.physics.add.collider(this.enemy2, layer2);
         this.physics.add.collider(this.enemy2, player);
         this.physics.add.collider(this.enemy2, layer4);
+        this.physics.add.collider(this.enemy2, layer7);
         this.enemy2.spawn();
 
         //Enemy
