@@ -281,6 +281,7 @@ class level3 extends Phaser.Scene{
         player.setSize(200, 310).setOffset(140,165);        
         player.setBounce(0);
         player.dir = 0;
+
         //colisoes entre objetos
         this.physics.add.collider(player, layer2);
         this.physics.add.collider(player, layer4);
@@ -537,16 +538,80 @@ class level3 extends Phaser.Scene{
         this.lastFiredtt4 = 0;
         this.ydif = 0;
         this.xdif = 0;
+        this.ydif2 = 0;
+        this.xdif2 = 0;
 
         //Enemy
-        this.physics.add.collider(this.bullets, this.enemies, function(){
+        this.physics.add.collider(this.bullets, this.enemy, function(){
             this.bullet.hit(this.enemy);
-            this.bullet.hit(this.enemy2);
             enemyHurt.play();
             this.enemy.hp.decrease(20);
+
+            }, undefined, this);
+
+        //Enemy
+        this.physics.add.collider(this.bullets, this.enemy2, function(){
+            this.bullet.hit(this.enemy2);
+            enemyHurt.play();
             this.enemy2.hp.decrease(20);
 
-            }, undefined, this)
+        }, undefined, this);
+
+
+
+        //colisoes entre objetos
+        this.physics.add.collider(player, this.enemy,function ()
+        {
+            playerHurt.play();
+            player.body.setVelocityY(-400);
+
+            if(!heart1.visible && !heart2.visible && !heart3.visible){
+                console.log("Morreu");
+                //animação para morrer
+                morte=true;
+                //ecrã de morte
+                this.scene.pause();
+                this.scene.launch("afterdeath",obj);
+            }else if (heart1.visible && !heart2.visible && !heart3.visible) {
+                console.log("hit e 1 coraçao");
+                heart1.setVisible(false);
+            }else if (heart1.visible && heart2.visible && !heart3.visible) {
+                console.log("hit e 2 coraçoes");
+                heart2.setVisible(false);
+
+            }else if (heart1.visible && heart2.visible && heart3.visible) {
+                console.log("hit e 3 coraçoes");
+                heart3.setVisible(false);
+            }
+
+        },null, this);
+
+        //colisoes entre objetos
+        this.physics.add.collider(player, this.enemy2,function ()
+        {
+            playerHurt.play();
+            player.body.setVelocityY(-400);
+
+            if(!heart1.visible && !heart2.visible && !heart3.visible){
+                console.log("Morreu");
+                //animação para morrer
+                morte=true;
+                //ecrã de morte
+                this.scene.pause();
+                this.scene.launch("afterdeath",obj);
+            }else if (heart1.visible && !heart2.visible && !heart3.visible) {
+                console.log("hit e 1 coraçao");
+                heart1.setVisible(false);
+            }else if (heart1.visible && heart2.visible && !heart3.visible) {
+                console.log("hit e 2 coraçoes");
+                heart2.setVisible(false);
+
+            }else if (heart1.visible && heart2.visible && heart3.visible) {
+                console.log("hit e 3 coraçoes");
+                heart3.setVisible(false);
+            }
+
+        },null, this);
 
     }
 
@@ -635,7 +700,6 @@ class level3 extends Phaser.Scene{
 
 
         if(time > this.lastFiredtt4 && this.enemy.hp.value !== 0 &&  this.xdif < 400 && this.ydif < 100 && this.enemy.dir === 1){
-            console.log("sdjfosidjfod");
             this.enemy.body.setVelocityX(100);
             this.enemy.anims.play(this.runDireita);
 
@@ -643,7 +707,6 @@ class level3 extends Phaser.Scene{
         }
 
         if(time > this.lastFiredtt4 && this.enemy.hp.value !== 0 &&  this.xdif < 400 && this.ydif < 200 && this.enemy.dir === -1){
-            console.log("sdjfosidjfod");
             this.enemy.body.setVelocityX(100);
             this.enemy.anims.play(this.runEsquerda);
 
@@ -651,7 +714,6 @@ class level3 extends Phaser.Scene{
         }
 
         if(this.ydif < 30 &&  this.xdif < 10 && this.enemy.hp.value !== 0){
-            console.log("1");
             this.anims.play(this.attack);
         }
 
@@ -659,14 +721,14 @@ class level3 extends Phaser.Scene{
         if(this.enemy.hp.value !== 0) {
             if (this.ydif < 40 && this.xdif < 500) {
 
+                
+
                 if (Math.round(player.x) > Math.round(this.enemy.x) && time > this.lastFiredtt2) {
                     // we increase the speed from the default 80 to 200
-                    console.log("2");
                     this.enemy.body.velocity.x = 250;
                     this.enemy.dir = 1;
                     this.lastFiredtt2 = time + 10;
                 }else{
-                    console.log("3");
                     this.enemy.body.velocity.x = -250;
                     this.enemy.dir = -1;
                 }
@@ -695,54 +757,49 @@ class level3 extends Phaser.Scene{
         //------------------------------------- Enemy 2--------------------------------------
 
         if(player.y < this.enemy2.y){
-            this.ydif = this.enemy2.y - player.y;
+            this.ydif2 = this.enemy2.y - player.y;
         }
         else{
-            this.ydif = player.y - this.enemy2.y;
+            this.ydif2 = player.y - this.enemy2.y;
         }
 
         if(player.x < this.enemy2.x){
-            this.xdif = this.enemy2.x - player.x;
+            this.xdif2 = this.enemy2.x - player.x;
         }
         else{
-            this.xdif = player.x - this.enemy2.x;
+            this.xdif2 = player.x - this.enemy2.x;
         }
 
 
-        if(time > this.lastFiredtt3 && this.enemy2.hp.value !== 0 &&  this.xdif < 400 && this.ydif < 100 && this.enemy2.dir === 1){
-            console.log("sdjfosidjfod");
+        if(time > this.lastFiredtt3 && this.enemy2.hp.value !== 0 &&  this.xdif2 < 400 && this.ydif2 < 100 && this.enemy2.dir === 1){
             this.enemy2.body.setVelocityX(100);
             this.enemy2.anims.play(this.runDireita);
 
             this.lastFiredtt3 = time + 300;
         }
 
-        if(time > this.lastFiredtt3 && this.enemy2.hp.value !== 0 &&  this.xdif < 400 && this.ydif < 200 && this.enemy.dir === -1){
-            console.log("sdjfosidjfod");
+        if(time > this.lastFiredtt3 && this.enemy2.hp.value !== 0 &&  this.xdif2 < 400 && this.ydif2 < 200 && this.enemy2.dir === -1){
             this.enemy2.body.setVelocityX(100);
             this.enemy2.anims.play(this.runEsquerda);
 
             this.lastFiredtt3 = time + 300;
         }
 
-        if(this.ydif < 30 &&  this.xdif < 10 && this.enemy2.hp.value !== 0){
-            console.log("1");
+        if(this.ydif2 < 30 &&  this.xdif2 < 10 && this.enemy2.hp.value !== 0){
             this.anims.play(this.attack);
         }
 
 
 
         if(this.enemy2.hp.value !== 0) {
-            if (this.ydif < 40 && this.xdif < 600) {
+            if (this.ydif2 < 40 && this.xdif2 < 600) {
 
                 if (Math.round(player.x) > Math.round(this.enemy2.x) && time > this.lastFiredtt2) {
                     // we increase the speed from the default 80 to 200
-                    console.log("2");
                     this.enemy2.body.velocity.x = 250;
                     this.enemy2.dir = 1;
                     this.lastFiredtt2 = time + 10;
                 }else{
-                    console.log("3");
                     this.enemy2.body.velocity.x = -250;
                     this.enemy2.dir = -1;
                 }
@@ -750,7 +807,7 @@ class level3 extends Phaser.Scene{
 
 
                 if (this.enemy2.dir === 1) {
-                    if (this.enemy2.body.velocity.x === 0 && this.enemy.dir === 1) {
+                    if (this.enemy2.body.velocity.x === 0 && this.enemy2.dir === 1) {
                         this.enemy2.dir = -1;
                         this.enemy2.body.velocity.x = -150;
                     } else {
@@ -767,19 +824,19 @@ class level3 extends Phaser.Scene{
             }
         }
 
+
+
         //---------------------------------------------- Destroy enemies--------------------------------
         if(this.enemy.hp.value === 0){
             this.enemy.destroy();
         }
-<<<<<<< HEAD
+
 
         if(this.enemy2.hp.value === 0){
             this.enemy2.destroy();
 
         }
 
-=======
->>>>>>> 5f531fc141f21d132263a2330d578953dff05d0d
     }
 
 }

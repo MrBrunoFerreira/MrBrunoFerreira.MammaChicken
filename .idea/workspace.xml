@@ -2,9 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c336fc79-a40a-499c-b97a-560f61114140" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/projeto/code/js/level2.js" beforeDir="false" afterPath="$PROJECT_DIR$/projeto/code/js/level2.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/projeto/code/js/level3.js" beforeDir="false" afterPath="$PROJECT_DIR$/projeto/code/js/level3.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/projeto/maps/level3.tmx" beforeDir="false" afterPath="$PROJECT_DIR$/projeto/maps/level3.tmx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projeto/code/js/level4.js" beforeDir="false" afterPath="$PROJECT_DIR$/projeto/code/js/level4.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -23,8 +22,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/projeto/code/js/level3.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="122">
-              <caret line="735" column="49" selection-start-line="735" selection-start-column="49" selection-end-line="735" selection-end-column="49" />
+            <state relative-caret-position="308">
+              <caret line="723" column="16" selection-start-line="723" selection-start-column="16" selection-end-line="723" selection-end-column="16" />
             </state>
           </provider>
         </entry>
@@ -32,8 +31,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/projeto/code/js/level4.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="421">
-              <caret line="432" column="83" selection-start-line="432" selection-start-column="83" selection-end-line="432" selection-end-column="83" />
+            <state relative-caret-position="90">
+              <caret line="381" selection-start-line="381" selection-end-line="381" />
             </state>
           </provider>
         </entry>
@@ -68,8 +67,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/projeto/code/js/level2.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="132">
-              <caret line="248" column="33" selection-start-line="248" selection-start-column="25" selection-end-line="248" selection-end-column="33" />
+            <state relative-caret-position="312">
+              <caret line="272" column="22" lean-forward="true" selection-start-line="247" selection-start-column="8" selection-end-line="272" selection-end-column="22" />
             </state>
           </provider>
         </entry>
@@ -85,9 +84,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>text1</find>
-      <find>text</find>
-      <find>point</find>
       <find>gun</find>
       <find>controls</find>
       <find>spawn</find>
@@ -101,7 +97,6 @@
       <find>sprite</find>
       <find>last</find>
       <find>rightEnemy</find>
-      <find>xdif</find>
       <find>enemyTest</find>
       <find>this.idleEnemy</find>
       <find>this.attackEnemy</find>
@@ -109,12 +104,16 @@
       <find>lastFiredtt</find>
       <find>runDireita</find>
       <find>ponto</find>
-      <find>eAttack1</find>
       <find>spawnPo</find>
-      <find>collider</find>
       <find>this.run</find>
       <find>this.enemy</find>
       <find>layer4</find>
+      <find>this.lastFiredtt3</find>
+      <find>player</find>
+      <find>ydif</find>
+      <find>collider</find>
+      <find>eAttack1</find>
+      <find>xdif</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -132,9 +131,9 @@
         <option value="$PROJECT_DIR$/projeto/code/js/Bala.js" />
         <option value="$PROJECT_DIR$/projeto/code/js/HealthBar.js" />
         <option value="$PROJECT_DIR$/projeto/code/js/arcade.js" />
-        <option value="$PROJECT_DIR$/projeto/code/js/level4.js" />
         <option value="$PROJECT_DIR$/projeto/code/js/Enemy.js" />
         <option value="$PROJECT_DIR$/projeto/code/js/level2.js" />
+        <option value="$PROJECT_DIR$/projeto/code/js/level4.js" />
         <option value="$PROJECT_DIR$/projeto/code/js/level3.js" />
       </list>
     </option>
@@ -248,12 +247,12 @@
       <workItem from="1558195914723" duration="3095000" />
       <workItem from="1558210782014" duration="9381000" />
       <workItem from="1558221522805" duration="9909000" />
-      <workItem from="1558270723293" duration="12947000" />
+      <workItem from="1558270723293" duration="16827000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="101291000" />
+    <option name="totallyTimeSpent" value="105171000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="67" y="25" width="1299" height="743" extended-state="6" />
@@ -416,20 +415,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/projeto/code/js/level4.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="421">
-          <caret line="432" column="83" selection-start-line="432" selection-start-column="83" selection-end-line="432" selection-end-column="83" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/projeto/code/js/level2.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="132">
-          <caret line="248" column="33" selection-start-line="248" selection-start-column="25" selection-end-line="248" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/projeto/code/js/Enemy.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1350">
@@ -437,10 +422,24 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/projeto/code/js/level2.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="312">
+          <caret line="272" column="22" lean-forward="true" selection-start-line="247" selection-start-column="8" selection-end-line="272" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/projeto/code/js/level4.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="381" selection-start-line="381" selection-end-line="381" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/projeto/code/js/level3.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="122">
-          <caret line="735" column="49" selection-start-line="735" selection-start-column="49" selection-end-line="735" selection-end-column="49" />
+        <state relative-caret-position="308">
+          <caret line="723" column="16" selection-start-line="723" selection-start-column="16" selection-end-line="723" selection-end-column="16" />
         </state>
       </provider>
     </entry>
