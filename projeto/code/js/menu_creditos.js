@@ -38,8 +38,8 @@ class menu_creditos extends Phaser.Scene{
         btn_voltar.setAlpha(brilho);
         btn_sair.setAlpha(brilho);
 
-        var music_menu=this.sound.add("menu_music");
-        music_menu.play();
+        //var music_menu=this.sound.add("menu_music");
+        //music_menu.play();
 
         //efeitos
         //clicar btn
@@ -53,7 +53,6 @@ class menu_creditos extends Phaser.Scene{
         });
         btn_voltar.on("pointerdown",function(event){
             btnSound.play();
-            console.log("cliquei");
             this.scene.start("menu_inicial",brilho);
         },this);
         btn_voltar.on("pointerout",function(event){
@@ -65,7 +64,7 @@ class menu_creditos extends Phaser.Scene{
         });
         btn_sair.on("pointerdown",function(event){
             btnSound.play();
-            console.log("cliquei");
+            this.sys.game.destroy(true);
         },this);
 
         btn_sair.on("pointerout",function(event){

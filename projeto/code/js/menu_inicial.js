@@ -45,9 +45,7 @@ class menu_inicial extends Phaser.Scene{
     btn_creditos.setAlpha(brilho);
     btn_sair.setAlpha(brilho);
 
-    var music_menu=this.sound.add("menu_music");
-    music_menu.play();
-
+    
     /*music_menu=this.sound.add("menu_music");
         music_menu.play({
         loop:true
@@ -68,8 +66,6 @@ class menu_inicial extends Phaser.Scene{
     });
     btn_jogar.on("pointerdown",function(event){
         btnSound.play();
-        //console.log("cliquei botao jogar");
-        
         this.scene.start("menu_jogar",brilho);
     },this);
 
@@ -82,8 +78,6 @@ class menu_inicial extends Phaser.Scene{
     });
     btn_opcoes.on("pointerdown",function(event){
         btnSound.play();
-        console.log("cliquei botao opcoes");
-        
         this.scene.start("menu_opcoes","1");
     },this);
 
@@ -96,7 +90,6 @@ class menu_inicial extends Phaser.Scene{
     });
 
     btn_creditos.on("pointerdown",function(event){
-        console.log("cliquei botao creditos");
         btnSound.play();
         this.scene.start("menu_creditos",brilho);
     },this);
@@ -109,12 +102,9 @@ class menu_inicial extends Phaser.Scene{
         this.setScale(0.35);
     });
     btn_sair.on("pointerdown",function(event){
-        //console.log("cliquei botao creditos");
         btnSound.play();
         this.sys.game.destroy(true);
     },this);
-    
-
     btn_sair.on("pointerout",function(event){
         this.setScale(0.33);
     });

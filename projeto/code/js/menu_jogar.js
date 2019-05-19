@@ -47,13 +47,12 @@ class menu_jogar extends Phaser.Scene{
         btn_arcada.setAlpha(brilho);
         btn_ranking.setAlpha(brilho);
 
-        var music_menu=this.sound.add("menu_music");
-        music_menu.play();
+        //var music_menu=this.sound.add("menu_music");
+        //music_menu.play();
 
         //efeitos
         //clicar btn
         let btnSound=this.sound.add("btn_music");
-        //btnSound.play();
 
         //eventListerens dos btns
         //btn_voltar
@@ -62,7 +61,6 @@ class menu_jogar extends Phaser.Scene{
         });
         btn_voltar.on("pointerdown",function(event){
             btnSound.play();
-            console.log("cliquei")
             this.scene.start("menu_inicial",brilho);
         },this);
         btn_voltar.on("pointerout",function(event){
@@ -74,7 +72,6 @@ class menu_jogar extends Phaser.Scene{
         });
         btn_opcoes.on("pointerdown",function(event){
             btnSound.play();
-            console.log("cliquei botao opcoes");
             this.scene.start("menu_opcoes","2");
         },this);
         btn_opcoes.on("pointerout",function(event){
@@ -96,6 +93,8 @@ class menu_jogar extends Phaser.Scene{
             this.setScale(0.32);
         });
         btn_arcada.on("pointerdown",function(event){
+            btnSound.play();
+            this.sound.stopAll();
             this.scene.start("arcade",brilho);
         },this);
         btn_arcada.on("pointerout",function(event){
@@ -105,10 +104,11 @@ class menu_jogar extends Phaser.Scene{
         btn_ranking.on("pointerover",function(event){
             this.setScale(0.32);
         });
-        /*btn_ranking.on("pointerdown",function(event){
-            console.log("cliquei botao opcoes");
-            this.scene.start("menu_opcoes","Passei data para menu_opcoes");
-        },this);*/
+        btn_ranking.on("pointerdown",function(event){
+            btnSound.play();
+            console.log("cliquei botao ranking");
+            //this.scene.start("menu_opcoes","Passei data para menu_opcoes");
+        },this);
         btn_ranking.on("pointerout",function(event){
             this.setScale(0.3);
         });
