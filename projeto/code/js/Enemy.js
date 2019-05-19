@@ -1,12 +1,15 @@
 class Enemy extends Phaser.Physics.Arcade.Sprite {
-    constructor(scene, x, y, sprite){
+    constructor(scene, x, y, sprite, attack, run){
         super(scene,x, y, sprite, 0);
         this.dir = 1;
         this.speed = 100;
         this.lifespan = 0;
         this.paused = false; //ai pause
         this.texture = sprite;
+        this.attack = attack;
+        this.run = run;
         this.hp = new HealthBar(scene, x - 100, y - 110);
+        this.lastFired = 0;
     }
 
 
@@ -28,7 +31,9 @@ class Enemy extends Phaser.Physics.Arcade.Sprite {
             this.changeDir()
         }*/
 
+
     }
+
 
     changeDir(){
         this.dir *= -1;
@@ -62,23 +67,40 @@ class Enemy extends Phaser.Physics.Arcade.Sprite {
     update(_, dt, time) {
         if (this.paused) return;
 
-        //this.body.setVelocityY(1);
-
+        this.hDif = 0;
+        this.wDif = 0;
 
         //------------------------ Enemy AI ------------------------------------
-        this.chasing = false;
+        if(player.y < this.y){
+            this.hDif = this.y - player.y;
+        }
+        else{
+            this.hDif = player.y - this.y;
+        }
+
+        if(player.x < this.x){
+            this.wDif = this.x - player.x;
+        }
+        else{
+            this.wDif = player.x - this.x;
+        }
 
 
-        //verifica se a posicao jogador e do inimigo no mesmo plano
+        if (this.hDif < 30 &&  this.wDif < 500) {
 
-        if (Math.abs((Math.round(this.y) - Math.round(player.y)) < 60)) {
-
-            //se o inimigo e o jogador estiveram na mesma camada este vai seguilo
+            if(this.hDif < 25 &&  this.wDif < 70){
+                console.log("1");
+                this.anims.play(this.attack);
+            }
             if (Math.round(player.x) > Math.round(this.x)) {
                 // we increase the speed from the default 80 to 200
+                console.log("2");
+                this.play(this.run);
                 this.body.velocity.x = 250;
                 this.dir = 1;
             } else {
+                console.log("3");
+                this.play(this.run);
                 this.body.velocity.x = -250;
                 this.dir = -1;
             }
@@ -91,11 +113,13 @@ class Enemy extends Phaser.Physics.Arcade.Sprite {
                     this.body.velocity.x = -150;
                 }
                 else{
+                    this.play(this.run);
                     this.body.velocity.x = 150;
                 }
             } else if (this.dir === -1) {
                 if (this.body.velocity.x === 0 && this.dir === -1) {
                     this.dir = 1;
+                    this.play(this.run);
                     this.body.velocity.x = 150;
                 }
                 else {
@@ -103,6 +127,17 @@ class Enemy extends Phaser.Physics.Arcade.Sprite {
                 }
             }
         }
+
+        /*if(Math.abs((Math.round(this.x) - Math.round(player.x)) > 20) && Math.abs((Math.round(this.y) - Math.round(player.y)) < 10)){
+            console.log(Math.abs((Math.round(this.x) - Math.round(player.x)) > 20)+"    " + Math.abs((Math.round(this.y) - Math.round(player.y)) < 10) );
+
+            this.anims.play(this.attack);
+            this.lastFired = time + 500;
+        }
+
+        if(time > this.lastFired){
+            this.anims.play(this.texture);
+        }*/
 
         this.hp.x = this.x - 40;
         this.hp.y = this.y - 80;

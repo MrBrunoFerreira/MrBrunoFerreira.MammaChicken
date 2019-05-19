@@ -25,6 +25,10 @@ class HealthBar {
 
         this.draw();
 
+        if(this.value <= 0){
+            this.bar.destroy();
+        }
+
         return (this.value === 0);
     }
 
