@@ -9,6 +9,11 @@ var player;
 var volumeBar;
 var volumeBox;
 
+//sound
+var levelSound;
+var shootSound;
+var playerHurt;
+
 //pontos
 var ponto0;
 var ponto1;
@@ -163,6 +168,13 @@ class arcade extends Phaser.Scene{
         //status do player sobre o level
         this.scene.launch("status",obj);
 
+        levelSound=this.sound.add("level5_music");
+        levelSound.play({
+            loop:true
+        });
+        shootSound=this.sound.add("laser_music");
+        playerHurt=this.sound.add("player_hurt");
+
         //creat mapa/tilesets
         let map = this.make.tilemap({ key: "map5" });
         let tileset1 = map.addTilesetImage("sky");
@@ -207,6 +219,7 @@ class arcade extends Phaser.Scene{
         this.physics.add.collider(player, layer4);
         this.physics.add.collider(player, layer6,function ()
             {
+                playerHurt.play();
                 player.body.setVelocityY(-400);
 
                 if(!heart1.visible && !heart2.visible && !heart3.visible){
@@ -386,9 +399,11 @@ class arcade extends Phaser.Scene{
         //Bullet fire
         if (this.cursors.space.isDown && time > this.lastFired /*&& (cursors.left.isDown || cursors.right.isDown )*/) {
             if(player.body.velocity.x>=0){
+                shootSound.play();
                 player.anims.play('shootr', true);
                 this.bullet = this.bullets.get(player.x + 45, player.y+25, 'bullet2');
             }else{
+                shootSound.play();
                 player.anims.play('shootl', true);
                 this.bullet = this.bullets.get(player.x + 45, player.y+25, 'bullet2R');
             }

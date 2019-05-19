@@ -1,6 +1,8 @@
 "use strict";
 
 var brilho;
+var btnSound;
+
 
 class menu_inicial extends Phaser.Scene{
     constructor(){
@@ -43,9 +45,17 @@ class menu_inicial extends Phaser.Scene{
     btn_creditos.setAlpha(brilho);
     btn_sair.setAlpha(brilho);
 
+    var music_menu=this.sound.add("menu_music");
+    music_menu.play();
+
+    /*music_menu=this.sound.add("menu_music");
+        music_menu.play({
+        loop:true
+    });*/
+
     //efeitos
     //clicar btn
-    let btnSound=this.sound.add("btn_music");
+    btnSound=this.sound.add("btn_music");
     //btnSound.play();
 
     //eventListeners dos btns

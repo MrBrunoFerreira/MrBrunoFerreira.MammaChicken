@@ -11,6 +11,11 @@ var player;
 var volumeBar;
 var volumeBox;
 
+//music
+var levelSound;
+var shootSound;
+var playerHurt;
+
 
 //pontos
 var ponto0;
@@ -117,7 +122,6 @@ class level2 extends Phaser.Scene{
         this.load.image('bullet', "Chicken Run Platformer Game Assets 17/Coins, PowerUps & bullets/Bullet-1.png");
         this.load.image('bulletR', "Chicken Run Platformer Game Assets 17/Coins, PowerUps & bullets/Bullet-1-R.png");
 
-
         this.cursors = this.input.keyboard.createCursorKeys();
 
         //para o loading demorar mais
@@ -187,6 +191,14 @@ class level2 extends Phaser.Scene{
         //status do player sobre o level
         this.scene.launch("status",obj);
 
+        levelSound=this.sound.add("level2_music");
+        levelSound.play({
+            loop:true
+        });
+        shootSound=this.sound.add("shoot_music");
+        playerHurt=this.sound.add("player_hurt");
+
+
         //creat mapa/tilesets
         let map = this.make.tilemap({ key: "map2" });      
         let tileset1 = map.addTilesetImage("sky");
@@ -234,7 +246,7 @@ class level2 extends Phaser.Scene{
         //colisoes entre objetos
         this.physics.add.collider(player, layer4,function ()
             {
-                
+                playerHurt.play();
                 player.body.setVelocityY(-400);
 
                 if(!heart1.visible && !heart2.visible && !heart3.visible){
@@ -446,22 +458,6 @@ class level2 extends Phaser.Scene{
             player.dir = 0;
         }
 
-
-        //Bullet fire
-        if (this.cursors.space.isDown && time > this.lastFired /*&& (cursors.left.isDown || cursors.right.isDown )*/) {
-            this.bullet = this.bullets.get(player.x + 45, player.y+25, 'bullet');
-            console.log("cliquei espaco");
-
-            if (this.bullet)
-            {
-                this.bullet.fire(player);
-
-                //incrementa o tempo que tem que esperar ate ao proximo tiro
-                this.lastFired = time + 500;
-            }
-        }
-    
-
         //interactividade nos pontos
         //Ponto0
         if(player.x-32<=ponto0.x+ponto0.width && player.x+32>=ponto0.x){
@@ -476,6 +472,7 @@ class level2 extends Phaser.Scene{
                 text3.setVisible(true);
                 this.input.keyboard.once("keydown_F", event => {
                     text3.destroy();
+                    levelSound.stop();
                     let scene1 = this.scene.get('status');
                     scene1.scene.stop();
                     let scene2 = this.scene.get('menu_pause');
@@ -491,17 +488,17 @@ class level2 extends Phaser.Scene{
         }
 
         //Bullet fire
-        if (this.cursors.space.isDown && time > this.lastFired) {
-
+        if (this.cursors.space.isDown && time > this.lastFired /*&& (this.cursors.left.down || this.cursors.right.down)*/) {
             if(player.body.velocity.x>=0){
+                shootSound.play();
                 player.anims.play('shootr', true);
                 this.bullet = this.bullets.get(player.x + 45, player.y+25, 'bullet');
             }else{
+                shootSound.play();
                 player.anims.play('shootl', true);
                 this.bullet = this.bullets.get(player.x + 45, player.y+25, 'bulletR');
             }
 
-            
             //console.log("cliquei espaco");
 
             if (this.bullet)

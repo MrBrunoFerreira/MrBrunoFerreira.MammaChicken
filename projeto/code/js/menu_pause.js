@@ -65,21 +65,26 @@ class menu_pause extends Phaser.Scene{
             if(prevpage==1){
                 let theOtherScene = this.scene.get('level1');
                 theOtherScene.scene.pause();
+                levelSound.pause();
             }else if(prevpage==2){
                 let theOtherScene = this.scene.get('level2');
                 theOtherScene.scene.pause();
+                levelSound.pause();
             }
             else if(prevpage==3){
                 let theOtherScene = this.scene.get('level3');
                 theOtherScene.scene.pause();
+                levelSound.pause();
             }
             else if(prevpage==4){
                 let theOtherScene = this.scene.get('level4');
                 theOtherScene.scene.pause();
+                levelSound.pause();
             }
             else if(prevpage==5){
                 let theOtherScene = this.scene.get('arcade');
                 theOtherScene.scene.pause();
+                levelSound.pause();
             }
             btn_play.setVisible(false);
             bck_pause.setVisible(true);
@@ -123,18 +128,23 @@ class menu_pause extends Phaser.Scene{
             btn_play.setVisible(true);
             if(prevpage==1){
                 this.scene.resume("level1");
+                levelSound.resume();
             }
             if(prevpage==2){
                 this.scene.resume("level2");
+                levelSound.resume();
             }
             if(prevpage==3){
                 this.scene.resume("level3");
+                levelSound.resume();
             }
             if(prevpage==4){
                 this.scene.resume("level4");
+                levelSound.resume();
             }
             if(prevpage==5){
                 this.scene.resume("arcade");
+                levelSound.resume();
             }
         },this);
         btn_pause.on("pointerout",function(event){
@@ -390,7 +400,7 @@ class menu_pause extends Phaser.Scene{
         let content1 = [
             "      !!ALERTA!!",
             "Se clicar no certo vai",
-            "voltar ao Menu Historia!"      
+            "   voltar ao Menu!"      
         ];
         let text1 = this.add.text(cw/2 - 100,ch/2 - 20 , content1, {
             fontSize: '18px',
