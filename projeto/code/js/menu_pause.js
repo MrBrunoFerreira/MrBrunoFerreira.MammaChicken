@@ -87,6 +87,8 @@ class menu_pause extends Phaser.Scene{
                 let theOtherScene = this.scene.get('arcade');
                 theOtherScene.scene.pause();
                 levelSound.pause();
+                let theOtherScene1 = this.scene.get('survive');
+                theOtherScene1.scene.pause();
             }
             btn_play.setVisible(false);
             bck_pause.setVisible(true);
@@ -147,6 +149,8 @@ class menu_pause extends Phaser.Scene{
             if(prevpage==5){
                 this.scene.resume("arcade");
                 levelSound.resume();
+                let theOtherScene = this.scene.get('survive');
+                theOtherScene.scene.resume();
             }
         },this);
         btn_pause.on("pointerout",function(event){
@@ -334,6 +338,8 @@ class menu_pause extends Phaser.Scene{
                 text1.setVisible(false);
                 text0.setVisible(false);
                 this.scene.resume("arcade");
+                let theOtherScene1 = this.scene.get('survive');
+                theOtherScene1.scene.restart();
             }
             
         },this);
@@ -393,6 +399,8 @@ class menu_pause extends Phaser.Scene{
                 this.scene.resume("arcade");
                 let theOtherScene = this.scene.get('arcade');
                 theOtherScene.scene.stop();
+                let theOtherScene1 = this.scene.get('survive');
+                theOtherScene1.scene.stop();
                 this.scene.start("menu_jogar");
                 let music_menu=this.sound.add("menu_music");
                 music_menu.play({

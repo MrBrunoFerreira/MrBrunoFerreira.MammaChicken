@@ -22,6 +22,8 @@ var ponto1;
 //textos
 var text1;
 
+
+
 var scene5;
 
 class arcade extends Phaser.Scene{
@@ -227,6 +229,10 @@ class arcade extends Phaser.Scene{
         this.scene.launch("menu_pause",obj);
         //status do player sobre o level
         this.scene.launch("status",obj);
+        //tempo da sobrevivencia
+        //menu_pause sobre o level
+        this.scene.launch("survive",obj);
+
 
         levelSound=this.sound.add("level5_music");
         levelSound.play({
@@ -395,8 +401,6 @@ class arcade extends Phaser.Scene{
             frameRate: 1
         });
 
-        //create text
-        //text1
 
         scene5=1;
         
@@ -602,6 +606,8 @@ class arcade extends Phaser.Scene{
             
             return;
         }
+
+        
 
         //variaveis
         let speed = 300;
