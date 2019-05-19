@@ -33,13 +33,13 @@ class menu_historia extends Phaser.Scene{
         //botao sair
         let btn_opcoes=this.add.image(cw-90,ch-60,"btn_opcoes").setScale(0.3).setInteractive({cursor:"pointer"});
         //botao level1
-        let btn_level1=this.add.image(cw/2 +10,ch/2 +10,"btn_level").setScale(0.3).setInteractive({cursor:"pointer"});        
+        let btn_level1=this.add.image(cw/2 +10,ch/2 +10,"btn_level1").setScale(0.3).setInteractive({cursor:"pointer"});        
         //botao level2
-        let btn_level2=this.add.image(cw/2 +150,ch/2 +10,"btn_level").setScale(0.3).setInteractive({cursor:"pointer"});        
+        let btn_level2=this.add.image(cw/2 +150,ch/2 +10,"btn_level2").setScale(0.3).setInteractive({cursor:"pointer"});        
         //botao level3
-        let btn_level3=this.add.image(cw/2 +10,ch/2 +150,"btn_level").setScale(0.3).setInteractive({cursor:"pointer"});
+        let btn_level3=this.add.image(cw/2 +10,ch/2 +150,"btn_level3").setScale(0.3).setInteractive({cursor:"pointer"});
         //botao level4
-        let btn_level4=this.add.image(cw/2 +150,ch/2 +150,"btn_level").setScale(0.3).setInteractive({cursor:"pointer"});        
+        let btn_level4=this.add.image(cw/2 +150,ch/2 +150,"btn_level4").setScale(0.3).setInteractive({cursor:"pointer"});        
 
         //brilho
         bck_historia.setAlpha(brilho);
