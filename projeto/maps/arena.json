@@ -74,6 +74,39 @@
                  "width":85.3333,
                  "x":763.333,
                  "y":470
+                }, 
+                {
+                 "height":118.182,
+                 "id":2,
+                 "name":"Inimigo1",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":115.152,
+                 "x":154.545,
+                 "y":448.485
+                }, 
+                {
+                 "height":112.121,
+                 "id":3,
+                 "name":"Inimigo2",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":115.152,
+                 "x":400,
+                 "y":451.515
+                }, 
+                {
+                 "height":112.121,
+                 "id":4,
+                 "name":"Inimigo3",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":87.8788,
+                 "x":1166.67,
+                 "y":454.545
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -81,7 +114,7 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":2,
+ "nextobjectid":6,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.0.3",

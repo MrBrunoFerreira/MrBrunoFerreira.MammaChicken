@@ -599,10 +599,18 @@ class level4 extends Phaser.Scene{
         this.lastFiredtt2 = 0;
         this.lastFiredtt3 = 0;
         this.lastFiredtt4 = 0;
+        this.lastFiredtt6 = 0;
+        this.lastFiredtt6 = 0;
+        this.lastFiredtt6 = 7;
+
         this.ydif = 0;
         this.xdif = 0;
         this.ydif2 = 0;
         this.xdif2 = 0;
+        this.ydif3 = 0;
+        this.xdif3 = 0;
+        this.ydif4 = 0;
+        this.xdif4 = 0;
 
         this.enemies = this.physics.add.group({
             classType: Enemy,
@@ -646,6 +654,39 @@ class level4 extends Phaser.Scene{
             this.bullet.hit(this.enemy2);
             enemyHurt.play();
             this.enemy2.hp.decrease(20);
+
+        }, undefined, this);
+
+        //Enemy 3
+        this.spawnPoint6 = map.findObject("Objects", obj => obj.name === "Inimigo3");
+        this.enemy3 = this.enemies.get(this.spawnPoint6.x, this.spawnPoint6.y, this.idleEnemyDireita, this.attackEnemyDireita, this.runDireita, player);
+        this.physics.add.collider(this.enemy3, layer2);
+        this.physics.add.collider(this.enemy3, player);
+        this.physics.add.collider(this.enemy3, layer4);
+        this.enemy3.spawn();
+
+        //Enemy
+        this.physics.add.collider(this.bullets, this.enemy3, function(){
+            this.bullet.hit(this.enemy3);
+            enemyHurt.play();
+            this.enemy3.hp.decrease(20);
+
+        }, undefined, this);
+
+
+        //Enemy 4
+        this.spawnPoint7 = map.findObject("Objects", obj => obj.name === "Inimigo4");
+        this.enemy4 = this.enemies.get(this.spawnPoint7.x, this.spawnPoint7.y, this.idleEnemyDireita, this.attackEnemyDireita, this.runDireita, player);
+        this.physics.add.collider(this.enemy4, layer2);
+        this.physics.add.collider(this.enemy4, player);
+        this.physics.add.collider(this.enemy4, layer4);
+        this.enemy4.spawn();
+
+        //Enemy
+        this.physics.add.collider(this.bullets, this.enemy4, function(){
+            this.bullet.hit(this.enemy4);
+            enemyHurt.play();
+            this.enemy4.hp.decrease(20);
 
         }, undefined, this);
 
@@ -844,46 +885,46 @@ class level4 extends Phaser.Scene{
         }
 
 
-        //------------------------------------- Enemy 1--------------------------------------
+        //------------------------------------- Enemy 2--------------------------------------
 
         if(player.y < this.enemy2.y){
-            this.ydif = this.enemy2.y - player.y;
+            this.ydif2 = this.enemy2.y - player.y;
         }
         else{
-            this.ydif = player.y - this.enemy2.y;
+            this.ydif2 = player.y - this.enemy2.y;
         }
 
         if(player.x < this.enemy2.x){
-            this.xdif = this.enemy2.x - player.x;
+            this.xdif2 = this.enemy2.x - player.x;
         }
         else{
-            this.xdif = player.x - this.enemy2.x;
+            this.xdif2 = player.x - this.enemy2.x;
         }
 
 
-        if(time > this.lastFiredtt4 && this.enemy2.hp.value !== 0 &&  this.xdif < 400 && this.ydif < 100 && this.enemy2.dir === 1){
+        if(time > this.lastFiredtt3 && this.enemy2.hp.value !== 0 &&  this.xdif2 < 200 && this.ydif2 < 100 && this.enemy2.dir === 1){
             this.enemy2.body.setVelocityX(100);
             this.enemy2.anims.play(this.runDireita);
 
-            this.lastFiredtt4 = time + 300;
+            this.lastFiredtt3 = time + 300;
         }
 
-        if(time > this.lastFiredtt4 && this.enemy.hp.value !== 0 &&  this.xdif < 400 && this.ydif < 200 && this.enemy2.dir === -1){
+        if(time > this.lastFiredtt3 && this.enemy.hp.value !== 0 &&  this.xdif2 < 200 && this.ydif2 < 200 && this.enemy2.dir === -1){
             this.enemy2.body.setVelocityX(100);
             this.enemy2.anims.play(this.runEsquerda);
 
-            this.lastFiredtt4 = time + 300;
+            this.lastFiredtt3 = time + 300;
         }
 
-        if(this.ydif < 30 &&  this.xdif < 10 && this.enemy2.hp.value !== 0){
+        if(this.ydif2 < 30 &&  this.xdif2 < 10 && this.enemy2.hp.value !== 0){
             this.anims.play(this.attack);
         }
 
 
         if(this.enemy2.hp.value !== 0) {
-            if (this.ydif < 40 && this.xdif < 500) {
+            if (this.ydif2 < 40 && this.xdif2 < 200) {
 
-                if(this.xdif < 90 && this.xdif > 50 && this.ydif > 5 && this.ydif < 20 && time > this.lastFiredtt1){
+                if(this.xdif2 < 90 && this.xdif2 > 50 && this.ydif2 > 5 && this.ydif2 < 20 && time > this.lastFiredtt1){
                     playerHurt.play();
                     this.enemy2.anims.play('rightEnemy');
                     player.body.setVelocityY(-400);
@@ -940,12 +981,212 @@ class level4 extends Phaser.Scene{
         }
 
 
+        //------------------------------------- Enemy 3--------------------------------------
+
+        if(player.y < this.enemy3.y){
+            this.ydif3 = this.enemy3.y - player.y;
+        }
+        else{
+            this.ydif3 = player.y - this.enemy3.y;
+        }
+
+        if(player.x < this.enemy3.x){
+            this.xdif3 = this.enemy3.x - player.x;
+        }
+        else{
+            this.xdif3 = player.x - this.enemy3.x;
+        }
+
+
+        if(time > this.lastFiredtt5 && this.enemy3.hp.value !== 0 &&  this.xdif3 < 400 && this.ydif3 < 100 && this.enemy3.dir === 1){
+            this.enemy3.body.setVelocityX(100);
+            this.enemy3.anims.play(this.runDireita);
+
+            this.lastFiredtt5 = time + 300;
+        }
+
+        if(time > this.lastFiredtt5 && this.enemy3.hp.value !== 0 &&  this.xdif3 < 400 && this.ydif3 < 200 && this.enemy3.dir === -1){
+            this.enemy3.body.setVelocityX(100);
+            this.enemy3.anims.play(this.runEsquerda);
+
+            this.lastFiredtt5 = time + 300;
+        }
+
+        if(this.ydif3 < 30 &&  this.xdif3 < 10 && this.enemy3.hp.value !== 0){
+            this.anims.play(this.attack);
+        }
+
+
+        if(this.enemy3.hp.value !== 0) {
+            if (this.ydif3 < 40 && this.xdif3 < 500) {
+
+                if(this.xdif3 < 90 && this.xdif3 > 50 && this.ydif3 > 5 && this.ydif3 < 20 && time > this.lastFiredtt1){
+                    playerHurt.play();
+                    this.enemy3.anims.play('rightEnemy');
+                    player.body.setVelocityY(-400);
+
+                    if(!heart1.visible && !heart2.visible && !heart3.visible){
+                        console.log("Morreu");
+                        //animação para morrer
+                        morte=true;
+                        //ecrã de morte
+                        this.scene.pause();
+                        this.scene.launch("afterdeath",obj);
+                    }else if (heart1.visible && !heart2.visible && !heart3.visible) {
+                        console.log("hit e 1 coraçao");
+                        heart1.setVisible(false);
+                    }else if (heart1.visible && heart2.visible && !heart3.visible) {
+                        console.log("hit e 2 coraçoes");
+                        heart2.setVisible(false);
+
+                    }else if (heart1.visible && heart2.visible && heart3.visible) {
+                        console.log("hit e 3 coraçoes");
+                        heart3.setVisible(false);
+                    }
+                    this.lastFiredtt1 = time + 500;
+                }
+
+                if (Math.round(player.x) > Math.round(this.enemy3.x) && time > this.lastFiredtt2) {
+                    // we increase the speed from the default 80 to 200
+                    this.enemy3.body.velocity.x = 250;
+                    this.enemy3.dir = 1;
+                    this.lastFiredtt2 = time + 10;
+                }else{
+                    this.enemy3.body.velocity.x = -250;
+                    this.enemy3.dir = -1;
+                }
+            } else {
+
+
+                if (this.enemy3.dir === 1) {
+                    if (this.enemy3.body.velocity.x === 0 && this.enemy3.dir === 1) {
+                        this.enemy3.dir = -1;
+                        this.enemy3.body.velocity.x = -150;
+                    } else {
+                        this.enemy.body.velocity.x = 150;
+                    }
+                } else if (this.enemy3.dir === -1) {
+                    if (this.enemy3.body.velocity.x === 0 && this.enemy3.dir === -1) {
+                        this.enemy3.dir = 1;
+                        this.enemy3.body.velocity.x = 150;
+                    } else {
+                        this.enemy3.body.velocity.x = -150;
+                    }
+                }
+            }
+        }
+
+
+        //------------------------------------- Enemy 4--------------------------------------
+
+        if(player.y < this.enemy4.y){
+            this.ydif = this.enemy4.y - player.y;
+        }
+        else{
+            this.ydif = player.y - this.enemy4.y;
+        }
+
+        if(player.x < this.enemy4.x){
+            this.xdif = this.enemy4.x - player.x;
+        }
+        else{
+            this.xdif = player.x - this.enemy4.x;
+        }
+
+
+        if(time > this.lastFiredtt6 && this.enemy4.hp.value !== 0 &&  this.xdif < 400 && this.ydif < 100 && this.enemy4.dir === 1){
+            this.enemy4.body.setVelocityX(100);
+            this.enemy4.anims.play(this.runDireita);
+
+            this.lastFiredtt6 = time + 300;
+        }
+
+        if(time > this.lastFiredtt6 && this.enemy4.hp.value !== 0 &&  this.xdif < 400 && this.ydif < 200 && this.enemy4.dir === -1){
+            this.enemy4.body.setVelocityX(100);
+            this.enemy4.anims.play(this.runEsquerda);
+
+            this.lastFiredtt6 = time + 300;
+        }
+
+        if(this.ydif < 30 &&  this.xdif < 10 && this.enemy4.hp.value !== 0){
+            this.anims.play(this.attack);
+        }
+
+
+        if(this.enemy4.hp.value !== 0) {
+            if (this.ydif < 40 && this.xdif < 500) {
+
+                if(this.xdif < 90 && this.xdif > 50 && this.ydif > 5 && this.ydif < 20 && time > this.lastFiredtt1){
+                    playerHurt.play();
+                    this.enemy4.anims.play('rightEnemy');
+                    player.body.setVelocityY(-400);
+
+                    if(!heart1.visible && !heart2.visible && !heart3.visible){
+                        console.log("Morreu");
+                        //animação para morrer
+                        morte=true;
+                        //ecrã de morte
+                        this.scene.pause();
+                        this.scene.launch("afterdeath",obj);
+                    }else if (heart1.visible && !heart2.visible && !heart3.visible) {
+                        console.log("hit e 1 coraçao");
+                        heart1.setVisible(false);
+                    }else if (heart1.visible && heart2.visible && !heart3.visible) {
+                        console.log("hit e 2 coraçoes");
+                        heart2.setVisible(false);
+
+                    }else if (heart1.visible && heart2.visible && heart3.visible) {
+                        console.log("hit e 3 coraçoes");
+                        heart3.setVisible(false);
+                    }
+                    this.lastFiredtt1 = time + 500;
+                }
+
+                if (Math.round(player.x) > Math.round(this.enemy4.x) && time > this.lastFiredtt2) {
+                    // we increase the speed from the default 80 to 200
+                    this.enemy4.body.velocity.x = 250;
+                    this.enemy4.dir = 1;
+                    this.lastFiredtt2 = time + 10;
+                }else{
+                    this.enemy4.body.velocity.x = -250;
+                    this.enemy4.dir = -1;
+                }
+            } else {
+
+
+                if (this.enemy4.dir === 1) {
+                    if (this.enemy4.body.velocity.x === 0 && this.enemy4.dir === 1) {
+                        this.enemy4.dir = -1;
+                        this.enemy4.body.velocity.x = -150;
+                    } else {
+                        this.enemy4.body.velocity.x = 150;
+                    }
+                } else if (this.enemy4.dir === -1) {
+                    if (this.enemy4.body.velocity.x === 0 && this.enemy4.dir === -1) {
+                        this.enemy4.dir = 1;
+                        this.enemy4.body.velocity.x = 150;
+                    } else {
+                        this.enemy4.body.velocity.x = -150;
+                    }
+                }
+            }
+        }
+
+        //Destruir inimigos
         if(this.enemy.hp.value === 0){
             this.enemy.destroy();
         }
 
         if(this.enemy2.hp.value === 0){
             this.enemy2.destroy();
+        }
+
+        if(this.enemy3.hp.value === 0){
+            this.enemy3.destroy();
+        }
+
+        if(this.enemy4.hp.value === 0){
+            this.enemy4.destroy();
         }
     }
 
