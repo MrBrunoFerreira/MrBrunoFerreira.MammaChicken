@@ -2,8 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c336fc79-a40a-499c-b97a-560f61114140" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/projeto/code/js/Enemy.js" beforeDir="false" afterPath="$PROJECT_DIR$/projeto/code/js/Enemy.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projeto/code/js/level2.js" beforeDir="false" afterPath="$PROJECT_DIR$/projeto/code/js/level2.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/projeto/code/js/level3.js" beforeDir="false" afterPath="$PROJECT_DIR$/projeto/code/js/level3.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projeto/maps/level3.tmx" beforeDir="false" afterPath="$PROJECT_DIR$/projeto/maps/level3.tmx" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -22,17 +23,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/projeto/code/js/level3.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="192">
-              <caret line="631" column="20" selection-start-line="631" selection-start-column="20" selection-end-line="631" selection-end-column="20" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/projeto/code/js/level2.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="308">
-              <caret line="480" column="61" selection-start-line="480" selection-start-column="61" selection-end-line="480" selection-end-column="61" />
+            <state relative-caret-position="122">
+              <caret line="735" column="49" selection-start-line="735" selection-start-column="49" selection-end-line="735" selection-end-column="49" />
             </state>
           </provider>
         </entry>
@@ -41,7 +33,7 @@
         <entry file="file://$PROJECT_DIR$/projeto/code/js/level4.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="421">
-              <caret line="428" column="83" selection-start-line="428" selection-start-column="83" selection-end-line="428" selection-end-column="83" />
+              <caret line="432" column="83" selection-start-line="432" selection-start-column="83" selection-end-line="432" selection-end-column="83" />
             </state>
           </provider>
         </entry>
@@ -59,7 +51,7 @@
         <entry file="file://$PROJECT_DIR$/projeto/code/js/arcade.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="262">
-              <caret line="407" column="84" selection-start-line="407" selection-start-column="84" selection-end-line="407" selection-end-column="84" />
+              <caret line="410" column="84" selection-start-line="410" selection-start-column="84" selection-end-line="410" selection-end-column="84" />
             </state>
           </provider>
         </entry>
@@ -67,8 +59,17 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/projeto/code/js/Enemy.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-308">
-              <caret line="90" column="33" lean-forward="true" selection-start-line="90" selection-start-column="33" selection-end-line="90" selection-end-column="33" />
+            <state relative-caret-position="1350">
+              <caret line="90" column="33" selection-start-line="90" selection-start-column="33" selection-end-line="90" selection-end-column="33" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/projeto/code/js/level2.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="132">
+              <caret line="248" column="33" selection-start-line="248" selection-start-column="25" selection-end-line="248" selection-end-column="33" />
             </state>
           </provider>
         </entry>
@@ -84,16 +85,12 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>createSpeechBubble</find>
-      <find>textInicial</find>
       <find>text1</find>
       <find>text</find>
       <find>point</find>
-      <find>ponto</find>
       <find>gun</find>
       <find>controls</find>
       <find>spawn</find>
-      <find>spawnPo</find>
       <find>camera</find>
       <find>cursors</find>
       <find>spawnPoint</find>
@@ -102,18 +99,22 @@
       <find>space</find>
       <find>shootr</find>
       <find>sprite</find>
-      <find>this.enemy</find>
       <find>last</find>
-      <find>eAttack1</find>
       <find>rightEnemy</find>
       <find>xdif</find>
       <find>enemyTest</find>
       <find>this.idleEnemy</find>
       <find>this.attackEnemy</find>
-      <find>runDireita</find>
       <find>this.runDireita</find>
       <find>lastFiredtt</find>
+      <find>runDireita</find>
+      <find>ponto</find>
+      <find>eAttack1</find>
+      <find>spawnPo</find>
+      <find>collider</find>
       <find>this.run</find>
+      <find>this.enemy</find>
+      <find>layer4</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -132,8 +133,8 @@
         <option value="$PROJECT_DIR$/projeto/code/js/HealthBar.js" />
         <option value="$PROJECT_DIR$/projeto/code/js/arcade.js" />
         <option value="$PROJECT_DIR$/projeto/code/js/level4.js" />
-        <option value="$PROJECT_DIR$/projeto/code/js/level2.js" />
         <option value="$PROJECT_DIR$/projeto/code/js/Enemy.js" />
+        <option value="$PROJECT_DIR$/projeto/code/js/level2.js" />
         <option value="$PROJECT_DIR$/projeto/code/js/level3.js" />
       </list>
     </option>
@@ -247,12 +248,12 @@
       <workItem from="1558195914723" duration="3095000" />
       <workItem from="1558210782014" duration="9381000" />
       <workItem from="1558221522805" duration="9909000" />
-      <workItem from="1558270723293" duration="7920000" />
+      <workItem from="1558270723293" duration="12947000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="96264000" />
+    <option name="totallyTimeSpent" value="101291000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="67" y="25" width="1299" height="743" extended-state="6" />
@@ -411,35 +412,35 @@
     <entry file="file://$PROJECT_DIR$/projeto/code/js/arcade.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="262">
-          <caret line="407" column="84" selection-start-line="407" selection-start-column="84" selection-end-line="407" selection-end-column="84" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/projeto/code/js/level2.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="308">
-          <caret line="480" column="61" selection-start-line="480" selection-start-column="61" selection-end-line="480" selection-end-column="61" />
+          <caret line="410" column="84" selection-start-line="410" selection-start-column="84" selection-end-line="410" selection-end-column="84" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/projeto/code/js/level4.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="421">
-          <caret line="428" column="83" selection-start-line="428" selection-start-column="83" selection-end-line="428" selection-end-column="83" />
+          <caret line="432" column="83" selection-start-line="432" selection-start-column="83" selection-end-line="432" selection-end-column="83" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/projeto/code/js/level2.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="132">
+          <caret line="248" column="33" selection-start-line="248" selection-start-column="25" selection-end-line="248" selection-end-column="33" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/projeto/code/js/Enemy.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-308">
-          <caret line="90" column="33" lean-forward="true" selection-start-line="90" selection-start-column="33" selection-end-line="90" selection-end-column="33" />
+        <state relative-caret-position="1350">
+          <caret line="90" column="33" selection-start-line="90" selection-start-column="33" selection-end-line="90" selection-end-column="33" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/projeto/code/js/level3.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="192">
-          <caret line="631" column="20" selection-start-line="631" selection-start-column="20" selection-end-line="631" selection-end-column="20" />
+        <state relative-caret-position="122">
+          <caret line="735" column="49" selection-start-line="735" selection-start-column="49" selection-end-line="735" selection-end-column="49" />
         </state>
       </provider>
     </entry>

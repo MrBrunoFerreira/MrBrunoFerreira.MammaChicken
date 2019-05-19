@@ -29,6 +29,7 @@ var text3;
 
 var scene1;
 
+
 class level2 extends Phaser.Scene{
     constructor(){
         super({
@@ -425,7 +426,7 @@ class level2 extends Phaser.Scene{
 
     update(time, delta){
 
-       
+
         //impedir que o update ocorra primeiro que o load e create
         if(scene1===0){
             
