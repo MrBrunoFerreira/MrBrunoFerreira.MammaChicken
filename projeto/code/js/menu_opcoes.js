@@ -19,6 +19,7 @@ class menu_opcoes extends Phaser.Scene{
 
     init(data) {
         pagina_ant=data;
+        
     }
 
     preload() {
@@ -201,6 +202,9 @@ class menu_opcoes extends Phaser.Scene{
         //volumeBar.fillStyle(0xe6e6e6,0.5);
         brilhoBar.fillStyle(0xe6e6e6,1);
         brilhoBar.fillRect(ch/2+187,cw/2 -25 ,obj.brilho*81,32);
+
+
+        
 
     }
 

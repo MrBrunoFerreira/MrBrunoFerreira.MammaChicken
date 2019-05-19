@@ -663,6 +663,7 @@ class level4 extends Phaser.Scene{
         this.physics.add.collider(this.enemy3, layer2);
         this.physics.add.collider(this.enemy3, player);
         this.physics.add.collider(this.enemy3, layer4);
+        this.physics.add.collider(this.enemy3, layer7);
         this.enemy3.spawn();
 
         //Enemy
@@ -680,6 +681,7 @@ class level4 extends Phaser.Scene{
         this.physics.add.collider(this.enemy4, layer2);
         this.physics.add.collider(this.enemy4, player);
         this.physics.add.collider(this.enemy4, layer4);
+        this.physics.add.collider(this.enemy4, layer7);
         this.enemy4.spawn();
 
         //Enemy

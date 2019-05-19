@@ -35,9 +35,7 @@ class menu_jogar extends Phaser.Scene{
         //botao historia
         let btn_historia=this.add.image(cw/2 +77,ch/2,"btn_historia").setScale(0.3).setInteractive({cursor:"pointer"});        
         //botao arcada
-        let btn_arcada=this.add.image(cw/2 +77,ch/2+75,"btn_arcada").setScale(0.3).setInteractive({cursor:"pointer"});        
-        //botao ranking
-        let btn_ranking=this.add.image(cw/2 +77,ch/2+150,"btn_ranking").setScale(0.3).setInteractive({cursor:"pointer"});        
+        let btn_arcada=this.add.image(cw/2 +77,ch/2+75,"btn_arcada").setScale(0.3).setInteractive({cursor:"pointer"});              
 
         //brilho
         bck_jogar.setAlpha(brilho);
@@ -45,7 +43,6 @@ class menu_jogar extends Phaser.Scene{
         btn_opcoes.setAlpha(brilho);
         btn_historia.setAlpha(brilho);
         btn_arcada.setAlpha(brilho);
-        btn_ranking.setAlpha(brilho);
 
         //var music_menu=this.sound.add("menu_music");
         //music_menu.play();
@@ -98,18 +95,6 @@ class menu_jogar extends Phaser.Scene{
             this.scene.start("arcade",brilho);
         },this);
         btn_arcada.on("pointerout",function(event){
-            this.setScale(0.3);
-        });
-        //btn_ranking
-        btn_ranking.on("pointerover",function(event){
-            this.setScale(0.32);
-        });
-        btn_ranking.on("pointerdown",function(event){
-            btnSound.play();
-            console.log("cliquei botao ranking");
-            //this.scene.start("menu_opcoes","Passei data para menu_opcoes");
-        },this);
-        btn_ranking.on("pointerout",function(event){
             this.setScale(0.3);
         });
 

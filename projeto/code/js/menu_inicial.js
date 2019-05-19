@@ -14,6 +14,7 @@ class menu_inicial extends Phaser.Scene{
     init(data) {
         //console.log(data);
         brilho=data;
+
     }
 
     preload() {

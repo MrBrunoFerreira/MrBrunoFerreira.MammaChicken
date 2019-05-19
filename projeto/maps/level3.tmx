@@ -531,7 +531,7 @@
  </layer>
  <objectgroup name="Objects">
   <object id="1" name="Start" x="129.091" y="389.03" width="76" height="84"/>
-  <object id="2" name="Ponto0" x="342.97" y="322" width="253" height="157"/>
+  <object id="2" name="Ponto0" x="55.0912" y="309.879" width="486.333" height="172.152"/>
   <object id="3" name="Ponto1" x="1088" y="388" width="70" height="86"/>
   <object id="4" name="Ponto2" x="1314" y="385.333" width="62.6667" height="92"/>
  </objectgroup>
