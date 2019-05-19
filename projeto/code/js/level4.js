@@ -491,12 +491,12 @@ class level4 extends Phaser.Scene{
                             let scene2 = this.scene.get('menu_pause');
                             scene2.scene.stop();
                             this.scene.stop();
-                            this.scene.start("menu_historia",brilho);
+                            this.scene.start("aftercreditos",brilho);
                             this.sound.stopAll();
-                            let music_menu=this.sound.add("menu_music");
+                            /*let music_menu=this.sound.add("menu_music");
                             music_menu.play({
                                 loop:true
-                            }); 
+                            });*/ 
                         });
                     });
                 });
