@@ -482,6 +482,7 @@ class level2 extends Phaser.Scene{
                     scene2.scene.stop();
                     this.scene.stop();
                     this.scene.start("menu_historia",brilho);
+                    this.sound.stopAll();
                     let music_menu=this.sound.add("menu_music");
                     music_menu.play({
                         loop:true
