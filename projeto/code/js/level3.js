@@ -12,6 +12,7 @@ var volumeBox;
 //pontos
 var ponto0;
 var ponto1;
+var ponto2;
 
 var levelSound;
 var shootSound;
@@ -273,7 +274,7 @@ class level3 extends Phaser.Scene{
         this.spawnPoint = map.findObject("Objects", obj => obj.name === "Start");
         ponto0 = map.findObject("Objects", obj => obj.name === "Ponto0");
         ponto1 = map.findObject("Objects", obj => obj.name === "Ponto1");
-
+        ponto2 = map.findObject("Objects", obj => obj.name === "Ponto2");
 
         //spawn player
         player=this.physics.add.sprite(this.spawnPoint.x,this.spawnPoint.y-100,"idle0").setScale(0.25);
@@ -387,6 +388,44 @@ class level3 extends Phaser.Scene{
 
         //create text
         //text1
+        let content1 = [
+            "Use a Barra de Espaço",
+            "para disparar a P90!"
+        ];
+        this.text1 = this.add.text(ponto0.x, 200, content1, {
+            fontSize: '18px',
+            padding: { x: 10, y: 5 },
+            backgroundColor: '#000000',
+            fill: '#ffffff'
+        });
+        this.text1.setScrollFactor(1);
+        this.text1.setVisible(false);
+        //text2
+        let content2 = [
+            "Pressione F para interagir"
+        ];
+        text2 = this.add.text(ponto2.x, 250, content2, {
+            fontSize: '18px',
+            padding: { x: 10, y: 5 },
+            backgroundColor: '#000000',
+            fill: '#ffffff'
+        });
+        text2.setScrollFactor(1);
+        text2.setVisible(false);
+        //text3
+        let content3 = [
+            "Afinal o Joni e a Mu",
+            "Sabiam dos perigos", 
+            "que eu ia enfrentar"
+        ];
+        text3 = this.add.text(ponto2.x, 250, content3, {
+            fontSize: '18px',
+            padding: { x: 10, y: 5 },
+            backgroundColor: '#000000',
+            fill: '#ffffff'
+        });
+        text3.setScrollFactor(1);
+        text3.setVisible(false);
 
         scene2=1;
         
@@ -498,7 +537,7 @@ class level3 extends Phaser.Scene{
             repeat: -1
         });
 
-
+        
         this.enemies = this.physics.add.group({
             classType: Enemy,
             maxSize: 20,
@@ -588,6 +627,38 @@ class level3 extends Phaser.Scene{
             player.body.setVelocityX(0);
             player.anims.play('downr', true);
             player.dir = 0;
+        }
+
+
+        //interactividade
+        if(player.x - 32 <= ponto0.x + ponto0.width && player.x+32 >= ponto0.x){
+            player.body.debugBodyColor = 0xffff00;
+            this.text1.setVisible(true);
+        }else if (player.x-32<=ponto2.x+ponto2.width && player.x+32>=ponto2.x) {
+             player.body.debugBodyColor = 0xffff00; //cor para debug
+             text2.setVisible(true);
+             this.input.keyboard.once("keydown_F", event => {
+                text2.destroy();
+                text3.setVisible(true);
+                this.input.keyboard.once("keydown_F", event => {
+                    text3.destroy();
+                    levelSound.stop();
+                    let scene1 = this.scene.get('status');
+                    scene1.scene.stop();
+                    let scene2 = this.scene.get('menu_pause');
+                    scene2.scene.stop();
+                    this.scene.stop();
+                    this.scene.start("menu_historia",brilho);
+                    this.sound.stopAll();
+                    let music_menu=this.sound.add("menu_music");
+                    music_menu.play({
+                        loop:true
+                    });
+                });
+            });
+        }else {
+            this.text1.setVisible(false);
+            text2.setVisible(false);
         }
 
 
