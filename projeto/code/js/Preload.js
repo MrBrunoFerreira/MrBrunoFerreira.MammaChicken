@@ -85,6 +85,14 @@ class Preload extends Phaser.Scene{
         this.load.image("btn_errado","Chicken Run Platformer Game Assets 17/Game Ui/Image (57).png");
         //load img heart
         this.load.image("img_heart","Chicken Run Platformer Game Assets 17/Game Ui/Image (2).png");
+        //load btn_level1
+        this.load.image("btn_level1","assets/Botoes/btn_level1.png");
+        //load btn_level2
+        this.load.image("btn_level2","assets/Botoes/btn_level2.png");
+        //load btn_level3
+        this.load.image("btn_level3","assets/Botoes/btn_level3.png");
+        //load btn_level4
+        this.load.image("btn_level4","assets/Botoes/btn_level4.png");
 
         //load music
         this.load.audio("loading_music","assets/Music/loading_music.mp3");
