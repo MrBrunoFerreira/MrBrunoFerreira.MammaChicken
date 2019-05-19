@@ -897,7 +897,6 @@ class level3 extends Phaser.Scene{
             this.enemy.destroy();
         }
 
-
         if(this.enemy2.hp.value === 0){
             this.enemy2.destroy();
 

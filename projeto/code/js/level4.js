@@ -11,10 +11,12 @@ var volumeBox;
 
 //pontos
 var ponto0;
-var ponto1;
 
 //textos
 var text1;
+var text2;
+var text3;
+var text4;
 
 //sound
 var levelSound;
@@ -362,6 +364,54 @@ class level4 extends Phaser.Scene{
 
         //create text
         //text1
+        let content1 = [
+            "Pressione F para interagir"
+        ];
+        text1 = this.add.text(ponto0.x, 250, content1, {
+            fontSize: '18px',
+            padding: { x: 10, y: 5 },
+            backgroundColor: '#000000',
+            fill: '#ffffff'
+        });
+        text1.setScrollFactor(1);
+        text1.setVisible(false);
+        //text2
+        let content2 = [
+            "Oh não..."
+        ];
+        text2 = this.add.text(ponto0.x, 250, content2, {
+            fontSize: '18px',
+            padding: { x: 10, y: 5 },
+            backgroundColor: '#000000',
+            fill: '#ffffff'
+        });
+        text2.setScrollFactor(1);
+        text2.setVisible(false);
+        //text3
+        let content3 = [
+            "A minha mãe está presa ",
+            "no talho..."
+        ];
+        text3 = this.add.text(ponto0.x, 250, content3, {
+            fontSize: '18px',
+            padding: { x: 10, y: 5 },
+            backgroundColor: '#000000',
+            fill: '#ffffff'
+        });
+        text3.setScrollFactor(1);
+        text3.setVisible(false);
+        //text4
+        let content4 = [
+            "Como é que a irei salvar!?"
+        ];
+        text4 = this.add.text(ponto0.x, 250, content4, {
+            fontSize: '18px',
+            padding: { x: 10, y: 5 },
+            backgroundColor: '#000000',
+            fill: '#ffffff'
+        });
+        text4.setScrollFactor(1);
+        text4.setVisible(false);
 
         scene4=1;
         
@@ -418,6 +468,41 @@ class level4 extends Phaser.Scene{
             player.body.setVelocityX(0);
             player.anims.play('downr', true);
             player.dir = 0;
+        }
+
+        //interactividade
+        if (player.x-32<=ponto0.x+ponto0.width && player.x+32>=ponto0.x) {
+             player.body.debugBodyColor = 0xffff00; //cor para debug
+             text1.setVisible(true);
+             this.input.keyboard.once("keydown_F", event => {
+                text1.destroy();
+                text2.setVisible(true);
+                this.input.keyboard.once("keydown_F", event => {
+                    text2.destroy();
+                    text3.setVisible(true);
+                    this.input.keyboard.once("keydown_F", event => {
+                        text3.destroy();
+                        text4.setVisible(true);
+                        this.input.keyboard.once("keydown_F", event => {
+                            text4.destroy();
+                            levelSound.stop();
+                            let scene1 = this.scene.get('status');
+                            scene1.scene.stop();
+                            let scene2 = this.scene.get('menu_pause');
+                            scene2.scene.stop();
+                            this.scene.stop();
+                            this.scene.start("menu_historia",brilho);
+                            this.sound.stopAll();
+                            let music_menu=this.sound.add("menu_music");
+                            music_menu.play({
+                                loop:true
+                            }); 
+                        });
+                    });
+                });
+            });
+        }else {
+            text1.setVisible(false);
         }
 
 
