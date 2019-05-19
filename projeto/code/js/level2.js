@@ -466,7 +466,6 @@ class level2 extends Phaser.Scene{
         if(player.x-32<=ponto0.x+ponto0.width && player.x+32>=ponto0.x){
             player.body.debugBodyColor = 0xffff00; //cor para debug
             text1.setVisible(true);
-
         }else if (player.x-32<=ponto1.x+ponto1.width && player.x+32>=ponto1.x) {
              player.body.debugBodyColor = 0xffff00; //cor para debug
              text2.setVisible(true);
@@ -493,6 +492,7 @@ class level2 extends Phaser.Scene{
         else{
             player.body.debugBodyColor = 0xff00ff; //cor para debug
             text1.setVisible(false);
+            text2.setVisible(false);
         }
 
         //Bullet fire
