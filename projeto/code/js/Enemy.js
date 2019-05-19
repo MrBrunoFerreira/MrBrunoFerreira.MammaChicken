@@ -9,7 +9,6 @@ class Enemy extends Phaser.Physics.Arcade.Sprite {
         this.attack = attack;
         this.run = run;
         this.hp = new HealthBar(scene, x - 100, y - 110);
-        this.lastFired = 0;
     }
 
 
@@ -64,28 +63,23 @@ class Enemy extends Phaser.Physics.Arcade.Sprite {
         }
     }
 
-    update(_, dt, time) {
+    update(time) {
         if (this.paused) return;
 
-        this.hDif = 0;
-        this.wDif = 0;
+
 
         //------------------------ Enemy AI ------------------------------------
-        if(player.y < this.y){
-            this.hDif = this.y - player.y;
-        }
-        else{
-            this.hDif = player.y - this.y;
+
+        /*
+        if(time > this.lastFired && this.hp.value !== 0 &&  this.hDif < 300){
+
+            this.body.setVelocityX(100);
+            this.anims.play(enemyCorrer);
+            this.lastFiredtt = time + 100;
+
         }
 
-        if(player.x < this.x){
-            this.wDif = this.x - player.x;
-        }
-        else{
-            this.wDif = player.x - this.x;
-        }
-
-
+        /*
         if (this.hDif < 30 &&  this.wDif < 500) {
 
             if(this.hDif < 30 &&  this.wDif < 120){
@@ -104,7 +98,10 @@ class Enemy extends Phaser.Physics.Arcade.Sprite {
                 this.body.velocity.x = -250;
                 this.dir = -1;
             }
-        } else {
+        }
+
+
+        else {
 
 
             if (this.dir === 1) {
