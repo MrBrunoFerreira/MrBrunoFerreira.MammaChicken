@@ -737,8 +737,9 @@ class level3 extends Phaser.Scene{
         if(this.enemy.hp.value !== 0) {
             if (this.ydif < 40 && this.xdif < 500) {
 
-                if(this.xdif < 90 && this.xdif > 50 && this.ydif > 5 && this.ydif2 < 20 && time > this.lastFiredtt1){
+                if(this.xdif < 90 && this.xdif > 50 && this.ydif > 5 && this.ydif < 20 && time > this.lastFiredtt1){
                     playerHurt.play();
+                    this.enemy.anims.play('rightEnemy');
                     player.body.setVelocityY(-400);
 
                     if(!heart1.visible && !heart2.visible && !heart3.visible){
@@ -832,6 +833,32 @@ class level3 extends Phaser.Scene{
 
         if(this.enemy2.hp.value !== 0) {
             if (this.ydif2 < 40 && this.xdif2 < 600) {
+
+                if(this.xdif2 < 90 && this.xdif2 > 50 && this.ydif2 > 5 && this.ydif2 < 20 && time > this.lastFiredtt1){
+                    playerHurt.play();
+                    this.enemy2.anims.play('rightEnemy');
+                    player.body.setVelocityY(-400);
+
+                    if(!heart1.visible && !heart2.visible && !heart3.visible){
+                        console.log("Morreu");
+                        //animação para morrer
+                        morte=true;
+                        //ecrã de morte
+                        this.scene.pause();
+                        this.scene.launch("afterdeath",obj);
+                    }else if (heart1.visible && !heart2.visible && !heart3.visible) {
+                        console.log("hit e 1 coraçao");
+                        heart1.setVisible(false);
+                    }else if (heart1.visible && heart2.visible && !heart3.visible) {
+                        console.log("hit e 2 coraçoes");
+                        heart2.setVisible(false);
+
+                    }else if (heart1.visible && heart2.visible && heart3.visible) {
+                        console.log("hit e 3 coraçoes");
+                        heart3.setVisible(false);
+                    }
+                    this.lastFiredtt1 = time + 500;
+                }
 
                 if (Math.round(player.x) > Math.round(this.enemy2.x) && time > this.lastFiredtt2) {
                     // we increase the speed from the default 80 to 200
