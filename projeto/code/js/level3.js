@@ -13,6 +13,11 @@ var volumeBox;
 var ponto0;
 var ponto1;
 
+var levelSound;
+var shootSound;
+var playerHurt;
+var enemyHurt;
+
 //textos
 var text1;
 
@@ -196,6 +201,14 @@ class level3 extends Phaser.Scene{
         this.scene.launch("menu_pause",obj);
         //status do player sobre o level
         this.scene.launch("status",obj);
+
+        levelSound=this.sound.add("level3_music");
+        levelSound.play({
+            loop:true
+        });
+        shootSound=this.sound.add("shoot_music");
+        playerHurt=this.sound.add("player_hurt");
+        enemyHurt=this.sound.add("talhante_hurt");
 
         //creat mapa/tilesets
         let map = this.make.tilemap({ key: "map3" });      
@@ -426,6 +439,7 @@ class level3 extends Phaser.Scene{
 
         this.physics.add.collider(this.bullets, this.enemies, function(){
             this.bullet.hit(this.enemy);
+            enemyHurt.play();
             this.enemy.hp.decrease(20);
 
             }, undefined, this)
@@ -473,9 +487,11 @@ class level3 extends Phaser.Scene{
         if (this.cursors.space.isDown && time > this.lastFired) {
 
             if(player.body.velocity.x>=0){
+                shootSound.play();
                 player.anims.play('shootr', true);
                 this.bullet = this.bullets.get(player.x + 45, player.y+25, 'bullet');
             }else{
+                shootSound.play();
                 player.anims.play('shootl', true);
                 this.bullet = this.bullets.get(player.x + 45, player.y+25, 'bulletR');
             }

@@ -88,7 +88,7 @@ class Enemy extends Phaser.Physics.Arcade.Sprite {
 
         if (this.hDif < 30 &&  this.wDif < 500) {
 
-            if(this.hDif < 25 &&  this.wDif < 70){
+            if(this.hDif < 30 &&  this.wDif < 120){
                 console.log("1");
                 this.anims.play(this.attack);
             }

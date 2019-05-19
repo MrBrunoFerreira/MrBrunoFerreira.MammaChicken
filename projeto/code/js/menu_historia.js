@@ -50,6 +50,9 @@ class menu_historia extends Phaser.Scene{
         btn_level3.setAlpha(brilho);
         btn_level4.setAlpha(brilho);
 
+        var music_menu=this.sound.add("menu_music");
+        music_menu.play();
+
         //efeitos
         //clicar btn
         let btnSound=this.sound.add("btn_music");

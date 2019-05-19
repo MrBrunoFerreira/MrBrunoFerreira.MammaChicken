@@ -26,6 +26,8 @@ class afterdeath extends Phaser.Scene{
         let ch=this.game.renderer.height;
         let cw=this.game.renderer.width;
 
+        levelSound.stop();
+
         //background
         let bck_panel=this.add.image(cw/2 + 30 ,ch/2 + 30  ,"bck_alert").setScale(0.5).setVisible(true);
         //botao errado ->voltar menus

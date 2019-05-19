@@ -73,6 +73,9 @@ class menu_opcoes extends Phaser.Scene{
 
         }
 
+        var music_menu=this.sound.add("menu_music");
+        music_menu.play();
+
         //efeitos
         //clicar btn
         let btnSound=this.sound.add("btn_music");

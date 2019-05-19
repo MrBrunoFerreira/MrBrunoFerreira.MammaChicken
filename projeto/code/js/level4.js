@@ -16,6 +16,10 @@ var ponto1;
 //textos
 var text1;
 
+var levelSound;
+var shootSound;
+var playerHurt;
+
 var scene4;
 
 class level4 extends Phaser.Scene{
@@ -168,6 +172,13 @@ class level4 extends Phaser.Scene{
         //status do player sobre o level
         this.scene.launch("status",obj);
 
+        levelSound=this.sound.add("level4_music");
+        levelSound.play({
+            loop:true
+        });
+        shootSound=this.sound.add("shoot_music");
+        playerHurt=this.sound.add("player_hurt");
+
         //creat mapa/tilesets
         let map = this.make.tilemap({ key: "map4" });      
         let tileset1 = map.addTilesetImage("sky");
@@ -224,6 +235,7 @@ class level4 extends Phaser.Scene{
         this.physics.add.collider(player, layer6);
         this.physics.add.collider(player, layer5,function ()
             {
+                playerHurt.play();
                 player.body.setVelocityY(-400);
 
                 if(!heart1.visible && !heart2.visible && !heart3.visible){
@@ -408,9 +420,11 @@ class level4 extends Phaser.Scene{
         if (this.cursors.space.isDown && time > this.lastFired /*&& (cursors.left.isDown || cursors.right.isDown )*/) {
             
             if(player.body.velocity.x>=0){
+                shootSound.play();
                 player.anims.play('shootr', true);
                 this.bullet = this.bullets.get(player.x + 45, player.y+25, 'bullet');
             }else{
+                shootSound.play();
                 player.anims.play('shootl', true);
                 this.bullet = this.bullets.get(player.x + 45, player.y+25, 'bulletR');
             }
