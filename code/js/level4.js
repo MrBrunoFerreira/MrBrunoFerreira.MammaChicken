@@ -1065,7 +1065,7 @@ class level4 extends Phaser.Scene{
                         this.enemy3.dir = -1;
                         this.enemy3.body.velocity.x = -150;
                     } else {
-                        this.enemy.body.velocity.x = 150;
+                        this.enemy3.body.velocity.x = 150;
                     }
                 } else if (this.enemy3.dir === -1) {
                     if (this.enemy3.body.velocity.x === 0 && this.enemy3.dir === -1) {
