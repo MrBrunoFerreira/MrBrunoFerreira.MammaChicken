@@ -231,7 +231,7 @@ class arcade extends Phaser.Scene{
         this.scene.launch("status",obj);
         //tempo da sobrevivencia
         //menu_pause sobre o level
-        this.scene.launch("survive",obj);
+        // this.scene.launch("survive",obj);
 
 
         levelSound=this.sound.add("level5_music");
